@@ -1,0 +1,3 @@
+todasaspatas_web:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/routing.yml"
+    prefix:   /

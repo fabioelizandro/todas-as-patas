@@ -1,0 +1,95 @@
+parameters:
+    bytein_coffee_extra.param_converters.date_time.class: ByteinCoffee\ExtraBundle\ParamConverter\DateTimeParamConverter
+    bytein_coffee_extra.handlers.paginator.class: ByteinCoffee\ExtraBundle\Serializer\Handlers\PaginatorHandler
+    bytein_coffee_extra.gaufrette.safe_aws_s3.class: ByteinCoffee\ExtraBundle\Gaufrette\SafeAwsS3
+    sylius.controller.configuration_factory.class: ByteinCoffee\ExtraBundle\Sylius\ConfigurationFactory
+    bazinga_rest_extra.event_listener.csrf_double_submit.class: ByteinCoffee\ExtraBundle\EventListener\CsrfDoubleSubmitListener
+    bytein_coffee_extra.twig.byteincoffee_extra_extension.class: ByteinCoffee\ExtraBundle\Twig\ByteinCoffeeExtraExtension
+    bytein_coffee_extra.gaufrette.aws_s3_resolver.class: ByteinCoffee\ExtraBundle\Gaufrette\AwsS3Resolver
+    bytein_coffee_extra.gaufrette.web_path_resolver.class: ByteinCoffee\ExtraBundle\Gaufrette\WebPathResolver
+    bytein_coffee_extra.gaufrette.resolver_delegate.class: ByteinCoffee\ExtraBundle\Gaufrette\ResolverDelegate
+    bytein_coffee_extra.event_listener.access_control_by_route.class: ByteinCoffee\ExtraBundle\EventListener\AccessControlByRouteListener
+
+services:
+    bytein_coffee_extra.event_listener.access_control_by_route:
+        class: "%bytein_coffee_extra.event_listener.access_control_by_route.class%"
+        arguments: [@router, @security.context]
+        tags:
+            - { name: kernel.event_listener, event: kernel.controller, method: onKernelController }
+            
+    bytein_coffee_extra.gaufrette.aws_s3_resolver:
+        class: "%bytein_coffee_extra.gaufrette.aws_s3_resolver.class%"
+        arguments:
+            - "@bytein_coffee_extra.aws_s3.client"
+            - "%aws_s3_bucket%"
+        calls:
+             - [ setPrefix, ["%aws_s3_bucket_dir%"] ]
+        tags:
+            - { name: 'byteincoffee.gaufrette.resolver', resolver: 'aws_s3' }
+            
+    bytein_coffee_extra.gaufrette.web_path_resolver:
+        class: "%bytein_coffee_extra.gaufrette.web_path_resolver.class%"
+        arguments: [@request_stack, "%upload_web_path%"]
+        tags:
+            - { name: 'byteincoffee.gaufrette.resolver', resolver: 'web_path' }
+            
+    bytein_coffee_extra.gaufrette.resolver_delegate:
+        class: "%bytein_coffee_extra.gaufrette.resolver_delegate.class%"
+        arguments: ["%gaufrette_resolver%"]
+    
+    bytein_coffee_extra.twig.byteincoffee_extra_extension:
+        class: "%bytein_coffee_extra.twig.byteincoffee_extra_extension.class%"
+        arguments: ["@service_container"]
+        tags:
+            - { name: twig.extension }
+    
+    bytein_coffee_extra.param_converters.date_time: 
+        class: %bytein_coffee_extra.param_converters.date_time.class%
+        tags: 
+            - {name: request.param_converter }
+            
+    bytein_coffee_extra.handlers.paginator: 
+        class: %bytein_coffee_extra.handlers.paginator.class%
+        tags: 
+            - {name: jms_serializer.subscribing_handler}
+    
+    # Filesystem
+    bytein_coffee_extra.gaufrette.safe_aws_s3: 
+        class: "%bytein_coffee_extra.gaufrette.safe_aws_s3.class%"
+        arguments: ["@bytein_coffee_extra.aws_s3.client", "%aws_s3_bucket%", {directory: "%aws_s3_bucket_dir%"}]
+    
+    bytein_coffee_extra.aws_s3.client:
+        class: Aws\S3\S3Client
+        factory_class: Aws\S3\S3Client
+        factory_method: 'factory'
+        arguments: [{key: %aws_s3_key%, secret: %aws_s3_secret%, region: %aws_s3_region%}]
+
+    bytein_coffee_extra.cache.apc_cache:
+        class: %doctrine.orm.cache.apc.class%
+    
+    bytein_coffee_extra.imagine.cache.resolver.amazon_s3:
+        class: Liip\ImagineBundle\Imagine\Cache\Resolver\AwsS3Resolver
+        arguments:
+            - "@bytein_coffee_extra.aws_s3.client"
+            - "%aws_s3_bucket%"
+        calls:
+             - [ setCachePrefix, ["%aws_s3_bucket_dir%/cache"] ]
+        tags:
+            - { name: 'liip_imagine.cache.resolver', resolver: 'aws_s3' }
+            
+    bytein_coffee_extra.imagine.cache.resolver.amazon_s3.cache:
+        class: Liip\ImagineBundle\Imagine\Cache\Resolver\CacheResolver
+        arguments:
+            - "@bytein_coffee_extra.cache.apc_cache"
+            - "@bytein_coffee_extra.imagine.cache.resolver.amazon_s3"
+            -
+                prefix: "amazon_s3"
+        tags:
+            - { name: 'liip_imagine.cache.resolver', resolver: 'cached_aws_s3' }
+    
+    bytein_coffee_extra.imagine.loader.stream.default:
+        class: "%liip_imagine.binary.loader.stream.class%"
+        arguments:
+            - '%imagine_loader_protocol%://%imagine_loader_filesystem%/'
+        tags:
+            - { name: 'liip_imagine.binary.loader', loader: 'stream.default' }

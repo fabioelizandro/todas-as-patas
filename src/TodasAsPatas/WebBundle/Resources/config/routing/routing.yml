@@ -1,0 +1,30 @@
+todasaspatas_web_backend:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/routing.yml"
+    prefix:   /
+
+todasaspatas_web_api:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/routing.yml"
+    prefix:   /api/v{_version}
+    defaults:
+        _version: 1
+    options: 
+        expose: true
+
+todasaspatas_web_image:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/image.yml"
+    prefix:   /image
+    
+todasaspatas_web_frontend:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/frontend/routing.yml"
+    prefix:   /
+    
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"
+
+fos_oauth_server_token:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/token.xml"
+    options: 
+        expose: true
+
+fos_oauth_server_authorize:
+    resource: "@FOSOAuthServerBundle/Resources/config/routing/authorize.xml"

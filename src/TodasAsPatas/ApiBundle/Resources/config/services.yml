@@ -1,0 +1,6 @@
+parameters:
+#    name_of_service.class: Class
+
+services:
+#    name_of_service:
+#        class: "%name_of_service.class%"

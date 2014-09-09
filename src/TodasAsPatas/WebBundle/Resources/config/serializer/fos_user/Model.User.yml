@@ -1,0 +1,11 @@
+FOS\UserBundle\Model\User: 
+    exclusion_policy: ALL
+    properties:
+        id:
+            groups: [list, details]
+        username:
+            groups: [details]
+        email:
+            groups: [details]
+        enable:
+            groups: [details]

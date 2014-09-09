@@ -1,0 +1,5 @@
+sylius: 
+    resource: 
+        update: Atualizado com sucesso!
+        create: Criado com sucesso!
+        delete: Deletado com sucesso!

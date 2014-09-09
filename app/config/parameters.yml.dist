@@ -1,0 +1,37 @@
+parameters:
+    database_driver:   pdo_pgsql
+    database_host:     localhost
+    database_port:     5432
+    database_name:     todasaspatas
+    database_user:     postgres
+    database_password: postgres
+
+    mailer_transport:  gmail
+    mailer_host:       ~
+    mailer_user:       contato@todasaspatas.com
+    mailer_password:   aquivaiasenha
+
+    locale:            pt_BR
+    secret:            _todasaspatas
+
+    
+    aws_s3_region: "sa-east-1"
+    aws_s3_key: "keyamazon"
+    aws_s3_secret: "secretamazon"
+    aws_s3_bucket: "byteincoffee"
+    aws_s3_bucket_dir: "todasaspatas"
+
+    # s3 -> quando for na amazon (geralmente em produção)
+    # local -> quando for para colocar em uma pasta temporaria na raiz do projeto
+    gaufrette_adapter: local
+
+    imagine_loader_filesystem: default
+    imagine_loader_protocol: gaufrette
+
+    # cached_aws_s3 -> quando for criar cache na amazon
+    # local_cache -> quando for criar o cache na pasta temporaria na raiz do projeto
+    imagine_resolver: local_cache
+    
+    #resolver utilizado pela extensão twig da byteincoffee
+    gaufrette_resolver: aws_s3 #web_path caso você queira resolver para maquina local
+    upload_web_path: tmp

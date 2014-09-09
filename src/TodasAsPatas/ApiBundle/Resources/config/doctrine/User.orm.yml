@@ -1,0 +1,25 @@
+TodasAsPatas\ApiBundle\Entity\User:
+    type:  entity
+    table: fos_user
+    inheritanceType: SINGLE_TABLE
+    discriminatorColumn:
+        name: discr
+        type: string
+    discriminatorMap:
+        common: TodasAsPatas\ApiBundle\Entity\User
+    manyToMany:
+        groups:
+            targetEntity: Group
+            joinTable:
+                name: fos_user_group
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+    id:
+        id:
+            type: integer
+            generator:
+                strategy: AUTO

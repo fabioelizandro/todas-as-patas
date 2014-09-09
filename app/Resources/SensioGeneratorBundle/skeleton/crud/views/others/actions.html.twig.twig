@@ -1,0 +1,10 @@
+
+<div class="btn-group btn-group-xs">
+
+    {%- for action in record_actions %}
+
+    <a class="btn btn-primary" href="{{ "{{ path('" ~ route_name_prefix ~ "_" ~ (action == "edit" ? "update" : action) ~ "', { 'id': entity.id }) }}" }}">{{ action|replace({'show' : "Visualizar", "edit" : "Editar"}) }}</a>
+
+    {%- endfor %}
+
+</div>

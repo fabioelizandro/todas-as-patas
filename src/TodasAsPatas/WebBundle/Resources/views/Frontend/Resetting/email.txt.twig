@@ -1,0 +1,18 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{% block subject %}
+{% autoescape false %}
+Redefina sua senha
+{% endautoescape %}
+{% endblock %}
+
+{% block body_text %}
+{% autoescape false %}
+Olá, {{ user.username }}!
+
+Para redefinir sua senha, clique no link: http://todasaspatas.com/#/resetting?token={{ token }}
+
+Atenciosamente,
+a Equipe.
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}{% endblock %}

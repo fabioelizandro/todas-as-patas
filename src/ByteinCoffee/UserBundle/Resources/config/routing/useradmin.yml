@@ -1,0 +1,58 @@
+# Esse é apenas um example de arquivo de rota do controlador
+byteincoffee_user_index:
+    pattern:  /
+    methods: [GET]
+    options: 
+        expose: true
+    defaults: 
+        _controller: "app.controller.useradmin:indexAction"
+        _sylius:
+            paginate: false
+            limit: false 
+            sorting:
+                id: desc
+
+byteincoffee_user_profile_update:
+    pattern:  /profile/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.useradmin:profileUpdateAction"
+        _sylius: 
+            form: byteincoffee_sitebundle_useradminprofile
+            redirect:
+                route: byteincoffee_user_profile
+                parameters: []
+
+byteincoffee_user_profile:
+    pattern:  /profile
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.useradmin:profileAction"
+        
+byteincoffee_user_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.useradmin:showAction"
+
+byteincoffee_user_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.useradmin:createAction"
+        _sylius: 
+            form: byteincoffee_sitebundle_useradmin
+
+byteincoffee_user_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.useradmin:updateAction"
+        _sylius: 
+            form: byteincoffee_sitebundle_useradmin
+            
+byteincoffee_user_delete:
+    pattern:  /{id}/delete
+    methods: [DELETE]
+    defaults: 
+        _controller: "app.controller.useradmin:deleteAction"

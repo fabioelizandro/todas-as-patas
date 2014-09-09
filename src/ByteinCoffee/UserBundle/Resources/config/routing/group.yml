@@ -1,0 +1,39 @@
+# Esse é apenas um example de arquivo de rota do controlador
+byteincoffee_user_group_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.group:indexAction"
+        _sylius:
+            paginate: false
+            limit: false 
+            sorting:
+                id: desc
+
+byteincoffee_user_group_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.group:showAction"
+
+byteincoffee_user_group_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.group:createAction"
+        _sylius: 
+            form: byteincoffee_sitebundle_group
+
+byteincoffee_user_group_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.group:updateAction"
+        _sylius: 
+            form: byteincoffee_sitebundle_group
+
+byteincoffee_user_group_delete:
+    pattern:  /{id}/delete
+    methods: [DELETE]
+    defaults: 
+        _controller: "app.controller.group:deleteAction"

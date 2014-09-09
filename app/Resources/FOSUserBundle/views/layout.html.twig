@@ -1,0 +1,59 @@
+{% extends "::base.html.twig" %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block title %}Login{% endblock %}
+
+{% block body_attr %}class="login-bg" style="background-image: url(http://detail.herokuapp.com/img/bgs/9.jpg);"{% endblock %}
+
+{% block meta %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter='cssrewrite' output='css/compiled/login.css'
+        'bundles/todasaspatasweb/plugins/bootstrap-3.2.0-dist/css/bootstrap.css' 
+        'bundles/todasaspatasweb/backend/css/bootstrap/bootstrap-overrides.css' 
+        'bundles/todasaspatasweb/backend/css/compiled/layout.css' 
+        'bundles/todasaspatasweb/backend/css/compiled/elements.css' 
+        'bundles/todasaspatasweb/backend/css/compiled/icons.css' 
+        'bundles/todasaspatasweb/backend/css/lib/font-awesome.css' 
+        'bundles/todasaspatasweb/backend/css/compiled/signin.css' 
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+{% endblock %}
+
+{% block body %}
+    {% block messages %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for key, message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message|trans({}, 'FOSUserBundle') }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
+
+    {% block fos_user_content %}
+    {% endblock fos_user_content %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {% javascripts output='js/compiled/login.js'
+    '@TodasAsPatasWebBundle/Resources/public/backend/js/jquery-1.10.2.js'
+    '@TodasAsPatasWebBundle/Resources/public/plugins/bootstrap-3.2.0-dist/js/bootstrap.min.js'
+    '@TodasAsPatasWebBundle/Resources/public/backend/js/theme.js'
+    %}
+
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+{% endblock %}

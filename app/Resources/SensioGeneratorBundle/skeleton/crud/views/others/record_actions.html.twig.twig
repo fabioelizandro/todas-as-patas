@@ -1,0 +1,29 @@
+<ul class="record_actions list-inline list-unstyled">
+    {% if submit_create|default(false) %}
+        <li>
+            <button type="submit" class="btn btn-primary">Criar</button>
+        </li>
+    {% endif %}
+    {% if submit_update|default(false) %}
+        <li>
+            <button type="submit" class="btn btn-primary">Atualizar</button>
+        </li>
+    {% endif %}
+    <li>
+        <a class="btn btn-link" href="{{ "{{ path('" ~ route_name_prefix ~ "_index') }}" }}">
+            Voltar para a lista
+        </a>
+    </li>
+    {% if ('edit' in actions) and (not hide_edit) %}
+        <li>
+            <a class="btn btn-primary" href="{{ "{{ path('" ~ route_name_prefix ~ "_update', { 'id': "~(entity|lower)~".id }) }}" }}">
+                Editar
+            </a>
+        </li>
+    {% endif %}
+    {% if ('delete' in actions) and (not hide_delete) %}
+        <li>
+            <input form="{{ entity|lower }}-delete" type="submit" class="btn btn-danger" value="Deletar" />
+        </li>
+    {% endif %}
+</ul>

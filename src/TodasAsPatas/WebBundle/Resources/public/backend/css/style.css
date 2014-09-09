@@ -1,0 +1,48 @@
+.navbar-logo-text{
+    margin: 4px 0px 0px 10px;
+    color: #fff !important;
+}
+
+.record_actions{
+    margin: 0px;
+    padding: 10px 0px;
+    border-top: 1px solid #e5e5e5;
+}
+
+ul.list-inline li,form {
+    display: inline;
+}
+
+ul.list-inline li:first-child {
+    padding-left: 0px !important;
+}
+
+ul.list-unstyled{
+    list-style: none;
+}
+
+.badge-primary {
+    color: #fff !important;
+    background-color: #3071a9 !important;
+    border-color: #285e8e !important;
+}
+
+.badge-secondary {
+    color: #fff !important;
+    background-color: #d9534f !important;
+    border-color: #d43f3a !important;
+}
+
+#sidebar-nav{
+    padding-top: 5px !important;
+}
+
+#sidebar-nav #dashboard-menu > li i{
+    top: 8px !important;
+}
+
+#sidebar-nav #dashboard-menu > li > a{
+    padding-top: 20px !important;
+    line-height: 0 !important;
+    margin-bottom: 10px !important;
+}

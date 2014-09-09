@@ -1,0 +1,8 @@
+parameters:
+#    todasaspatas_api.form_type.name_of_form.class: TodasAsPatas\ApiBundle\Form\NameOfClass
+
+services:
+#    todasaspatas_api.form_type.name_of_form:
+#        class: "%todasaspatas_api.form_type.name_of_form.class%"
+#        tags:
+#            - { name: form.type, alias: todasaspatas_api_name_of_form }

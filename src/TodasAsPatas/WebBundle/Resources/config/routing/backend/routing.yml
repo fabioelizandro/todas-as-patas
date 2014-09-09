@@ -1,0 +1,18 @@
+todasaspatas_web_api_documentation:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/api_documentation.yml"
+    prefix:   /documentation/api
+        
+todasaspatas_web_backend_home:
+    path: /
+    defaults: 
+        _controller: TodasAsPatasWebBundle:Backend/Home:index
+        
+todasaspatas_web_backend_user:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/user.yml"
+    prefix:   /
+    
+datatable_pt_BR:
+    pattern:  /datatable/translation/pt_br.json
+    methods: [GET]
+    defaults: 
+        _controller: "TodasAsPatasWebBundle:Backend/DataTable:ptBR"

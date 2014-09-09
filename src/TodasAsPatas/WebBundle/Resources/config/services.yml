@@ -1,0 +1,35 @@
+parameters:
+    bytein_coffee_web.backend_menu_builder.class: TodasAsPatas\WebBundle\Menu\BackendMenuBuilder
+    bytein_coffee_web.serializer_subscriber.class: TodasAsPatas\WebBundle\Serializer\SerializerSubscriber
+    jms_serializer.camel_case_naming_strategy.class: JMS\Serializer\Naming\IdenticalPropertyNamingStrategy
+
+services:
+    bytein_coffee_web.backend_menu_builder:
+        class: %bytein_coffee_web.backend_menu_builder.class%
+        arguments: [@knp_menu.factory, @security.context]
+
+    bytein_coffee_web.menu.backend_main:
+        class: Knp\Menu\MenuItem 
+        factory_service: bytein_coffee_web.backend_menu_builder
+        factory_method: createMainMenu
+        arguments: ["@request"]
+        scope: request 
+        tags:
+            - { name: knp_menu.menu, alias: backend_main } 
+
+    bytein_coffee_web.serializer_subscriber:
+        class: %bytein_coffee_web.serializer_subscriber.class%
+        arguments: ["@liip_imagine.cache.manager", "@bytein_coffee_extra.gaufrette.resolver_delegate", "@router"]
+        tags:
+            - { name: jms_serializer.event_subscriber }
+            
+    bytein_coffee_web.api_documentation.cache:
+        class: Doctrine\Common\Cache\PhpFileCache
+        arguments: ["%kernel.cache_dir%/api/documentation"]
+        
+    bytein_coffee_web.api_documentation.loader_cache:
+        class: TodasAsPatas\WebBundle\Api\LoaderDocumentationCache
+        arguments: [@bytein_coffee_web.api_documentation.cache]
+        
+    bytein_coffee_web.api_documentation.loader:
+        class: TodasAsPatas\WebBundle\Api\LoaderDocumentation

@@ -1,0 +1,98 @@
+{% block extends %}
+{{ "{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+
+{{ "{% block page_title -%}" }}Listar {{ entity }}{{ "{% endblock %}" }}
+
+{{ '{% block page_pad_attr %}class="datatables-page"{% endblock %}' }}
+
+{{ '{% block stylesheets %}
+{{ parent() }}
+<link href="{{asset("bundles/todasaspatasweb/backend/css/lib/jquery.dataTables.css")}}" type="text/css" rel="stylesheet" />
+<link rel="stylesheet" href="{{asset("bundles/todasaspatasweb/backend/css/compiled/datatables.css")}}" type="text/css" media="screen" />
+{% endblock %}' }}
+
+
+{{ "{% block page -%}" }}
+
+
+<div class="row">
+    {% if 'new' in actions %}
+    <div class="col-md-12">
+        <ul class="list-unstyled list-inline">
+            <li>
+                <a href="{{ "{{ path('" ~ route_name_prefix ~ "_create') }}" }}" class="btn btn-primary">
+                    Criar novo registro
+                </a>
+            </li>
+        </ul>
+    </div>
+    {% endif %}
+    <div class="col-md-12">
+        <table class="records_list">
+            <thead>
+                <tr>
+                {%- for field, metadata in fields %}
+
+                    <th>{{ field|capitalize }}</th>
+
+                {%- endfor %}
+
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+            {{ '{% for entity in '~(entity|lower)~'s %}' }}
+            <tr>
+
+        {%- for field, metadata in fields %}
+            {%- if loop.first and ('show' in actions) %}
+
+                <td><a href="{{ "{{ path('" ~ route_name_prefix ~ "_show', { 'id': entity.id }) }}" }}">{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</a></td>
+
+            {%- elseif metadata.type in ['date', 'datetime'] %}
+
+                <td>{{ '{% if entity.' ~ field|replace({'_': ''}) ~ ' %}{{ entity.' ~ field|replace({'_': ''}) ~ '|date(\'d/m/Y H:i:s\') }}{% endif %}' }}</td>
+
+            {%- else %}
+
+                <td>{{ '{{ entity.' ~ field|replace({'_': ''}) ~ ' }}' }}</td>
+
+            {%- endif %}
+
+            {%- if loop.last %}
+
+                <td>
+                    {%- include "crud/views/others/actions.html.twig.twig" %}
+                </td>
+
+            {%- endif %}
+        {%- endfor %}
+
+            </tr>
+        {{ '{% endfor %}' }}
+        </tbody>
+        </table>
+    </div>
+</div>
+
+{{ "{% endblock %}" }}
+
+{{ '{% block javascripts %}
+{{ parent() }}
+<script src="{{asset("bundles/todasaspatasweb/backend/js/jquery.dataTables.js")}}"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $(".records_list").dataTable({
+            "sPaginationType": "full_numbers",
+            "oLanguage": {
+                "sUrl": "{{path("datatable_pt_BR")}}"
+            }
+        });
+    });
+</script>
+{% endblock %}' }}
+
+{% endblock body %}

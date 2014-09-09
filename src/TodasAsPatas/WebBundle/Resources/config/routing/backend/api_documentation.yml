@@ -1,0 +1,6 @@
+app_api_documentation:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "TodasAsPatasWebBundle:Api/Documentation:index"
+        

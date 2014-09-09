@@ -1,0 +1,49 @@
+{% block extends %}
+    {{ "{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}" }}
+{% endblock extends %}
+
+{% block body %}
+
+    {{ '{% block stylesheets %}
+{{ parent() }}
+    <link rel="stylesheet" href="{{asset("bundles/todasaspatasweb/backend/css/compiled/form-wizard.css")}}" type="text/css" media="screen" />
+{% endblock %}' }}
+
+{{ "{% block page_title -%}" }}Editar {{ entity }}{{ "{% endblock %}" }}
+
+{{ '{% block page_pad_attr %}class="form-page"{% endblock %}' }}
+
+{{ "{% block page -%}" }}
+
+<div class="row">
+    <div class="col-md-8">
+        {{ '{{ form_start(form) }}' }}
+        {{ '{{ form_widget(form) }}' }}
+        <div class="form-group">
+            <div class="col-sm-9 col-sm-offset-3">
+                {% set hide_edit, hide_delete = true, false %}
+                {% set submit_update = true %}
+                {% include 'crud/views/others/record_actions.html.twig.twig' %}
+            </div>
+        </div>
+        {{ '{{ form_end(form) }}' }}
+        <form id="{{ entity|lower }}-delete" method="post" action="{{ "{{ path('" ~ route_name_prefix ~ "_delete', { 'id': "~(entity|lower)~".id }) }}" }}">
+            <input type="hidden" name="_method" value="DELETE" />
+        </form>
+    </div>
+</div>
+{{ "{% endblock %}" }}
+
+{{ '{% block javascripts %}
+<script src="{{asset("bundles/todasaspatasweb/backend/js/wysihtml5-0.3.0.js")}}"></script>
+{{ parent() }}
+<script src="{{asset("bundles/todasaspatasweb/backend/js/jquery.uniform.min.js")}}"></script>
+
+<script type="text/javascript">
+    $(function() {
+        $("input:checkbox, input:radio").uniform();
+    });
+</script>
+{% endblock %}' }}
+
+    {% endblock body %}

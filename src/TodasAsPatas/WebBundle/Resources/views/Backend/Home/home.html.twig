@@ -1,0 +1,17 @@
+{% extends "TodasAsPatasWebBundle:Backend:template.html.twig" %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% stylesheets filter='cssrewrite' output='css/compiled/home.css'
+        'bundles/todasaspatasweb/backend/css/compiled/index.css' 
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+{% endblock %}
+
+{% block page_title %}Dashboard{% endblock %}
+
+{% block page %}
+
+{% endblock %}

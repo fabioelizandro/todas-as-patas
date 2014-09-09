@@ -1,0 +1,6 @@
+doc: 
+    prefix: /api/v1
+    name: Ações
+    groups: 
+        imports: 
+            - {resource: api_documentation_groups/resetting.yml}

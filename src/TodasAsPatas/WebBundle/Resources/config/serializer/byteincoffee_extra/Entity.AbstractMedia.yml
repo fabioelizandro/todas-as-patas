@@ -1,0 +1,7 @@
+ByteinCoffee\ExtraBundle\Entity\AbstractMedia: 
+    properties:
+        path:
+            exclude: true
+        name:
+            exclude: true
+   

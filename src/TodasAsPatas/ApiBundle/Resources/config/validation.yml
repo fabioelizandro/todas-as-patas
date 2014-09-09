@@ -1,0 +1,15 @@
+TodasAsPatas\ApiBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
+    properties:
+        username:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+            - Email: ~
+            
+TodasAsPatas\ApiBundle\Entity\Group:
+    properties:
+        name:
+            - NotBlank: ~

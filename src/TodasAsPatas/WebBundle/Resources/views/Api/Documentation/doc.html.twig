@@ -1,0 +1,210 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+
+{% block page_title %} Documentação da API {% endblock %}
+
+{% block page -%}
+    <div class="row">
+        <div class="col-xs-12">
+            <h4>Atualizando token de acesso</h4>
+            <p>
+                Cada token de autorização tem uma validade de uma hora, quando o token 
+                expira você tem que atualizar o mesmo com o token de atualização que vem na resposta
+                junto com o token de autorização. Para atualizar envie um POST para a 
+                seguinte url:
+                <span class="btn btn-link">/oauth/v2/token</span><br>
+                E enviar os parâmetros que listo abaixo:
+            </p>
+            <ul>
+                <li>client_id: {$clientId}</li>
+                <li>client_secret: {$clientSecret}</li>
+                <li>grant_type: refresh_token</li>
+                <li>refresh_token: {$refreshToken}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <h4>{{ doc.name }}</h4><small>Prefixo: {{ doc.prefix }}</small>
+            <div class="panel-group" id="accordionMain">
+                {% for groupDocId,groupDoc in doc.groups %}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h6 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordionMain" href="#collapseMain{{groupDocId}}">
+                                    {% if groupDoc.badge is defined  %}
+                                        {% for badge,badge_type in groupDoc.badge  %}
+                                            <span class="badge badge-{{badge_type|default('info')}} pull-right">{{ badge }}</span>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {{ groupDoc.name }}<small> Prefixo: {{ groupDoc.prefix }}</small>
+                                </a>
+                            </h6>
+                        </div>
+                        <div id="collapseMain{{groupDocId}}" class="panel-collapse collapse">
+                            <div class="panel-body">
+                                <div class="panel-group" id="accordion{{groupDocId}}">
+                                    {% for actionId,action in groupDoc.actions %}
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h6 class="panel-title">
+                                                    <a data-toggle="collapse" data-parent="#accordion{{groupDocId}}" href="#collapse{{groupDocId~actionId}}" style="text-decoration: none; line-height: 2;">
+                                                        {% if action.badge is defined  %}
+                                                            {% for badge,badge_type in action.badge  %}
+                                                                <span class="badge badge-{{badge_type|default('info')}} pull-right">{{ badge }}</span>
+                                                            {% endfor %}
+                                                        {% endif %}
+                                                        {% for method in action.methods %}<span style="margin-right: 2px;" class="label label-{{method | replace({'GET': 'success', 'POST': "primary", 'PUT': "default", 'DELETE': "danger"})}}">{{ method }}</span>{% endfor %}{% if action.description is defined  %}{{ action.description }}{% else %}{{ action.name }}{% endif %}<small> Caminho: {{ action.pattern }}</small>
+                                                    </a>
+                                                </h6>
+                                            </div>
+                                            <div id="collapse{{groupDocId~actionId}}" class="panel-collapse collapse">
+                                                <div class="panel-body">
+                                                    <input  type="text" style="margin-bottom: 5px; cursor: pointer; color: #000;" class="form-control input-block-level path-copy" value="{{ action.name }}" readonly/> 
+                                                    <input  type="text" style="margin-bottom: 5px; cursor: pointer; color: #000;" class="form-control input-block-level path-copy" value="{{ doc.prefix~groupDoc.prefix~action.pattern}}" readonly/> 
+                                                    {% if action.description is defined  %}
+                                                        <div class="panel panel-warning">
+                                                            <div class="panel-heading">
+                                                                <h6 class="panel-title">Descrição</h6>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                {{ action.description }}
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if action.description_update is defined  %}
+                                                        <div class="panel panel-info">
+                                                            <div class="panel-heading">
+                                                                <h6 class="panel-title">Atualização</h6>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                {{ action.description_update }}
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if action.parameters is defined  %}
+                                                        <div class="panel panel-primary">
+                                                            <div class="panel-heading">
+                                                                <h6 class="panel-title">Parâmetros</h6>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <table class="table table-responsive table-striped table-hover table-condensed">
+                                                                    <tr>
+                                                                        <th>Nome</th>
+                                                                        <th>Exemplo</th>
+                                                                        <th>Type</th>
+                                                                        <th>Requerimentos</th>
+                                                                    </tr>
+                                                                    {% for parameter in action.parameters %}
+                                                                        <tr>
+                                                                            <td>{{ parameter.name }}</td>
+                                                                            <td>{{ parameter.example }}</td>
+                                                                            <td>{{ parameter.dataType }}</td>
+                                                                            <td>{{ parameter.requirements | serialize }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if  action.query_parameters  is defined %}
+                                                        <div class="panel panel-success">
+                                                            <div class="panel-heading">
+                                                                <h6 class="panel-title">Query Parâmetros</h6>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <table class="table table-responsive table-striped table-hover table-condensed">
+                                                                    <tr>
+                                                                        <th>Nome</th>
+                                                                        <th>Exemplo</th>
+                                                                        <th>Type</th>
+                                                                        <th>Requerimentos</th>
+                                                                    </tr>
+                                                                    {% for query_parameter in action.query_parameters %}
+                                                                        <tr>
+                                                                            <td>{{ query_parameter.name }}</td>
+                                                                            <td>{{ query_parameter.example }}</td>
+                                                                            <td>{{ query_parameter.dataType }}</td>
+                                                                            <td>{{ query_parameter.requirements | serialize }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                </table>
+                                                            </div>
+                                                        </div>
+
+                                                    {% endif %}
+                                                    {% if action.return is defined  %}
+                                                        <div class="panel panel-danger">
+                                                            <div class="panel-heading">
+                                                                <h6 class="panel-title">Retorno</h6>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <pre>
+                                                                    <code>
+                                                                        {{ action.return|json_encode(constant('JSON_PRETTY_PRINT'))|trim }}
+                                                                    </code>
+                                                                </pre>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                    {% if action.examples is defined  %}
+                                                        <div class="panel panel-info">
+                                                            <div class="panel-heading">
+                                                                <h6 class="panel-title">Exemplos</h6>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <table class="table table-responsive table-striped table-hover table-condensed">
+                                                                    <tr>
+                                                                        <th>Método</th>
+                                                                        <th>Path</th>
+                                                                        <th>Exemplo</th>
+                                                                    </tr>
+                                                                    {% for exampleName,example in action.examples %}
+                                                                        <tr>
+                                                                            <td>{{ exampleName|upper }}</td>
+                                                                            <td>{{ doc.prefix~groupDoc.prefix~action.pattern }}</td>
+                                                                            <td>{{ example|serialize  }}</td>
+                                                                        </tr>
+                                                                    {% endfor %}
+                                                                </table>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% javascripts output='js/compiled/api_doc.js'
+    '@TodasAsPatasWebBundle/Resources/public/plugins/crypto-js/md5.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+        jQuery(document).ready(function() {
+            jQuery('.path-copy').click(function() {
+                jQuery(this).select();
+            });
+
+            jQuery(".input-generator").keyup(function() {
+                var username = jQuery('#input-username').val();
+                var apiKey = jQuery('#input-api-key').val();
+                var secret = jQuery('#input-secret').val();
+                var hash = CryptoJS.MD5(username + apiKey + secret).toString();
+                jQuery("#input-result").val(hash);
+            });
+        });
+    </script>
+{% endblock %}

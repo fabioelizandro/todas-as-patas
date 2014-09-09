@@ -1,0 +1,38 @@
+# Esse é apenas um example de arquivo de rota do controlador
+byteincoffee_user_resetting_request:
+    pattern:  /request
+    methods: [GET]
+    defaults: 
+        _controller: "bytein_coffee_user.controller.resetting:requestAction"
+        _sylius: 
+            template: ByteinCoffeeWebBundle:Backend/Resetting:request.html.twig
+            
+byteincoffee_user_resetting_send_email:
+    pattern:  /send-email
+    methods: [POST]
+    defaults: 
+        _controller: "bytein_coffee_user.controller.resetting:sendEmailAction"
+        _sylius: 
+            template: ByteinCoffeeBundle:Backend/Resetting:request.html.twig
+            redirect:
+                route: byteincoffee_user_resetting_check_email
+                parameters: []
+            
+byteincoffee_user_resetting_check_email:
+    pattern:  /check-email
+    methods: [GET]
+    defaults: 
+        _controller: "bytein_coffee_user.controller.resetting:checkEmailAction"
+        _sylius: 
+            template: ByteinCoffeeBundle:Backend/Resetting:check_email.html.twig
+            
+byteincoffee_user_resetting_reset:
+    pattern:  /reset/{token}
+    methods: [GET, POST]
+    defaults: 
+        _controller: "bytein_coffee_user.controller.resetting:resetAction"
+        _sylius: 
+            template: ByteinCoffeeBundle:Backend/Resetting:reset.html.twig
+            redirect:
+                route: todasaspatas_web_backend_home
+                parameters: []

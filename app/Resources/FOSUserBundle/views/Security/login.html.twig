@@ -1,0 +1,38 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+
+    {% trans_default_domain 'FOSUserBundle' %}
+
+    <div class="login-wrapper" style="top: 10px; " >
+        <div class="box">
+            <div class="content-wrap">
+                <h6>Log in</h6>
+                {% if error %}
+                    <div>{{ error|trans }}</div>
+                {% endif %}
+                {% block messages %}
+                    {% for type, messages in app.session.flashbag.all() %}
+                        {% for key, message in messages %}
+                            <div class="flash-{{ type }}">
+                                {{ message|trans({}, 'FOSUserBundle') }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+                {% endblock %}
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <input autofocus="on" autocomplete="off" type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" />
+                    <input class="form-control" placeholder="{{ 'security.login.password'|trans }}" type="password" id="password" name="_password" required="required" />
+                    <a href="#app_useradmin_resetting_request" class="forgot">Esqueceu a senha?</a>
+                    <div class="remember">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                    </div>
+                    <input class="btn-glow primary login" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock fos_user_content %}
