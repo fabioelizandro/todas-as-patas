@@ -34,7 +34,7 @@ class BackendMenuBuilder
     public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
-        
+
         $menu->addChild('Home', array(
             'route' => 'todasaspatas_web_backend_home',
             'extras' => array(
@@ -42,11 +42,17 @@ class BackendMenuBuilder
             )
         ));
 
+        $menu->addChild('Locais', array(
+            'route' => 'app_country_index',
+            'extras' => array(
+                'icon' => "icon-globe"
+            )
+        ));
+
         $menu->addChild('API', array(
             'route' => 'app_api_documentation',
             'extras' => array(
-                'icon' => "icon-folder-open",
-                'roles' => array('ROLE_API_DOCUMENTATION', 'ROLE_SUPER_ADMIN')
+                'icon' => "icon-folder-open"
             )
         ));
 

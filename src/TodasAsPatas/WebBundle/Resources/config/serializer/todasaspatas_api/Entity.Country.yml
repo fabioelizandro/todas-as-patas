@@ -1,0 +1,4 @@
+TodasAsPatas\ApiBundle\Entity\Country: 
+    properties:
+        states: 
+            exclude: true

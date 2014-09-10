@@ -1,0 +1,27 @@
+TodasAsPatas\ApiBundle\Entity\City:
+    type: entity
+    table: null
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\CityRepository
+    oneToMany:
+        addresses:
+            targetEntity: Address
+            mappedBy: city
+    manyToOne:
+        state:
+            targetEntity: State
+            inversedBy: cities
+            joinColumn:
+                nullable: false
+                name: state_id
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

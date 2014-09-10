@@ -1,2 +1,23 @@
 sylius_resource:
     resources:
+        app.country:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/Country
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\Country
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\CountryRepository
+        app.state:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/State
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\State
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\StateRepository
+        app.city:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/City
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\City
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\CityRepository

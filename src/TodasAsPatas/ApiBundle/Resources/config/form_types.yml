@@ -1,8 +1,33 @@
 parameters:
-#    todasaspatas_api.form_type.name_of_form.class: TodasAsPatas\ApiBundle\Form\NameOfClass
+    todasaspatas_api.form_type.country.class: TodasAsPatas\ApiBundle\Form\CountryType
+    todasaspatas_api.form_type.state.class: TodasAsPatas\ApiBundle\Form\StateType
+    todasaspatas_api.form_type.state_city.class: TodasAsPatas\ApiBundle\Form\StateCityType
+    todasaspatas_api.form_type.city.class: TodasAsPatas\ApiBundle\Form\CityType
+    todasaspatas_api.form_type.address.class: TodasAsPatas\ApiBundle\Form\AddressType
 
 services:
-#    todasaspatas_api.form_type.name_of_form:
-#        class: "%todasaspatas_api.form_type.name_of_form.class%"
-#        tags:
-#            - { name: form.type, alias: todasaspatas_api_name_of_form }
+    todasaspatas_api.form_type.address:
+        class: "%todasaspatas_api.form_type.address.class%"
+        arguments: ["@app.repository.city"]
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_address }
+            
+    todasaspatas_api.form_type.city:
+        class: "%todasaspatas_api.form_type.city.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_city }
+            
+    todasaspatas_api.form_type.state_city:
+        class: "%todasaspatas_api.form_type.state_city.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_state_city }
+            
+    todasaspatas_api.form_type.state:
+        class: "%todasaspatas_api.form_type.state.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_state }
+            
+    todasaspatas_api.form_type.country:
+        class: "%todasaspatas_api.form_type.country.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_country }

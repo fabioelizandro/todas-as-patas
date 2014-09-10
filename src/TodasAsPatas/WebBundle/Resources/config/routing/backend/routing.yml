@@ -1,3 +1,15 @@
+todasaspatas_web_backend_city:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/city.yml"
+    prefix:   /city
+    
+todasaspatas_web_backend_state:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/state.yml"
+    prefix:   /state
+    
+todasaspatas_web_backend_country:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/country.yml"
+    prefix:   /country
+
 todasaspatas_web_api_documentation:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/api_documentation.yml"
     prefix:   /documentation/api

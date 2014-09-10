@@ -1,0 +1,24 @@
+app_city_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.city:indexAction"
+        _format: json
+        _sylius:
+            paginate: 10
+            method: createPaginatorByQuery
+            arguments: [$query]
+            sorting:
+                id: desc
+    options:
+        expose: true
+        
+app_city_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.city:showAction"
+        _format: json
+    options:
+        expose: true
+

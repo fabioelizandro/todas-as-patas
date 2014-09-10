@@ -1,6 +1,16 @@
 parameters:
-#    name_of_service.class: Class
+    todasaspatas_api.event_listener.country_subscriber.class: TodasAsPatas\ApiBundle\EventListener\CountrySubscriber
+    todasaspatas_api.event_listener.state_subscriber.class: TodasAsPatas\ApiBundle\EventListener\StateSubscriber
 
 services:
-#    name_of_service:
-#        class: "%name_of_service.class%"
+    todasaspatas_api.event_listener.state_subscriber:
+        class: "%todasaspatas_api.event_listener.state_subscriber.class%"
+        arguments: ["@app.repository.city", "@app.manager.city"]
+        tags:
+            - { name: kernel.event_subscriber }
+    
+    todasaspatas_api.event_listener.country_subscriber:
+        class: "%todasaspatas_api.event_listener.country_subscriber.class%"
+        arguments: ["@app.repository.state", "@app.manager.state"]
+        tags:
+            - { name: kernel.event_subscriber }

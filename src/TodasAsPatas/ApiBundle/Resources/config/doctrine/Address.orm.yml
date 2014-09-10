@@ -1,0 +1,30 @@
+TodasAsPatas\ApiBundle\Entity\Address:
+    type: entity
+    table: null
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\AddressRepository
+    manyToOne:
+        city:
+            targetEntity: City
+            inversedBy: addresses
+            joinColumn:
+                nullable: false
+                name: city_id
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        number:
+            type: integer
+        postalCode:
+            type: bigint
+        street:
+            type: string
+            length: 255
+        district:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

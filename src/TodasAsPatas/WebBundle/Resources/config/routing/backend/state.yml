@@ -1,0 +1,11 @@
+app_state_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.state:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_state_city
+            redirect:
+                route: app_country_show
+                parameters: { id: resource.country.id }
+

@@ -13,3 +13,42 @@ TodasAsPatas\ApiBundle\Entity\Group:
     properties:
         name:
             - NotBlank: ~
+            
+TodasAsPatas\ApiBundle\Entity\Address:
+    properties:
+        number:
+            - NotBlank: ~
+            - NotNull: ~
+        postalCode:
+            - NotBlank: ~
+        street:
+            - NotBlank: ~
+        district:
+            - NotBlank: ~
+        city:
+            - NotNull: ~
+            
+TodasAsPatas\ApiBundle\Entity\City:
+    properties:
+        name:
+            - NotBlank: ~
+                
+TodasAsPatas\ApiBundle\Entity\State:
+    properties:
+        cities:
+            - Valid: ~
+        name:
+            - NotBlank: ~
+        acronym:
+            - NotBlank: ~
+            - Length:
+                min: 2
+                max: 2
+            
+TodasAsPatas\ApiBundle\Entity\Country:
+    properties:
+        states:
+            - Valid: ~
+            - NotNull: ~
+        name:
+            - NotBlank: ~

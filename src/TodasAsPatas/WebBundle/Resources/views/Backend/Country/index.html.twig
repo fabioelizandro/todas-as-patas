@@ -1,0 +1,70 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+
+{% block page_title -%}Listar Países{% endblock %}
+
+{% block page_pad_attr %}class="datatables-page"{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link href="{{asset("bundles/todasaspatasweb/backend/css/lib/jquery.dataTables.css")}}" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="{{asset("bundles/todasaspatasweb/backend/css/compiled/datatables.css")}}" type="text/css" media="screen" />
+{% endblock %}
+
+
+{% block page -%}
+
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-unstyled list-inline">
+                <li>
+                    <a href="{{ path('app_country_create') }}" class="btn btn-primary">
+                        Criar novo registro
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <table class="records_list">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in countries %}
+                        <tr>
+                            <td><a href="{{ path('app_country_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.name }}</td>
+                            <td>
+                                <div class="btn-group btn-group-xs">
+                                    <a class="btn btn-primary" href="{{ path('app_country_show', { 'id': entity.id }) }}">Visualizar</a>
+                                    <a class="btn btn-primary" href="{{ path('app_country_update', { 'id': entity.id }) }}">Editar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{asset("bundles/todasaspatasweb/backend/js/jquery.dataTables.js")}}"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(".records_list").dataTable({
+                "sPaginationType": "full_numbers",
+                "oLanguage": {
+                    "sUrl": "{{path("datatable_pt_BR")}}"
+                }
+            });
+        });
+    </script>
+{% endblock %}
+

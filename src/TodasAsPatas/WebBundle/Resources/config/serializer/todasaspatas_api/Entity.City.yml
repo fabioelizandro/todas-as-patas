@@ -1,0 +1,4 @@
+TodasAsPatas\ApiBundle\Entity\City: 
+    properties:
+        addresses: 
+            exclude: true
