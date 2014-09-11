@@ -42,6 +42,13 @@ class BackendMenuBuilder
             )
         ));
 
+        $menu->addChild('Grupo', array(
+            'route' => 'app_group_index',
+            'extras' => array(
+                'icon' => "icon-group"
+            )
+        ));
+
         $menu->addChild('Textos', array(
             'route' => 'app_text_index',
             'extras' => array(

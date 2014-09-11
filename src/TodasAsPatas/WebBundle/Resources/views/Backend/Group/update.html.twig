@@ -1,0 +1,55 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{asset("bundles/todasaspatasweb/backend/css/compiled/form-wizard.css")}}" type="text/css" media="screen" />
+{% endblock %}
+
+{% block page_title -%}Editar Grupo {{ group.name }}  {% endblock %}
+
+{% block page_pad_attr %}class="form-page"{% endblock %}
+
+{% block page -%}
+
+    <div class="row">
+        <div class="col-md-8">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            <div class="form-group">
+                <div class="col-sm-9 col-sm-offset-3">
+                    <ul class="record_actions list-inline list-unstyled">
+                        <li>
+                            <button type="submit" class="btn btn-primary">Atualizar</button>
+                        </li>
+                        <li>
+                            <input form="group-delete" type="submit" class="btn btn-danger" value="Deletar" />
+                        </li>
+                        <li>
+                            <a class="btn btn-link" href="{{ path('app_group_index') }}">
+                                Voltar para a lista
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            {{ form_end(form) }}
+            <form id="group-delete" method="post" action="{{ path('app_group_delete', { 'id': group.id }) }}">
+                <input type="hidden" name="_method" value="DELETE" />
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset("bundles/todasaspatasweb/backend/js/wysihtml5-0.3.0.js")}}"></script>
+    {{ parent() }}
+    <script src="{{asset("bundles/todasaspatasweb/backend/js/jquery.uniform.min.js")}}"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            $("input:checkbox, input:radio").uniform();
+        });
+    </script>
+{% endblock %}
+

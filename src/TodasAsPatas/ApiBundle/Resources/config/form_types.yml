@@ -1,4 +1,5 @@
 parameters:
+    todasaspatas_api.form_type.group.class: TodasAsPatas\ApiBundle\Form\GroupType
     todasaspatas_api.form_type.country.class: TodasAsPatas\ApiBundle\Form\CountryType
     todasaspatas_api.form_type.state.class: TodasAsPatas\ApiBundle\Form\StateType
     todasaspatas_api.form_type.state_city.class: TodasAsPatas\ApiBundle\Form\StateCityType
@@ -7,6 +8,11 @@ parameters:
     todasaspatas_api.form_type.text.class: TodasAsPatas\ApiBundle\Form\TextType
 
 services:
+    todasaspatas_api.form_type.group:
+        class: "%todasaspatas_api.form_type.group.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_group }
+            
     todasaspatas_api.form_type.text:
         class: "%todasaspatas_api.form_type.text.class%"
         tags:

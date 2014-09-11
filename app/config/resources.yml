@@ -1,5 +1,12 @@
 sylius_resource:
     resources:
+        app.group:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/Group
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\Group
+                controller: ByteinCoffee\UserBundle\Controller\GroupController
+                repository: TodasAsPatas\ApiBundle\Entity\GroupRepository
         app.text:
             driver: doctrine/orm
             templates: TodasAsPatasWebBundle:Backend/Text
