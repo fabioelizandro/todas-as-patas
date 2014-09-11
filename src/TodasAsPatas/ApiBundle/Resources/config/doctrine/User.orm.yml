@@ -7,6 +7,7 @@ TodasAsPatas\ApiBundle\Entity\User:
         type: string
     discriminatorMap:
         common: TodasAsPatas\ApiBundle\Entity\User
+        admin: TodasAsPatas\ApiBundle\Entity\UserAdmin
     manyToMany:
         groups:
             targetEntity: Group

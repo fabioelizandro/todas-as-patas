@@ -1,4 +1,6 @@
 parameters:
+    todasaspatas_api.form_type.user_admin.class: TodasAsPatas\ApiBundle\Form\UserAdminType
+    todasaspatas_api.form_type.user_admin_profile.class: TodasAsPatas\ApiBundle\Form\UserAdminProfileType
     todasaspatas_api.form_type.group.class: TodasAsPatas\ApiBundle\Form\GroupType
     todasaspatas_api.form_type.country.class: TodasAsPatas\ApiBundle\Form\CountryType
     todasaspatas_api.form_type.state.class: TodasAsPatas\ApiBundle\Form\StateType
@@ -8,6 +10,16 @@ parameters:
     todasaspatas_api.form_type.text.class: TodasAsPatas\ApiBundle\Form\TextType
 
 services:
+    todasaspatas_api.form_type.user_admin:
+        class: "%todasaspatas_api.form_type.user_admin.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_useradmin }
+            
+    todasaspatas_api.form_type.user_admin_profile:
+        class: "%todasaspatas_api.form_type.user_admin_profile.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_useradminprofile }
+            
     todasaspatas_api.form_type.group:
         class: "%todasaspatas_api.form_type.group.class%"
         tags:

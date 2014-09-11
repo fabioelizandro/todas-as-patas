@@ -1,0 +1,47 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+
+{% block page_title %} Informações da sua conta {% endblock %}
+
+{% block page -%}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="record_properties table table-bordered table-hover table-responsive table-striped">
+                <tbody>
+                    <tr>
+                        <th>Username</th>
+                        <td>{{ useradmin.username }}</td>
+                    </tr>
+                    <tr>
+                        <th>Email</th>
+                        <td>{{ useradmin.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Grupos</th>
+                        <td>
+                            <ul>
+                                {% for group in useradmin.groups %}
+                                    <li>{{ group.name }}</li>
+                                    {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Último Login</th>
+                        <td>{% if useradmin.lastLogin %}{{ useradmin.lastLogin|date('d/m/Y H:i:s') }}{% endif %}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul class="record_actions list-inline list-unstyled">
+                <li>
+                    <a class="btn btn-primary" href="{{ path('app_useradmin_profile_update') }}">
+                        Editar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

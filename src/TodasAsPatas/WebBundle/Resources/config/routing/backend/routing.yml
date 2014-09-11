@@ -1,3 +1,11 @@
+todasaspatas_web_backend_useradmin_profile:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/useradmin_profile.yml"
+    prefix:   /profile
+
+todasaspatas_web_backend_useradmin:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/useradmin.yml"
+    prefix:   /useradmin
+
 todasaspatas_web_backend_group:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/group.yml"
     prefix:   /group

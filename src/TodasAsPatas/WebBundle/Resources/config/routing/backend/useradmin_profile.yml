@@ -1,0 +1,17 @@
+app_useradmin_profile_update:
+    pattern:  /update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.useradmin:profileUpdateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_useradminprofile
+            redirect:
+                route: app_useradmin_profile
+                parameters: []
+
+app_useradmin_profile:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.useradmin:profileAction"
+        

@@ -1,0 +1,40 @@
+app_useradmin_index:
+    pattern:  /
+    methods: [GET]
+    options: 
+        expose: true
+    defaults: 
+        _controller: "app.controller.useradmin:indexAction"
+        _sylius:
+            paginate: false
+            limit: false 
+            sorting:
+                id: desc
+
+app_useradmin_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.useradmin:showAction"
+
+app_useradmin_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.useradmin:createAction"
+        _sylius: 
+            form: todasaspatas_apibundle_useradmin
+
+app_useradmin_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.useradmin:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_useradmin
+            
+app_useradmin_delete:
+    pattern:  /{id}/delete
+    methods: [DELETE]
+    defaults: 
+        _controller: "app.controller.useradmin:deleteAction"

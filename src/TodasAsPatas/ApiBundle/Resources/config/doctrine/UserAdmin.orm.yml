@@ -1,0 +1,3 @@
+TodasAsPatas\ApiBundle\Entity\UserAdmin:
+    type: entity
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\UserAdminRepository
