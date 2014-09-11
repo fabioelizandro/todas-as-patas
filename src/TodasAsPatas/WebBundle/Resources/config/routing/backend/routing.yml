@@ -1,3 +1,7 @@
+todasaspatas_web_backend_text:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/text.yml"
+    prefix:   /text
+        
 todasaspatas_web_backend_city:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/city.yml"
     prefix:   /city

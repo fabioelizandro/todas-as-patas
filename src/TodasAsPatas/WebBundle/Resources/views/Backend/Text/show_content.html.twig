@@ -1,0 +1,13 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+{% block page_title %}
+    {{ text.title }}
+{% endblock %}
+
+{% block page -%}
+    <div class="row">
+        <div class="col-xs-12">
+            {{ text.content|raw }}
+        </div>
+    </div>
+{% endblock %}

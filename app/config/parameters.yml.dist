@@ -35,3 +35,6 @@ parameters:
     #resolver utilizado pela extensão twig da byteincoffee
     gaufrette_resolver: aws_s3 #web_path caso você queira resolver para maquina local
     upload_web_path: tmp
+
+    root_credentials_user: EssaSenhaNaoEhSecreta
+    root_credentials_admin: EssaSenhaNaoEhSecreta

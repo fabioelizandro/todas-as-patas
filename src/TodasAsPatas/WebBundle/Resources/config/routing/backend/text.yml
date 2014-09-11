@@ -1,0 +1,48 @@
+app_text_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.text:indexAction"
+        _sylius:
+            paginate: false 
+            limit: false
+            sorting:
+                id: desc
+
+app_text_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.text:showAction"
+        
+app_text_show_type:
+    pattern:  /{typeId}/show-type
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.text:showAction"
+        _sylius: 
+            criteria: 
+                typeId: $typeId
+            template: TodasAsPatasWebBundle:Backend/Text:show_content.html.twig
+
+app_text_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.text:createAction"
+        _sylius: 
+            form: todasaspatas_apibundle_text
+
+app_text_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.text:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_text
+
+app_text_delete:
+    pattern:  /{id}/delete
+    methods: [DELETE]
+    defaults: 
+        _controller: "app.controller.text:deleteAction"

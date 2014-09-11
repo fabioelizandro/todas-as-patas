@@ -42,6 +42,13 @@ class BackendMenuBuilder
             )
         ));
 
+        $menu->addChild('Textos', array(
+            'route' => 'app_text_index',
+            'extras' => array(
+                'icon' => "icon-edit"
+            )
+        ));
+
         $menu->addChild('Locais', array(
             'route' => 'app_country_index',
             'extras' => array(

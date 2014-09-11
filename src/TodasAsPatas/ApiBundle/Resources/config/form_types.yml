@@ -4,8 +4,14 @@ parameters:
     todasaspatas_api.form_type.state_city.class: TodasAsPatas\ApiBundle\Form\StateCityType
     todasaspatas_api.form_type.city.class: TodasAsPatas\ApiBundle\Form\CityType
     todasaspatas_api.form_type.address.class: TodasAsPatas\ApiBundle\Form\AddressType
+    todasaspatas_api.form_type.text.class: TodasAsPatas\ApiBundle\Form\TextType
 
 services:
+    todasaspatas_api.form_type.text:
+        class: "%todasaspatas_api.form_type.text.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_text }
+            
     todasaspatas_api.form_type.address:
         class: "%todasaspatas_api.form_type.address.class%"
         arguments: ["@app.repository.city"]

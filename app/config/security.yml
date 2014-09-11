@@ -16,8 +16,8 @@ security:
         in_memory:
             memory:
                 users:
-                    user:  { password: RY&(DS87d9sa0dusad&*D()S, roles: [ 'ROLE_USER' ] }
-                    admin: { password: dhsuiaydsa$&#*(Eyfdsa, roles: [ 'ROLE_SUPER_ADMIN', 'ROLE_ADMIN' ] }
+                    user:  { password: %root_credentials_user%, roles: [ 'ROLE_USER' ] }
+                    admin: { password: %root_credentials_admin%, roles: [ 'ROLE_SUPER_ADMIN', 'ROLE_ADMIN' ] }
                     
         byteincoffee_user:
             id: fos_user.user_provider.username

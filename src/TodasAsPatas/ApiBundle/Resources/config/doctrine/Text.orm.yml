@@ -1,0 +1,29 @@
+TodasAsPatas\ApiBundle\Entity\Text:
+    type: entity
+    table: null
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\TextRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+        typeId:
+            type: integer
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+    lifecycleCallbacks: {  }

@@ -1,0 +1,61 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+
+{% block page_title %} Texto {% endblock %}
+
+{% block page -%}
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="record_properties table table-bordered table-hover table-responsive table-striped">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ text.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Título</th>
+                        <td>{{ text.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Conteúdo</th>
+                        <td>{{ text.content|raw }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ text.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Criado em</th>
+                        <td>{{ text.createdAt|date('d/m/Y H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Atualizado em</th>
+                        <td>{{ text.updatedAt|date('d/m/Y H:i:s') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul class="record_actions list-inline list-unstyled">
+                <li>
+                    <a class="btn btn-link" href="{{ path('app_text_index') }}">
+                        Voltar para a lista
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="{{ path('app_text_update', { 'id': text.id }) }}">
+                        Editar
+                    </a>
+                </li>
+                <li>
+                    <form id="text-delete" method="post" action="{{ path('app_text_delete', { 'id': text.id }) }}">
+                        <input form="text-delete" type="submit" class="btn btn-danger" value="Deletar" />
+                        <input type="hidden" name="_method" value="DELETE" />
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

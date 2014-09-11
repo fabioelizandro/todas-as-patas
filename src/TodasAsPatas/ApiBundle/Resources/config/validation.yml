@@ -1,3 +1,14 @@
+TodasAsPatas\ApiBundle\Entity\Text:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: typeId
+    properties:
+        title:
+            - NotBlank: ~
+        content:
+            - NotBlank: ~
+        typeId:
+            - NotBlank: ~
+
 TodasAsPatas\ApiBundle\Entity\User:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
