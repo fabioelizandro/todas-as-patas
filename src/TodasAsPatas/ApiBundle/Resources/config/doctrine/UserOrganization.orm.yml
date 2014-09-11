@@ -1,0 +1,10 @@
+TodasAsPatas\ApiBundle\Entity\UserOrganization:
+    type: entity
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\UserOrganizationRepository
+    manyToOne:
+        organization:
+            targetEntity: Organization
+            inversedBy: users
+            joinColumn:
+                name: organization_id
+                referencedColumnName: id

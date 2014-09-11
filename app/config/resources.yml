@@ -1,5 +1,19 @@
 sylius_resource:
     resources:
+        app.userorganization:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/UserOrganization
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\UserOrganization
+                controller: ByteinCoffee\UserBundle\Controller\UserController
+                repository: TodasAsPatas\ApiBundle\Entity\UserOrganizationRepository
+        app.organization:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/Organization
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\Organization
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\OrganizationRepository
         app.useradmin:
             driver: doctrine/orm
             templates: TodasAsPatasWebBundle:Backend/UserAdmin

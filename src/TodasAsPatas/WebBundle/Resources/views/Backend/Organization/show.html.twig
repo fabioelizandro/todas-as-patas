@@ -1,0 +1,61 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+
+{% block page_title %} Organização {{ organization.name }} {% endblock %}
+
+{% block page -%}
+
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="record_properties table table-bordered table-hover table-responsive table-striped">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ organization.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <td>{{ organization.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>E-mail</th>
+                        <td>{{ organization.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefone</th>
+                        <td>{{ organization.phone }}</td>
+                    </tr>
+                    <tr>
+                        <th>Criado em</th>
+                        <td>{{ organization.createdAt|date('d/m/Y H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Atualizado em</th>
+                        <td>{{ organization.updatedAt|date('d/m/Y H:i:s') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <ul class="record_actions list-inline list-unstyled">
+                <li>
+                    <a class="btn btn-link" href="{{ path('app_organization_index') }}">
+                        Voltar para a lista
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="{{ path('app_organization_update', { 'id': organization.id }) }}">
+                        Editar
+                    </a>
+                </li>
+                <li>
+                    <form id="organization-delete" method="post" action="{{ path('app_organization_delete', { 'id': organization.id }) }}">
+                        <input form="organization-delete" type="submit" class="btn btn-danger" value="Deletar" />
+                        <input type="hidden" name="_method" value="DELETE" />
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

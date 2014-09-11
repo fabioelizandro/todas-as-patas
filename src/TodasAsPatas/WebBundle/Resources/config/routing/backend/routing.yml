@@ -1,3 +1,7 @@
+todasaspatas_web_backend_organization:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/organization.yml"
+    prefix:   /organization
+    
 todasaspatas_web_backend_useradmin_profile:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/useradmin_profile.yml"
     prefix:   /profile

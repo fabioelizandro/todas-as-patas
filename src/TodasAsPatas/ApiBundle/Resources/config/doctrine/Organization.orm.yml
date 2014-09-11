@@ -1,0 +1,52 @@
+TodasAsPatas\ApiBundle\Entity\Organization:
+    type: entity
+    table: null
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\OrganizationRepository
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: true
+    oneToOne:
+        address:
+            targetEntity: Address
+            cascade: ["all"]
+            orphanRemoval: true
+            joinColumn:
+                nullable: false
+                name: address_id
+                referencedColumnName: id
+    oneToMany:
+        users:
+            targetEntity: UserOrganization
+            mappedBy: organization
+            cascade: ["persist", "remove"]
+            orphanRemoval: true
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+        phone:
+            type: bigint
+        deletedAt:
+            type: datetime
+            nullable: true
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+    lifecycleCallbacks: {  }

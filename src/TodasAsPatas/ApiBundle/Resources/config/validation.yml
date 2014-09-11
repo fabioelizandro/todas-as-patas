@@ -1,3 +1,27 @@
+TodasAsPatas\ApiBundle\Entity\UserOrganization:
+    properties:
+        organization:
+            - NotNull: ~
+            
+TodasAsPatas\ApiBundle\Entity\Organization:
+    properties:
+        name:
+            - NotBlank: ~
+        email:
+            - NotBlank: ~
+            - Email: ~
+        phone:
+            - NotBlank: ~
+            - Length:
+                min: 10
+                max: 11
+        address:
+            - NotNull: ~
+            - Valid: ~
+        users:
+            - NotNull: ~
+            - Valid: ~
+
 TodasAsPatas\ApiBundle\Entity\Text:
     constraints:
         - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: typeId

@@ -1,0 +1,4 @@
+TodasAsPatas\ApiBundle\Entity\Organization: 
+    properties:
+        users: 
+            exclude: true

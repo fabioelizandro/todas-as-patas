@@ -1,0 +1,38 @@
+app_organization_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.organization:indexAction"
+        _sylius:
+            paginate: false
+            limit: false
+            sorting:
+                id: desc
+
+app_organization_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.organization:showAction"
+
+app_organization_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.organization:createAction"
+        _sylius: 
+            form: todasaspatas_apibundle_organization
+
+app_organization_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.organization:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_organization
+
+app_organization_delete:
+    pattern:  /{id}/delete
+    methods: [DELETE]
+    defaults: 
+        _controller: "app.controller.organization:deleteAction"

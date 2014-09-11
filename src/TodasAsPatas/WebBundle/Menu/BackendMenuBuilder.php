@@ -42,6 +42,13 @@ class BackendMenuBuilder
             )
         ));
 
+        $menu->addChild('Organizações', array(
+            'route' => 'app_organization_index',
+            'extras' => array(
+                'icon' => "icon-star",
+            )
+        ));
+
         $menu->addChild('Usuário', array(
             'route' => 'app_useradmin_index',
             'extras' => array(

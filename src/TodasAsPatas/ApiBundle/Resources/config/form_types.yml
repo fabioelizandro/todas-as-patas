@@ -8,8 +8,20 @@ parameters:
     todasaspatas_api.form_type.city.class: TodasAsPatas\ApiBundle\Form\CityType
     todasaspatas_api.form_type.address.class: TodasAsPatas\ApiBundle\Form\AddressType
     todasaspatas_api.form_type.text.class: TodasAsPatas\ApiBundle\Form\TextType
+    todasaspatas_api.form_type.user_organization.class: TodasAsPatas\ApiBundle\Form\UserOrganizationType
+    todasaspatas_api.form_type.organization.class: TodasAsPatas\ApiBundle\Form\OrganizationType
 
 services:
+    todasaspatas_api.form_type.organization:
+        class: "%todasaspatas_api.form_type.organization.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_organization }
+            
+    todasaspatas_api.form_type.user_organization:
+        class: "%todasaspatas_api.form_type.user_organization.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_userorganization }
+            
     todasaspatas_api.form_type.user_admin:
         class: "%todasaspatas_api.form_type.user_admin.class%"
         tags:
