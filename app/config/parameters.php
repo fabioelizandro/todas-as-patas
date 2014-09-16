@@ -7,12 +7,12 @@ if (getenv('DATABASE_URL')) {
     $dbUrl = getenv('DATABASE_URL');
     $parts = parse_url($dbUrl);
 
-    $container->setParameter('sylius.database.driver', 'pdo_pgsql');
-    $container->setParameter('sylius.database.host', $parts['host']);
-    $container->setParameter('sylius.database.name', trim($parts['path'], '/'));
-    $container->setParameter('sylius.database.user', $parts['user']);
-    $container->setParameter('sylius.database.password', $parts['pass']);
-    $container->setParameter('sylius.database.port', $parts['port']);
+    $container->setParameter('database_driver', 'pdo_pgsql');
+    $container->setParameter('database_host', $parts['host']);
+    $container->setParameter('database_name', trim($parts['path'], '/'));
+    $container->setParameter('database_user', $parts['user']);
+    $container->setParameter('database_password', $parts['pass']);
+    $container->setParameter('database_port', $parts['port']);
 }
 
 if (getenv("SYMFONY_ENV_VARS")) {
