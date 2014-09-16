@@ -1,0 +1,9 @@
+parameters_env_map:
+    mailer_password:   MAILER_PASSWORD
+    secret:            SECRET
+    aws_s3_key: AWS_S3_KEY
+    aws_s3_secret: AWS_S3_SECRET
+    gaufrette_adapter: ADAPTER
+    imagine_resolver: CACHE_RESOLVER
+    root_credentials_user: ROOT_ADMIN_PASSWORD
+    root_credentials_admin: ROOT_USER_PASSWORD
