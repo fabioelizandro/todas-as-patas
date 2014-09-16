@@ -5,5 +5,5 @@ parameters_env_map:
     aws_s3_secret: AWS_S3_SECRET
     gaufrette_adapter: ADAPTER
     imagine_resolver: CACHE_RESOLVER
-    root_credentials_user: ROOT_ADMIN_PASSWORD
-    root_credentials_admin: ROOT_USER_PASSWORD
+    root_credentials_admin: ROOT_ADMIN_PASSWORD
+    root_credentials_user: ROOT_USER_PASSWORD
