@@ -9,8 +9,15 @@ parameters:
     bytein_coffee_extra.gaufrette.web_path_resolver.class: ByteinCoffee\ExtraBundle\Gaufrette\WebPathResolver
     bytein_coffee_extra.gaufrette.resolver_delegate.class: ByteinCoffee\ExtraBundle\Gaufrette\ResolverDelegate
     bytein_coffee_extra.event_listener.access_control_by_route.class: ByteinCoffee\ExtraBundle\EventListener\AccessControlByRouteListener
+    bytein_coffee_extra.validator.unique_entity.class: ByteinCoffee\ExtraBundle\Validator\UniqueEntityValidator
 
 services:
+    bytein_coffee_extra.validator.unique_entity:
+        class: "%bytein_coffee_extra.validator.unique_entity.class%"
+        arguments: [@doctrine, @service_container]
+        tags:
+            - { name: validator.constraint_validator, alias: bytein_coffee_extra.validator.unique_entity }
+            
     bytein_coffee_extra.event_listener.access_control_by_route:
         class: "%bytein_coffee_extra.event_listener.access_control_by_route.class%"
         arguments: [@router, @security.context]

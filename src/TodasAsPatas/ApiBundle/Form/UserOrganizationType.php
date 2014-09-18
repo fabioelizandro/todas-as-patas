@@ -16,11 +16,6 @@ class UserOrganizationType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('username', null, array(
-                    'attr' => array('autofocus' => 'autofocus'),
-                    'label' => 'Username',
-                    'help_label_tooltip' => array('title' => 'O username é utilizado para realizar o login'),
-                ))
                 ->add('email', 'email', array(
                     'label' => 'E-mail',
                     'widget_addon_prepend' => array(

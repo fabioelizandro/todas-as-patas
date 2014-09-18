@@ -1,12 +1,12 @@
 TodasAsPatas\ApiBundle\Entity\User:
     type:  entity
     table: fos_user
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\UserRepository
     inheritanceType: SINGLE_TABLE
     discriminatorColumn:
         name: discr
         type: string
     discriminatorMap:
-        common: TodasAsPatas\ApiBundle\Entity\User
         admin: TodasAsPatas\ApiBundle\Entity\UserAdmin
         organization: TodasAsPatas\ApiBundle\Entity\UserOrganization
     manyToMany:

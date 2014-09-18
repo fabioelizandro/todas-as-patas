@@ -7,7 +7,7 @@ use FOS\UserBundle\Model\User as BaseUser;
 /**
  * @author Fábio Lemos Elizandro <fabio@elizandro.com.br>
  */
-class User extends BaseUser
+abstract class User extends BaseUser
 {
 
     /**

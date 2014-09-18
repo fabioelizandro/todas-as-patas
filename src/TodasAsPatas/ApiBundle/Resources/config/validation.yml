@@ -35,8 +35,16 @@ TodasAsPatas\ApiBundle\Entity\Text:
 
 TodasAsPatas\ApiBundle\Entity\User:
     constraints:
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: email
-        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: username
+        - ByteinCoffee\ExtraBundle\Validator\UniqueEntity: 
+            fields: [email]
+            errorPath: email
+            message: 'Esse email já está sendo utiizado!'
+            repositoryClass: TodasAsPatas\ApiBundle\Entity\User
+        - ByteinCoffee\ExtraBundle\Validator\UniqueEntity: 
+            fields: [username]
+            errorPath: username
+            message: 'Esse username já está sendo utiizado!'
+            repositoryClass: TodasAsPatas\ApiBundle\Entity\User
     properties:
         username:
             - NotBlank: ~

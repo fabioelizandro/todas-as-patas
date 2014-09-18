@@ -9,6 +9,28 @@ class UserOrganization extends User
 {
 
     /**
+     * Get Username
+     * 
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->getEmail();
+    }
+
+    /**
+     * Set Email
+     * 
+     * @param string $email
+     * @return string
+     */
+    public function setEmail($email)
+    {
+        $this->setUsername($email);
+        return parent::setEmail($email);
+    }
+
+    /**
      * @var Organization
      */
     private $organization;
