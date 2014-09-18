@@ -28,7 +28,7 @@ class UserOrganizationType extends AbstractType
                 ))
                 ->add('plainPassword', 'repeated', array(
                     'type' => 'password',
-                    'required' => !($builder->getData() && $builder->getData()->getId()),
+                    'required' => false,
                     'first_options' => array('label' => 'Senha'),
                     'second_options' => array('label' => 'Confirme a senha'),
                     'invalid_message' => 'As senhas não conferem',

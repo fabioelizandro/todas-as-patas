@@ -41,4 +41,15 @@ abstract class User extends BaseUser
         return $this;
     }
 
+    /**
+     * Verifica se o usuário possui um password valido
+     */
+    public function isPasswordValid()
+    {
+        $password = $this->getPlainPassword();
+        $passwordBlank = (false === $password || (empty($password) && '0' != $password));
+
+        return !(null === $this->getId() && true === $passwordBlank);
+    }
+
 }

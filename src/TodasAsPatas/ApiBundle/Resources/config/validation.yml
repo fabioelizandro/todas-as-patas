@@ -45,13 +45,17 @@ TodasAsPatas\ApiBundle\Entity\User:
             errorPath: username
             message: 'Esse username já está sendo utiizado!'
             repositoryClass: TodasAsPatas\ApiBundle\Entity\User
+    getters:
+        passwordValid:
+            - 'True':
+                message: O campo senha é obrigatório.
     properties:
         username:
             - NotBlank: ~
         email:
             - NotBlank: ~
             - Email: ~
-            
+        
 TodasAsPatas\ApiBundle\Entity\Group:
     properties:
         name:

@@ -5,7 +5,6 @@
 
 {% block page -%}
 
-
     <div class="row">
         <div class="col-xs-12">
             <table class="record_properties table table-bordered table-hover table-responsive table-striped">
@@ -34,9 +33,56 @@
                         <th>Atualizado em</th>
                         <td>{{ organization.updatedAt|date('d/m/Y H:i:s') }}</td>
                     </tr>
+                    <tr>
+                        <td colspan="2"><h4>Endereço</h4></td>
+                    </tr>
+                    <tr>
+                        <th>Número</th>
+                        <td>{{ organization.address.number }}</td>
+                    </tr>
+                    <tr>
+                        <th>CEP</th>
+                        <td>{{ organization.address.postalCode }}</td>
+                    </tr>
+                    <tr>
+                        <th>Rua</th>
+                        <td>{{ organization.address.street }}</td>
+                    </tr>
+                    <tr>
+                        <th>Bairro</th>
+                        <td>{{ organization.address.district }}</td>
+                    </tr>
+                    <tr>
+                        <th>Cidade</th>
+                        <td>{{ organization.address.city }}</td>
+                    </tr>
                 </tbody>
             </table>
-
+            <h3>Usuários</h3>
+            <table class="table table-bordered table-hover table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th>E-mail</th>
+                        <th>Grupos</th>
+                        <th>Último Login</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user in organization.users %}
+                        <tr>
+                            <td>{{ user.email }}</td>
+                            <td>
+                                <ul>
+                                    {% for group in user.groups %}
+                                        <li>{{ group.name }}</li>
+                                        {% endfor %}
+                                </ul>
+                            </td>
+                            <td>{% if user.lastLogin %}{{ user.lastLogin|date('d/m/Y H:i:s') }}{% endif %}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
             <ul class="record_actions list-inline list-unstyled">
                 <li>
                     <a class="btn btn-link" href="{{ path('app_organization_index') }}">
