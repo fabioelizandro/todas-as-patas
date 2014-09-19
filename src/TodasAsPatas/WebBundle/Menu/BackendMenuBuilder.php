@@ -42,6 +42,13 @@ class BackendMenuBuilder
             )
         ));
 
+        $menu->addChild('Raça', array(
+            'route' => 'app_breed_index',
+            'extras' => array(
+                'icon' => "icon-tags",
+            )
+        ));
+
         $menu->addChild('Organizações', array(
             'route' => 'app_organization_index',
             'extras' => array(

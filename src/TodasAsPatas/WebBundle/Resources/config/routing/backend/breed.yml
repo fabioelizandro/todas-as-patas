@@ -1,0 +1,38 @@
+app_breed_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.breed:indexAction"
+        _sylius:
+            paginate: false
+            limit: false
+            sorting:
+                id: desc
+
+app_breed_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.breed:showAction"
+
+app_breed_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.breed:createAction"
+        _sylius: 
+            form: todasaspatas_apibundle_breed
+
+app_breed_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.breed:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_breed
+
+app_breed_delete:
+    pattern:  /{id}/delete
+    methods: [DELETE]
+    defaults: 
+        _controller: "app.controller.breed:deleteAction"

@@ -1,5 +1,12 @@
 sylius_resource:
     resources:
+        app.breed:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/Breed
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\Breed
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\BreedRepository
         app.userorganization:
             driver: doctrine/orm
             templates: TodasAsPatasWebBundle:Backend/UserOrganization

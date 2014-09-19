@@ -1,3 +1,8 @@
+TodasAsPatas\ApiBundle\Entity\Breed:
+    properties:
+        name:
+            - NotBlank: ~
+            
 TodasAsPatas\ApiBundle\Entity\UserOrganization:
     properties:
         organization:
