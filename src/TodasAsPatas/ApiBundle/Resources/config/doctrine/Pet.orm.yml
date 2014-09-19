@@ -1,0 +1,58 @@
+TodasAsPatas\ApiBundle\Entity\Pet:
+    type: entity
+    table: null
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\PetRepository
+    gedmo:
+        soft_deleteable:
+            field_name: deletedAt
+            time_aware: true
+    manyToOne:
+        organization:
+            targetEntity: Organization
+            joinColumn:
+                nullable: false
+                name: organization_id
+                referencedColumnName: id
+    manyToMany:
+        breeds:
+            targetEntity: Breed
+            joinTable:
+                name: pets_breeds
+                joinColumns:
+                    pet_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    breed_id:
+                        referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        deletedAt:
+            type: datetime
+            nullable: true
+        displayQuantity:
+            type: integer
+        sizeId:
+            type: integer
+        ageId:
+            type: integer
+        genderId:
+            type: integer
+    lifecycleCallbacks: {  }

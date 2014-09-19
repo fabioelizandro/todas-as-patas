@@ -1,3 +1,18 @@
+TodasAsPatas\ApiBundle\Entity\Pet:
+    properties:
+        name:
+            - NotBlank: ~
+        sizeId:
+            - NotNull: ~
+        ageId:
+            - NotNull: ~
+        genderId:
+            - NotNull: ~
+        breeds:
+            - NotNull: ~
+        organization:
+            - NotNull: ~
+            
 TodasAsPatas\ApiBundle\Entity\Breed:
     properties:
         name:
