@@ -1,5 +1,19 @@
 sylius_resource:
     resources:
+        app.petimage:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/PetImage
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\PetImage
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\PetImageRepository
+        app.pet:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/Pet
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\Pet
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\PetRepository
         app.breed:
             driver: doctrine/orm
             templates: TodasAsPatasWebBundle:Backend/Breed

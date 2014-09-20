@@ -11,8 +11,27 @@ parameters:
     todasaspatas_api.form_type.user_organization.class: TodasAsPatas\ApiBundle\Form\UserOrganizationType
     todasaspatas_api.form_type.organization.class: TodasAsPatas\ApiBundle\Form\OrganizationType
     todasaspatas_api.form_type.breed.class: TodasAsPatas\ApiBundle\Form\BreedType
+    todasaspatas_api.form_type.pet.class: TodasAsPatas\ApiBundle\Form\PetType
+    todasaspatas_api.form_type.pet_image.class: TodasAsPatas\ApiBundle\Form\PetImageType
 
 services:
+    todasaspatas_api.form_type.pet_image:
+        class: "%todasaspatas_api.form_type.pet_image.class%"
+        arguments: [false]
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_petimage }
+            
+    todasaspatas_api.form_type.pet_image_creating:
+        class: "%todasaspatas_api.form_type.pet_image.class%"
+        arguments: [true]
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_petimage_creating }
+            
+    todasaspatas_api.form_type.pet:
+        class: "%todasaspatas_api.form_type.pet.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_pet }
+            
     todasaspatas_api.form_type.breed:
         class: "%todasaspatas_api.form_type.breed.class%"
         tags:

@@ -46,3 +46,7 @@ ul.list-unstyled{
     line-height: 0 !important;
     margin-bottom: 10px !important;
 }
+
+input[type="file"]{
+    padding: 0px !important;
+}

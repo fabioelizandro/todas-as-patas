@@ -1,3 +1,9 @@
+TodasAsPatas\ApiBundle\Entity\PetImage:
+    properties:
+        image:
+            - FSi\Bundle\DoctrineExtensionsBundle\Validator\Constraints\File:
+                mimeTypes: [image/jpg, image/jpeg, image/png]
+                
 TodasAsPatas\ApiBundle\Entity\Pet:
     properties:
         name:
@@ -12,6 +18,11 @@ TodasAsPatas\ApiBundle\Entity\Pet:
             - NotNull: ~
         organization:
             - NotNull: ~
+        profileImage:
+            - FSi\Bundle\DoctrineExtensionsBundle\Validator\Constraints\File:
+                mimeTypes: [image/jpg, image/jpeg, image/png]
+        images:
+            - Valid: ~
             
 TodasAsPatas\ApiBundle\Entity\Breed:
     properties:

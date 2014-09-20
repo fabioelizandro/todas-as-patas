@@ -1,0 +1,67 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+{% from 'TodasAsPatasWebBundle:Backend/Macro:pagination.html.twig' import pagination %}
+
+{% block page_title -%}Listar Pets{% endblock %}
+
+{% block page_pad_attr %}class="datatables-page"{% endblock %}
+
+{% block page -%}
+    {{ pagination(pets) }}
+    <div class="row">
+        <div class="col-md-12">
+            <ul class="list-unstyled list-inline">
+                <li>
+                    <a href="{{ path('app_pet_create') }}" class="btn btn-primary">
+                        Criar novo registro
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ sylius_resource_sort('id', '#id') }}</th>
+                        <th>{{ sylius_resource_sort('name', 'Nome') }}</th>
+                        <th>{{ sylius_resource_sort('displayQuantity', 'Visualizações') }}</th>
+                        <th>{{ sylius_resource_sort('sizeId', 'Tamanho') }}</th>
+                        <th>{{ sylius_resource_sort('ageId', 'Idade') }}</th>
+                        <th>{{ sylius_resource_sort('genderId', 'Gênero') }}</th>
+                        <th>{{ sylius_resource_sort('createdAt', 'Criado em') }}</th>
+                        <th>{{ sylius_resource_sort('updatedAt', 'Atualizado em') }}</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in pets %}
+                        <tr>
+                            <td><a href="{{ path('app_pet_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.name }}</td>
+                            <td>{{ entity.displayQuantity }}</td>
+                            <td>{{ entity.size }}</td>
+                            <td>{{ entity.age }}</td>
+                            <td>{{ entity.gender }}</td>
+                            <td>{% if entity.createdAt %}{{ entity.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                            <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                            <td>
+                                <div class="btn-group btn-group-xs">
+                                    <a class="btn btn-primary" href="{{ path('app_pet_show', { 'id': entity.id }) }}">Visualizar</a>
+                                    <a class="btn btn-primary" href="{{ path('app_pet_update', { 'id': entity.id }) }}">Editar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% if pets.count == 0 %}
+                        <tr>
+                            <td colspan="9">
+                                Nenhum pet cadastrado
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{ pagination(pets) }}
+{% endblock %}

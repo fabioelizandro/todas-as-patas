@@ -1,0 +1,28 @@
+TodasAsPatas\ApiBundle\Entity\PetImage:
+    type: entity
+    table: null
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\PetImageRepository
+    manyToOne:
+        pet:
+            targetEntity: Pet
+            inversedBy: images
+            joinColumn:
+                nullable: false
+                name: pet_id
+                referencedColumnName: id
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        imageKey:
+            type: string
+            length: 255
+            nullable: true
+            fsi:
+                uploadable:
+                    targetField: image
+                    filesystem: default
+    lifecycleCallbacks: {  }

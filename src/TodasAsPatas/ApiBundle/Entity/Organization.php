@@ -268,5 +268,15 @@ class Organization
     {
         return $this->address;
     }
+    
+    /**
+     * ToString 
+     * 
+     * @return string
+     */
+    public function __toString()
+    {
+        return $this->getName();
+    }
 
 }

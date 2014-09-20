@@ -5,6 +5,7 @@ namespace TodasAsPatas\ApiBundle\Entity;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use FSi\DoctrineExtensions\Uploadable\File;
 use TodasAsPatas\ApiBundle\Enum\PetAge;
 use TodasAsPatas\ApiBundle\Enum\PetAgeEnum;
 use TodasAsPatas\ApiBundle\Enum\PetGender;
@@ -74,12 +75,28 @@ class Pet implements PetFeaturesInterface
     private $organization;
 
     /**
+     * @var string
+     */
+    private $profileImageKey;
+
+    /**
+     * @var File
+     */
+    private $profileImage;
+
+    /**
+     * @var ArrayCollection
+     */
+    private $images;
+
+    /**
      * Construct
      */
     public function __construct()
     {
         $this->displayQuantity = 0;
         $this->breeds = new ArrayCollection();
+        $this->images = new ArrayCollection();
     }
 
     /**
@@ -393,6 +410,88 @@ class Pet implements PetFeaturesInterface
     public function getOrganization()
     {
         return $this->organization;
+    }
+
+    /**
+     * Get Profile Image
+     *
+     * @return File|null
+     */
+    public function getProfileImage()
+    {
+        return $this->profileImage;
+    }
+
+    /**
+     * Set Profile Image
+     *
+     * @param mixed $profileImage
+     * @return Pet
+     */
+    public function setProfileImage($profileImage)
+    {
+        if ($profileImage !== null) {
+            $this->profileImage = $profileImage;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Set profileImageKey
+     *
+     * @param string $profileImageKey
+     * @return Pet
+     */
+    public function setProfileImageKey($profileImageKey)
+    {
+        $this->profileImageKey = $profileImageKey;
+
+        return $this;
+    }
+
+    /**
+     * Get profileImageKey
+     *
+     * @return string 
+     */
+    public function getProfileImageKey()
+    {
+        return $this->profileImageKey;
+    }
+
+    /**
+     * Add images
+     *
+     * @param PetImage $image
+     * @return Pet
+     */
+    public function addImage(PetImage $image)
+    {
+        $image->setPet($this);
+        $this->images[] = $image;
+
+        return $this;
+    }
+
+    /**
+     * Remove images
+     *
+     * @param PetImage $images
+     */
+    public function removeImage(PetImage $images)
+    {
+        $this->images->removeElement($images);
+    }
+
+    /**
+     * Get images
+     *
+     * @return Collection 
+     */
+    public function getImages()
+    {
+        return $this->images;
     }
 
     /**

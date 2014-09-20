@@ -1,0 +1,36 @@
+app_pet_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.pet:indexAction"
+        _sylius:
+            sorting:
+                id: desc
+
+app_pet_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.pet:showAction"
+
+app_pet_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.pet:createAction"
+        _sylius: 
+            form: todasaspatas_apibundle_pet
+
+app_pet_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.pet:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_pet
+
+app_pet_delete:
+    pattern:  /{id}/delete
+    methods: [DELETE]
+    defaults: 
+        _controller: "app.controller.pet:deleteAction"

@@ -35,59 +35,66 @@ class BackendMenuBuilder
     {
         $menu = $this->factory->createItem('root');
 
-        $menu->addChild('Home', array(
+        $menu->addChild('Dashboard', array(
             'route' => 'todasaspatas_web_backend_home',
             'extras' => array(
-                'icon' => "icon-home"
+                'icon' => "fa fa-dashboard"
+            )
+        ));
+
+        $menu->addChild('Pet', array(
+            'route' => 'app_pet_index',
+            'extras' => array(
+                'icon' => "fa fa-paw",
             )
         ));
 
         $menu->addChild('Raça', array(
             'route' => 'app_breed_index',
             'extras' => array(
-                'icon' => "icon-tags",
+                'icon' => "fa fa-tags",
             )
         ));
 
         $menu->addChild('Organizações', array(
             'route' => 'app_organization_index',
             'extras' => array(
-                'icon' => "icon-star",
+                'icon' => "fa fa-briefcase",
             )
         ));
 
         $menu->addChild('Usuário', array(
             'route' => 'app_useradmin_index',
             'extras' => array(
-                'icon' => "icon-user",
+                'icon' => "fa fa-user",
             )
         ));
 
         $menu->addChild('Grupo', array(
             'route' => 'app_group_index',
             'extras' => array(
-                'icon' => "icon-group"
+                'icon' => "fa fa-group"
             )
         ));
 
         $menu->addChild('Textos', array(
             'route' => 'app_text_index',
             'extras' => array(
-                'icon' => "icon-edit"
+                'icon' => "fa fa-edit"
             )
         ));
 
         $menu->addChild('Locais', array(
             'route' => 'app_country_index',
             'extras' => array(
-                'icon' => "icon-globe"
+                'icon' => "fa fa-globe"
             )
         ));
 
         $menu->addChild('API', array(
             'route' => 'app_api_documentation',
             'extras' => array(
-                'icon' => "icon-folder-open"
+                'icon' => "fa fa-folder-open"
             )
         ));
 
