@@ -9,6 +9,7 @@ TodasAsPatas\ApiBundle\Entity\User:
     discriminatorMap:
         admin: TodasAsPatas\ApiBundle\Entity\UserAdmin
         organization: TodasAsPatas\ApiBundle\Entity\UserOrganization
+        common: TodasAsPatas\ApiBundle\Entity\UserCommon
     manyToMany:
         groups:
             targetEntity: Group

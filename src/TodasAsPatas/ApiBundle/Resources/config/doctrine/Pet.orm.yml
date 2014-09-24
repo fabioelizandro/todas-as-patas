@@ -68,4 +68,8 @@ TodasAsPatas\ApiBundle\Entity\Pet:
                 uploadable:
                     targetField: profileImage
                     filesystem: default
+        adopted: 
+            type: boolean
+            options: 
+                default: false
     lifecycleCallbacks: {  }

@@ -1,3 +1,10 @@
+TodasAsPatas\ApiBundle\Entity\PetAdoption:
+    properties:
+        typeId:
+            - NotNull: ~
+        pet:
+            - NotNull: ~
+                
 TodasAsPatas\ApiBundle\Entity\PetImage:
     properties:
         image:

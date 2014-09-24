@@ -11,7 +11,12 @@
                 <tbody>
                     <tr>
                         <th>Id</th>
-                        <td>{{ pet.id }}</td>
+                        <td>
+                            {{ pet.id }}
+                            {% if pet.adopted %}
+                                <span class="badge badge-primary pull-right">Adotado</span>
+                            {% endif %}
+                        </td>
                     </tr>
                     <tr>
                         <th>Nome</th>
@@ -70,6 +75,11 @@
                 <li>
                     <a class="btn btn-primary" href="{{ path('app_pet_update', { 'id': pet.id }) }}">
                         Editar
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-warning" href="{{ path('app_pet_update', { 'id': pet.id }) }}">
+                        Adotar
                     </a>
                 </li>
                 <li>

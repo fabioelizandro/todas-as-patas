@@ -90,6 +90,11 @@ class Pet implements PetFeaturesInterface
     private $images;
 
     /**
+     * @var boolean
+     */
+    private $adopted;
+
+    /**
      * Construct
      */
     public function __construct()
@@ -97,6 +102,7 @@ class Pet implements PetFeaturesInterface
         $this->displayQuantity = 0;
         $this->breeds = new ArrayCollection();
         $this->images = new ArrayCollection();
+        $this->adopted = false;
     }
 
     /**
@@ -492,6 +498,39 @@ class Pet implements PetFeaturesInterface
     public function getImages()
     {
         return $this->images;
+    }
+
+    /**
+     * Set adopted
+     *
+     * @param boolean $adopted
+     * @return Pet
+     */
+    public function setAdopted($adopted)
+    {
+        $this->adopted = $adopted;
+
+        return $this;
+    }
+
+    /**
+     * Get adopted
+     *
+     * @return boolean 
+     */
+    public function getAdopted()
+    {
+        return $this->adopted;
+    }
+
+    /**
+     * Is adopted
+     *
+     * @return boolean 
+     */
+    public function isAdopted()
+    {
+        return $this->adopted;
     }
 
     /**

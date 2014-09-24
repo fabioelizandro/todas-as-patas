@@ -1,3 +1,7 @@
+todasaspatas_web_backend_petadoption:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/petadoption.yml"
+    prefix:   /petadoption
+    
 todasaspatas_web_backend_pet:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/pet.yml"
     prefix:   /pet
