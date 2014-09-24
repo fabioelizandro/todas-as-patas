@@ -1,10 +1,9 @@
 {% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
 
 
-{% block page_title %} Pet {% endblock %}
+{% block page_title %} Pet {{ pet.name }} {% endblock %}
 
 {% block page -%}
-
 
     <div class="row">
         <div class="col-xs-12">
@@ -15,44 +14,53 @@
                         <td>{{ pet.id }}</td>
                     </tr>
                     <tr>
-                        <th>Name</th>
+                        <th>Nome</th>
                         <td>{{ pet.name }}</td>
                     </tr>
                     <tr>
-                        <th>Createdat</th>
+                        <th>Criado em</th>
                         <td>{{ pet.createdAt|date('d/m/Y H:i:s') }}</td>
                     </tr>
                     <tr>
-                        <th>Updatedat</th>
+                        <th>Atualizado em</th>
                         <td>{{ pet.updatedAt|date('d/m/Y H:i:s') }}</td>
                     </tr>
                     <tr>
-                        <th>Deletedat</th>
-                        <td>{{ pet.deletedAt|date('d/m/Y H:i:s') }}</td>
-                    </tr>
-                    <tr>
-                        <th>Displayquantity</th>
+                        <th>Quantidade de visualizações</th>
                         <td>{{ pet.displayQuantity }}</td>
                     </tr>
                     <tr>
-                        <th>Sizeid</th>
-                        <td>{{ pet.sizeId }}</td>
+                        <th>Tamanho</th>
+                        <td>{{ pet.size }}</td>
                     </tr>
                     <tr>
-                        <th>Ageid</th>
-                        <td>{{ pet.ageId }}</td>
+                        <th>Idade</th>
+                        <td>{{ pet.age }}</td>
                     </tr>
                     <tr>
-                        <th>Genderid</th>
-                        <td>{{ pet.genderId }}</td>
+                        <th>Gênero</th>
+                        <td>{{ pet.gender }}</td>
                     </tr>
                     <tr>
-                        <th>Profileimagekey</th>
-                        <td>{{ pet.profileImageKey }}</td>
+                        <th>Imagem de perfil</th>
+                        <td>
+                            <img src="{{ pet.profileImageKey | imagine_filter('default_thumb') }}">
+                        </td>
                     </tr>
                 </tbody>
             </table>
-
+            {% if pet.images.count > 0 %}
+                <h3>Album de fotos</h3>
+                <div class="row">
+                    {% for petimage in pet.images %}
+                        <div class="col-xs-6 col-md-3">
+                            <a href="#" class="thumbnail">
+                                <img src="{{ petimage.imageKey|imagine_filter('default_thumb') }}" alt="{{ petimage.imageKey }}">
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif  %}
             <ul class="record_actions list-inline list-unstyled">
                 <li>
                     <a class="btn btn-link" href="{{ path('app_pet_index') }}">

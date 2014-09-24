@@ -3,10 +3,10 @@
 namespace TodasAsPatas\ApiBundle\EventListener;
 
 use Doctrine\Common\Persistence\ObjectManager;
-use TodasAsPatas\ApiBundle\Entity\StateRepository;
 use Sylius\Bundle\ResourceBundle\Event\ResourceEvent;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use Symfony\Component\Validator\Constraints\Country;
+use TodasAsPatas\ApiBundle\Entity\Pet;
+use TodasAsPatas\ApiBundle\Entity\PetImageRepository;
 
 /**
  * @author Fábio Lemos Elizandro <fabio@elizandro.com.br>
@@ -15,7 +15,7 @@ class PetSubscriber implements EventSubscriberInterface
 {
 
     /**
-     * @var \TodasAsPatas\ApiBundle\Entity\PetImageRepository
+     * @var PetImageRepository
      */
     private $petImageRepository;
 
@@ -28,7 +28,7 @@ class PetSubscriber implements EventSubscriberInterface
     /**
      * Construct
      */
-    function __construct(\TodasAsPatas\ApiBundle\Entity\PetRepository $stateRepository, ObjectManager $om)
+    function __construct(PetImageRepository $stateRepository, ObjectManager $om)
     {
         $this->petImageRepository = $stateRepository;
         $this->petImageManager = $om;
@@ -51,7 +51,7 @@ class PetSubscriber implements EventSubscriberInterface
      */
     public function updateImages(ResourceEvent $event)
     {
-        /* @var $pet \TodasAsPatas\ApiBundle\Entity\Pet */
+        /* @var $pet Pet */
         $pet = $event->getSubject();
 
         $originalImages = $this->petImageRepository->findBy(array('pet' => $pet));
