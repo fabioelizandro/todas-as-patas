@@ -1,0 +1,51 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+{% from 'TodasAsPatasWebBundle:Backend/Macro:pagination.html.twig' import pagination %}
+
+{% block page_title -%}Listar Pedidos de adoção{% endblock %}
+
+{% block page_pad_attr %}class="datatables-page"{% endblock %}
+
+{% block page -%}
+    {{ pagination(adoptionrequestmessages) }}
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-bordered table-hover table-responsive table-striped">
+                <thead>
+                    <tr>
+                        <th>{{ sylius_resource_sort('id', '#id') }}</th>
+                        <th>{{ sylius_resource_sort('title', 'Título') }}</th>
+                        <th>{{ sylius_resource_sort('createdAt', 'Criado em') }}</th>
+                        <th>{{ sylius_resource_sort('updatedAt', 'Atualizado em') }}</th>
+                        <th>Pet</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entity in adoptionrequestmessages %}
+                        <tr>
+                            <td><a href="{{ path('app_adoptionrequestmessage_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                            <td>{{ entity.title }}</td>
+                            <td>{% if entity.createdAt %}{{ entity.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                            <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
+                            <td><a href="{{ path('app_pet_show', {'id' : entity.pet.id}) }}">{{ entity.pet.name }}</a></td>
+                            <td>
+                                <div class="btn-group btn-group-xs">
+                                    <a class="btn btn-primary" href="{{ path('app_adoptionrequestmessage_show', { 'id': entity.id }) }}">Visualizar</a>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    {% if adoptionrequestmessages.count == 0 %}
+                        <tr>
+                            <td colspan="6">
+                                Nenhum pedido de adoção encontrado =( 
+                            </td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {{ pagination(adoptionrequestmessages) }}
+{% endblock %}

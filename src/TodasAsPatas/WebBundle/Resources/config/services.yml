@@ -6,7 +6,11 @@ parameters:
 services:
     bytein_coffee_web.backend_menu_builder:
         class: %bytein_coffee_web.backend_menu_builder.class%
-        arguments: [@knp_menu.factory, @security.context]
+        arguments: 
+            - @knp_menu.factory
+            - @security.context
+            - @app.repository.questionmessage
+            - @app.repository.adoptionrequestmessage
 
     bytein_coffee_web.menu.backend_main:
         class: Knp\Menu\MenuItem 

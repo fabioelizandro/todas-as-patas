@@ -1,3 +1,11 @@
+todasaspatas_web_backend_adoptionrequestmessage:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/adoptionrequestmessage.yml"
+    prefix:   /adoptionrequestmessage
+    
+todasaspatas_web_backend_questionmessage:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/questionmessage.yml"
+    prefix:   /questionmessage
+    
 todasaspatas_web_backend_petadoption:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/petadoption.yml"
     prefix:   /petadoption

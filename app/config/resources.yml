@@ -1,5 +1,19 @@
 sylius_resource:
     resources:
+        app.adoptionrequestmessage:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/AdoptionRequestMessage
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\AdoptionRequestMessage
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\AdoptionRequestMessageRepository
+        app.questionmessage:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/QuestionMessage
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\QuestionMessage
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\QuestionMessageRepository
         app.petadoption:
             driver: doctrine/orm
             templates: TodasAsPatasWebBundle:Backend/PetAdoption

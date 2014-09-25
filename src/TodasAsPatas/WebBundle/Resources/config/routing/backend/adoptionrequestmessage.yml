@@ -1,0 +1,17 @@
+app_adoptionrequestmessage_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.adoptionrequestmessage:indexAction"
+        _sylius:
+            paginate: 10
+            sortable: true
+            sorting:
+                id: desc
+        
+app_adoptionrequestmessage_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.adoptionrequestmessage:showAction"
+

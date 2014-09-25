@@ -6,6 +6,8 @@ use Knp\Menu\FactoryInterface;
 use Knp\Menu\ItemInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\SecurityContextInterface;
+use TodasAsPatas\ApiBundle\Entity\AdoptionRequestMessageRepository;
+use TodasAsPatas\ApiBundle\Entity\QuestionMessageRepository;
 
 /**
  * Builder dos menus do backend
@@ -25,12 +27,33 @@ class BackendMenuBuilder
      */
     private $securityContext;
 
-    function __construct(FactoryInterface $factory, SecurityContextInterface $securityContext)
+    /**
+     * @var QuestionMessageRepository
+     */
+    private $questionMessageRepository;
+
+    /**
+     * @var AdoptionRequestMessageRepository
+     */
+    private $adoptionRequestMessageRepository;
+
+    /**
+     * Construct
+     */
+    function __construct(FactoryInterface $factory, SecurityContextInterface $securityContext, QuestionMessageRepository $questionMessageRepository, AdoptionRequestMessageRepository $adoptionRequestMessageRepository)
     {
         $this->factory = $factory;
         $this->securityContext = $securityContext;
+        $this->questionMessageRepository = $questionMessageRepository;
+        $this->adoptionRequestMessageRepository = $adoptionRequestMessageRepository;
     }
 
+    /**
+     * Cria o menu de navegação do backend
+     * 
+     * @param Request $request
+     * @return ItemInterface
+     */
     public function createMainMenu(Request $request)
     {
         $menu = $this->factory->createItem('root');
@@ -53,6 +76,24 @@ class BackendMenuBuilder
             'route' => 'app_breed_index',
             'extras' => array(
                 'icon' => "fa fa-tags",
+            )
+        ));
+
+        $adoptionRequestNotViewed = $this->adoptionRequestMessageRepository->countNotViewed();
+        $menu->addChild('Adoção', array(
+            'route' => 'app_adoptionrequestmessage_index',
+            'extras' => array(
+                'icon' => "fa fa-heart",
+                'badge' => $adoptionRequestNotViewed
+            )
+        ));
+
+        $questionMessageNotViewed = $this->questionMessageRepository->countNotViewed();
+        $menu->addChild('Perguntas', array(
+            'route' => 'app_questionmessage_index',
+            'extras' => array(
+                'icon' => "fa fa-question",
+                'badge' => $questionMessageNotViewed
             )
         ));
 
@@ -101,6 +142,12 @@ class BackendMenuBuilder
         return $this->removeUnauthorized($menu);
     }
 
+    /**
+     * Filtro de segurança
+     * 
+     * @param ItemInterface $menu
+     * @return ItemInterface
+     */
     private function removeUnauthorized(ItemInterface $menu)
     {
         /* @var $item ItemInterface */

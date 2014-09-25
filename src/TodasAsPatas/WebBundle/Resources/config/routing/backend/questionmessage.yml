@@ -1,0 +1,17 @@
+app_questionmessage_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.questionmessage:indexAction"
+        _sylius:
+            paginate: 10
+            sortable: true
+            sorting:
+                id: desc
+        
+app_questionmessage_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.questionmessage:showAction"
+

@@ -46,6 +46,11 @@ abstract class AbstractMessage implements NotificationPrototypeInterface
     protected $deletedAt;
 
     /**
+     * @var boolean
+     */
+    protected $viewed;
+
+    /**
      * @var Pet
      */
     protected $pet;
@@ -54,6 +59,11 @@ abstract class AbstractMessage implements NotificationPrototypeInterface
      * @var UserCommon
      */
     protected $user;
+
+    public function __construct()
+    {
+        $this->viewed = false;
+    }
 
     /**
      * Get id
@@ -247,6 +257,39 @@ abstract class AbstractMessage implements NotificationPrototypeInterface
     public function getPet()
     {
         return $this->pet;
+    }
+
+    /**
+     * Set viewed
+     *
+     * @param boolean $viewed
+     * @return AbstractMessage
+     */
+    public function setViewed($viewed)
+    {
+        $this->viewed = $viewed;
+
+        return $this;
+    }
+
+    /**
+     * Get viewed
+     *
+     * @return boolean 
+     */
+    public function getViewed()
+    {
+        return $this->viewed;
+    }
+
+    /**
+     * Is viewed
+     *
+     * @return boolean 
+     */
+    public function isViewed()
+    {
+        return $this->getViewed();
     }
 
     /**

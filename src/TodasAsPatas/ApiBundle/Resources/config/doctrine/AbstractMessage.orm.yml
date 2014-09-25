@@ -41,6 +41,10 @@ TodasAsPatas\ApiBundle\Entity\AbstractMessage:
         response:
             type: text
             nullable: true
+        viewed:
+            type: boolean
+            options: 
+                default: false
         createdAt:
             type: datetime
             gedmo:
