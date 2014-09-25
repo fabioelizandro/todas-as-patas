@@ -1,0 +1,9 @@
+TodasAsPatas\ApiBundle\Entity\AdoptionRequestMessage:
+    type: entity
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\AdoptionRequestMessageRepository
+    fields:
+        aproved:
+            type: boolean
+            options: 
+                default: false
+    lifecycleCallbacks: {  }

@@ -1,0 +1,4 @@
+TodasAsPatas\ApiBundle\Entity\QuestionMessage:
+    type: entity
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\QuestionMessageRepository
+    lifecycleCallbacks: {  }
