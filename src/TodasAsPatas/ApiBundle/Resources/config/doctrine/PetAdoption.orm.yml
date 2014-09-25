@@ -2,17 +2,19 @@ TodasAsPatas\ApiBundle\Entity\PetAdoption:
     type: entity
     table: null
     repositoryClass: TodasAsPatas\ApiBundle\Entity\PetAdoptionRepository
+    oneToOne:
+        pet:
+            inversedBy: adoption
+            targetEntity: Pet
+            joinColumn:
+                nullable: false
+                name: pet_id
+                referencedColumnName: id
     manyToOne:
         user:
             targetEntity: UserCommon
             joinColumn:
                 name: user_id
-                referencedColumnName: id
-        pet:
-            targetEntity: Pet
-            joinColumn:
-                nullable: false
-                name: pet_id
                 referencedColumnName: id
     id:
         id:

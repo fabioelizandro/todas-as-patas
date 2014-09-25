@@ -6,6 +6,10 @@ TodasAsPatas\ApiBundle\Entity\Pet:
         soft_deleteable:
             field_name: deletedAt
             time_aware: true
+    oneToOne:
+        adoption:
+            targetEntity: PetAdoption
+            mappedBy: pet
     oneToMany:
         images:
             cascade: ["persist", "remove"]
@@ -68,8 +72,4 @@ TodasAsPatas\ApiBundle\Entity\Pet:
                 uploadable:
                     targetField: profileImage
                     filesystem: default
-        adopted: 
-            type: boolean
-            options: 
-                default: false
     lifecycleCallbacks: {  }

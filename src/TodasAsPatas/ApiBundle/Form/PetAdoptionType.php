@@ -5,7 +5,6 @@ namespace TodasAsPatas\ApiBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
-use TodasAsPatas\ApiBundle\Enum\PetAdoptionTypeEnum;
 
 class PetAdoptionType extends AbstractType
 {
@@ -17,15 +16,13 @@ class PetAdoptionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-                ->add('typeId', 'choice', array(
-                    'label' => 'Tipo',
-                    'choices' => PetAdoptionTypeEnum::getInstance()->getList()
-                ))
                 ->add('user', null, array(
-                    'label' => 'Usuário'
-                ))
-                ->add('pet', null, array(
-                    'label' => 'Pet'
+                    'label' => 'Usuário',
+                    'help_label_tooltip' => array(
+                        'title' => 'Caso você não escolha nenhum usuário,'
+                        . ' será considerado uma adoção MANUAL, ou seja que não'
+                        . ' tem relação com o TAP.'
+                    ),
                 ))
         ;
     }

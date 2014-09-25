@@ -6,12 +6,11 @@
     <link rel="stylesheet" href="{{asset("bundles/todasaspatasweb/backend/css/compiled/form-wizard.css")}}" type="text/css" media="screen" />
 {% endblock %}
 
-{% block page_title -%}Adotar {{ petadoption.pet.name }}{% endblock %}
+{% block page_title -%}Editar Adoção{% endblock %}
 
 {% block page_pad_attr %}class="form-page"{% endblock %}
 
 {% block page -%}
-
 
     <div class="row">
         <div class="col-md-8">
@@ -21,17 +20,23 @@
                 <div class="col-sm-9 col-sm-offset-3">
                     <ul class="record_actions list-inline list-unstyled">
                         <li>
-                            <button type="submit" class="btn btn-primary">Adotar!</button>
+                            <button type="submit" class="btn btn-primary">Atualizar</button>
                         </li>
                         <li>
                             <a class="btn btn-link" href="{{ path('app_pet_show', {'id' : petadoption.pet.id}) }}">
-                                Voltar para o pet 
+                                Voltar 
                             </a>
+                        </li>
+                        <li>
+                            <input form="pet-delete" type="submit" class="btn btn-danger" value="Deletar" />
                         </li>
                     </ul>
                 </div>
             </div>
             {{ form_end(form) }}
+            <form id="pet-delete" method="post" action="{{ path('app_petadoption_delete', { 'id': petadoption.id }) }}">
+                <input type="hidden" name="_method" value="DELETE" />
+            </form>
         </div>
     </div>
 {% endblock %}
@@ -47,4 +52,3 @@
         });
     </script>
 {% endblock %}
-

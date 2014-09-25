@@ -1,7 +1,5 @@
 TodasAsPatas\ApiBundle\Entity\PetAdoption:
     properties:
-        typeId:
-            - NotNull: ~
         pet:
             - NotNull: ~
                 

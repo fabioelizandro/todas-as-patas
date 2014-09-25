@@ -2,9 +2,15 @@ parameters:
     todasaspatas_api.event_listener.country_subscriber.class: TodasAsPatas\ApiBundle\EventListener\CountrySubscriber
     todasaspatas_api.event_listener.state_subscriber.class: TodasAsPatas\ApiBundle\EventListener\StateSubscriber
     todasaspatas_api.event_listener.pet_subscriber.class: TodasAsPatas\ApiBundle\EventListener\PetSubscriber
+    todasaspatas_api.event_listener.petadoption_subscriber.class: TodasAsPatas\ApiBundle\EventListener\PetAdoptionSubscriber
     todasaspatas_api.event_listener.organization_subscriber.class: TodasAsPatas\ApiBundle\EventListener\OrganizationSubscriber
 
 services:
+    todasaspatas_api.event_listener.petadoption_subscriber:
+        class: "%todasaspatas_api.event_listener.petadoption_subscriber.class%"
+        tags:
+            - { name: kernel.event_subscriber }
+            
     todasaspatas_api.event_listener.organization_subscriber:
         class: "%todasaspatas_api.event_listener.organization_subscriber.class%"
         arguments: ["@app.repository.userorganization", "@app.manager.userorganization"]

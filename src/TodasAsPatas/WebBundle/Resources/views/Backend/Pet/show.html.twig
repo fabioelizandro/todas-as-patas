@@ -10,11 +10,20 @@
             <table class="record_properties table table-bordered table-hover table-responsive table-striped">
                 <tbody>
                     <tr>
+                        <td colspan="2">
+                            <h4>
+                                Informações sobre o Pet
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Id</th>
                         <td>
                             {{ pet.id }}
                             {% if pet.adopted %}
-                                <span class="badge badge-primary pull-right">Adotado</span>
+                                <h4 class="pull-right">
+                                    <span class="badge badge-primary">Adotado</span>
+                                </h4>
                             {% endif %}
                         </td>
                     </tr>
@@ -47,11 +56,38 @@
                         <td>{{ pet.gender }}</td>
                     </tr>
                     <tr>
+                        <th>Raça(s)</th>
+                        <td>
+                            {% for breed in pet.breeds %}
+                                <span class="label label-info">{{ breed.name }}</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
                         <th>Imagem de perfil</th>
                         <td>
                             <img src="{{ pet.profileImageKey | imagine_filter('default_thumb') }}">
                         </td>
                     </tr>
+                    {% if pet.adopted %}
+                        <tr>
+                            <td colspan="2">
+                                <h4>
+                                    Informações de adoção
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Tipo de adoção</th>
+                            <td>{{ pet.adoption.type }}</td>
+                        </tr>
+                        {% if pet.adoption.user %}
+                            <tr>
+                                <th>Usuaŕio que adotou</th>
+                                <td>{{ pet.adoption.user }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endif  %}
                 </tbody>
             </table>
             {% if pet.images.count > 0 %}
@@ -78,9 +114,16 @@
                     </a>
                 </li>
                 <li>
-                    <a class="btn btn-warning" href="{{ path('app_pet_update', { 'id': pet.id }) }}">
-                        Adotar
-                    </a>
+                    {% if pet.adoption is null %}
+                        <a class="btn btn-warning" href="{{ path('app_petadoption_create', { 'petId': pet.id }) }}">
+                            Adotar
+                        </a>
+                    {% else %}
+                        <form method="post" action="{{ path('app_petadoption_delete', { 'id': pet.adoption.id, 'petId' : pet.id }) }}">
+                            <input type="submit" class="btn btn-warning" value="Estornar adoção" />
+                            <input type="hidden" name="_method" value="DELETE" />
+                        </form>
+                    {% endif %}
                 </li>
                 <li>
                     <form id="pet-delete" method="post" action="{{ path('app_pet_delete', { 'id': pet.id }) }}">
