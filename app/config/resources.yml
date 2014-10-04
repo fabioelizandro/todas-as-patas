@@ -98,3 +98,10 @@ sylius_resource:
                 model: TodasAsPatas\ApiBundle\Entity\City
                 controller: ByteinCoffee\ExtraBundle\Controller\Controller
                 repository: TodasAsPatas\ApiBundle\Entity\CityRepository
+        app.client:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/Client
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\Client
+                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                repository: TodasAsPatas\ApiBundle\Entity\ClientRepository

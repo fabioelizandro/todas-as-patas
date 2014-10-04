@@ -135,3 +135,17 @@ TodasAsPatas\ApiBundle\Entity\Country:
             - NotNull: ~
         name:
             - NotBlank: ~
+            
+TodasAsPatas\ApiBundle\Entity\Client:
+    properties:
+        name:
+            - NotBlank: ~
+        redirectUris:
+            - All:
+                - NotBlank:  ~
+                - Url:  ~
+        allowedGrantTypes:
+            - Count:
+                min: 1
+            - All:
+                - NotBlank:  ~

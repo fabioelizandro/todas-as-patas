@@ -1,3 +1,7 @@
+todasaspatas_web_backend_client:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/client.yml"
+    prefix:   /client
+    
 todasaspatas_web_backend_adoptionrequestmessage:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/adoptionrequestmessage.yml"
     prefix:   /adoptionrequestmessage

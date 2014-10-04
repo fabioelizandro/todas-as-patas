@@ -1,0 +1,82 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+
+{% block page_title %} Client {{ client.name }} {% endblock %}
+
+{% block page -%}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <table class="record_properties table table-bordered table-hover table-responsive table-striped">
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <h4>
+                                Informações sobre o Clinet
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ client.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <td>{{ client.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Secret</th>
+                        <td>{{ client.secret }}</td>
+                    </tr>
+                    <tr>
+                        <th>Public ID</th>
+                        <td>{{ client.publicId }}</td>
+                    </tr>
+                    <tr>
+                        <th>Redirect Uris</th>
+                        <td>
+                            <ul>
+                                {% for redirect in client.redirectUris %}
+                                    <li>
+                                        {{ redirect }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Allowed Grant Types</th>
+                        <td>
+                            <ul>
+                                {% for allowedGrantType in client.allowedGrantTypes %}
+                                    <li>
+                                        {{ allowedGrantType }}
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <ul class="record_actions list-inline list-unstyled">
+                <li>
+                    <a class="btn btn-link" href="{{ path('app_client_index') }}">
+                        Voltar para a lista
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="{{ path('app_client_update', { 'id': client.id }) }}">
+                        Editar
+                    </a>
+                </li>
+                <li>
+                    <form id="client-delete" method="post" action="{{ path('app_client_delete', { 'id': client.id }) }}">
+                        <input form="client-delete" type="submit" class="btn btn-danger" value="Deletar" />
+                        <input type="hidden" name="_method" value="DELETE" />
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}

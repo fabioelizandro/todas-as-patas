@@ -14,8 +14,14 @@ parameters:
     todasaspatas_api.form_type.pet.class: TodasAsPatas\ApiBundle\Form\PetType
     todasaspatas_api.form_type.pet_image.class: TodasAsPatas\ApiBundle\Form\PetImageType
     todasaspatas_api.form_type.pet_adoption.class: TodasAsPatas\ApiBundle\Form\PetAdoptionType
+    todasaspatas_api.form_type.client.class: TodasAsPatas\ApiBundle\Form\ClientType
 
 services:
+    todasaspatas_api.form_type.client:
+        class: "%todasaspatas_api.form_type.client.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_client }
+            
     todasaspatas_api.form_type.pet_adoption:
         class: "%todasaspatas_api.form_type.pet_adoption.class%"
         tags:

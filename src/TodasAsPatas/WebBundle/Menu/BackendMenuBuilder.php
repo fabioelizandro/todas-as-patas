@@ -132,6 +132,13 @@ class BackendMenuBuilder
             )
         ));
 
+        $menu->addChild('Oauth', array(
+            'route' => 'app_client_index',
+            'extras' => array(
+                'icon' => "fa fa-globe"
+            )
+        ));
+
         $menu->addChild('API', array(
             'route' => 'app_api_documentation',
             'extras' => array(
