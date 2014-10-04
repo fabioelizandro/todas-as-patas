@@ -1,7 +1,5 @@
-TodasAsPatas\ApiBundle\Entity\Organization: 
+TodasAsPatas\ApiBundle\Entity\Breed: 
     properties:
-        users: 
-            exclude: true
         createdAt: 
             exclude: true
         updatedAt: 

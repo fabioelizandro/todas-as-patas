@@ -124,7 +124,7 @@ jms_serializer:
                 path: "@TodasAsPatasWebBundle/Resources/config/serializer/byteincoffee_extra"
             todasaspatas_api:
                 namespace_prefix: "TodasAsPatas\\ApiBundle"
-                path: "@TodasAsPatasWebBundle/Resources/config/serializer/todasaspatas_site"
+                path: "@TodasAsPatasWebBundle/Resources/config/serializer/todasaspatas_api"
             fos_user:
                 namespace_prefix: "FOS\\UserBundle"
                 path: "@TodasAsPatasWebBundle/Resources/config/serializer/fos_user"

@@ -41,7 +41,7 @@ security:
             pattern:    ^/api
             fos_oauth:  true
             stateless:  true
-            anonymous:  false 
+            anonymous:  true
         main:
             pattern: ^/
             form_login:

@@ -1,0 +1,30 @@
+TodasAsPatas\ApiBundle\Entity\Pet: 
+    virtual_properties:
+        getSize:
+            serialized_name: size
+            type: string
+        getAge:
+            serialized_name: age
+            type: string
+        getGender:
+            serialized_name: gender
+            type: string
+    properties:
+        sizeId: 
+            exclude: true
+        profileImageKey: 
+            exclude: true
+        profileImage: 
+            exclude: true
+        images: 
+            exclude: true
+        organization: 
+            exclude: true
+        ageId: 
+            exclude: true
+        genderId: 
+            exclude: true
+        createdAt: 
+            type: "DateTime<'d/m/Y H:i'>"
+        updatedAt: 
+            type: "DateTime<'d/m/Y H:i'>"
