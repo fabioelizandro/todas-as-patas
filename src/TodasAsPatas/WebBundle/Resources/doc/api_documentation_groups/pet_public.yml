@@ -1,0 +1,55 @@
+pet_public:
+    name: "Pet Pública"
+    prefix: /public/pet
+    actions:
+        index: 
+            name : api_pet_index
+            pattern: /
+            description: "Lista página e com filtro dos pets"
+            methods: [GET]
+            query_parameters: 
+                criteria.genderId: 
+                    name: criteria[genderId]
+                    example: 1
+                    dataType: integer
+                    requirements: ["PetGenderEnum"]
+                criteria.ageId: 
+                    name: criteria[ageId]
+                    example: 1
+                    dataType: integer
+                    requirements: ["PetAgeEnum"]
+                criteria.sizeId: 
+                    name: criteria[sizeId]
+                    example: 1
+                    dataType: integer
+                    requirements: ["PetSizeEnum"]
+                criteria.typeId: 
+                    name: criteria[typeId]
+                    example: 1
+                    dataType: integer
+                    requirements: ["PetTypeEnum"]
+                sorting.updatedAt: 
+                    name: sorting[updatedAt]
+                    example: 'desc'
+                    dataType: string
+                    requirements: ["OrderBy"]
+                sorting.createdAt: 
+                    name: sorting[createdAt]
+                    example: 'desc'
+                    dataType: string
+                    requirements: ["OrderBy"]
+                sorting.displayQuantity: 
+                    name: sorting[displayQuantity]
+                    example: 'desc'
+                    dataType: string
+                    requirements: ["OrderBy"]
+                sorting.amountFavorite: 
+                    name: sorting[amountFavorite]
+                    example: 'desc'
+                    dataType: string
+                    requirements: ["OrderBy"]
+                query: 
+                    name: query
+                    example: 'Julie'
+                    dataType: string
+                    requirements: []

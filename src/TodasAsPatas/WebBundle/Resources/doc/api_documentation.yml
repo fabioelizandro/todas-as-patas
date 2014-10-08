@@ -3,4 +3,4 @@ doc:
     name: Ações
     groups: 
         imports: 
-            - {resource: api_documentation_groups/resetting.yml}
+            - {resource: api_documentation_groups/pet_public.yml}

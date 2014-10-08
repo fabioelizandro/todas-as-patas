@@ -6,25 +6,6 @@
 {% block page -%}
     <div class="row">
         <div class="col-xs-12">
-            <h4>Atualizando token de acesso</h4>
-            <p>
-                Cada token de autorização tem uma validade de uma hora, quando o token 
-                expira você tem que atualizar o mesmo com o token de atualização que vem na resposta
-                junto com o token de autorização. Para atualizar envie um POST para a 
-                seguinte url:
-                <span class="btn btn-link">/oauth/v2/token</span><br>
-                E enviar os parâmetros que listo abaixo:
-            </p>
-            <ul>
-                <li>client_id: {$clientId}</li>
-                <li>client_secret: {$clientSecret}</li>
-                <li>grant_type: refresh_token</li>
-                <li>refresh_token: {$refreshToken}</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12">
             <h4>{{ doc.name }}</h4><small>Prefixo: {{ doc.prefix }}</small>
             <div class="panel-group" id="accordionMain">
                 {% for groupDocId,groupDoc in doc.groups %}
