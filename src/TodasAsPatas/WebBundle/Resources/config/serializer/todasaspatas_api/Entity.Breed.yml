@@ -1,5 +1,9 @@
 TodasAsPatas\ApiBundle\Entity\Breed: 
     properties:
+        id: 
+            groups: [details, list]
+        name: 
+            groups: [details, list]
         createdAt: 
             exclude: true
         updatedAt: 

@@ -39,6 +39,20 @@ TodasAsPatas\ApiBundle\Entity\UserOrganization:
         organization:
             - NotNull: ~
             
+TodasAsPatas\ApiBundle\Entity\UserCommon:
+    properties:
+        firstName:
+            - NotBlank: ~
+        lastName:
+            - NotBlank: ~
+        phone: 
+            - Length:
+                min: 10
+                max: 11
+            - Regex:
+                pattern: '/\d/'
+                message: Deve conter apenas números
+            
 TodasAsPatas\ApiBundle\Entity\Organization:
     properties:
         name:

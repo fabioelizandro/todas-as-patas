@@ -1,0 +1,8 @@
+TodasAsPatas\ApiBundle\Entity\PetImage: 
+    properties:
+        imageKey: 
+            exclude: true
+        image: 
+            exclude: true
+        pet: 
+            exclude: true

@@ -1,0 +1,4 @@
+TodasAsPatas\ApiBundle\Entity\Address: 
+    properties:
+        city: 
+            groups: [details, list]

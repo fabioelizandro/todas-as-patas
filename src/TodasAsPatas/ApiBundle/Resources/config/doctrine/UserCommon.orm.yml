@@ -1,3 +1,26 @@
 TodasAsPatas\ApiBundle\Entity\UserCommon:
     type: entity
     repositoryClass: TodasAsPatas\ApiBundle\Entity\UserCommonRepository
+    manyToMany:
+        favoritePets:
+            targetEntity: Pet
+            joinTable:
+                name: users_favorite_pets
+                joinColumns:
+                    user_id:
+                          referencedColumnName: id
+                inverseJoinColumns:
+                    pet_id:
+                          referencedColumnName: id
+    fields:
+        firstName:
+            type: string
+            length: 255
+            nullable: true
+        lastName:
+            type: string
+            length: 255
+            nullable: true
+        phone:
+            type: bigint
+            nullable: true

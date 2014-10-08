@@ -2,15 +2,11 @@
 
 namespace TodasAsPatas\WebBundle\Serializer;
 
-use ByteinCoffee\ExtraBundle\Gaufrette\ResolverDelegate;
 use JMS\Serializer\EventDispatcher\EventSubscriberInterface;
 use JMS\Serializer\EventDispatcher\ObjectEvent;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
-use TodasAsPatas\SiteBundle\Entity\Call;
-use TodasAsPatas\SiteBundle\Entity\Scenario;
-use TodasAsPatas\SiteBundle\Entity\Simulator;
-use TodasAsPatas\SiteBundle\Entity\SimulatorModel;
-use Symfony\Component\Routing\RouterInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
+use TodasAsPatas\ApiBundle\Entity\Pet;
 
 /**
  * @author Fábio Lemos Elizandro <fabio@elizandro.com.br>
@@ -19,31 +15,65 @@ class SerializerSubscriber implements EventSubscriberInterface
 {
 
     /**
-     * @var CacheManager
+     * @var ContainerInterface
      */
-    private $cacheManager;
+    protected $container;
 
     /**
-     * @var ResolverDelegate
+     * {@inheritance}
      */
-    private $resolverDelegate;
-
-    /**
-     * @var RouterInterface
-     */
-    private $router;
-
-    function __construct(CacheManager $cacheManager, ResolverDelegate $resolverDelegate, RouterInterface $router)
-    {
-        $this->cacheManager = $cacheManager;
-        $this->resolverDelegate = $resolverDelegate;
-        $this->router = $router;
-    }
-
     public static function getSubscribedEvents()
     {
         return array(
+            array('event' => 'serializer.post_serialize', 'class' => 'TodasAsPatas\\ApiBundle\\Entity\\Pet', 'method' => 'petPreSerialize'),
+            array('event' => 'serializer.post_serialize', 'class' => 'TodasAsPatas\\ApiBundle\\Entity\\PetImage', 'method' => 'petImagePreSerialize'),
         );
+    }
+
+    /**
+     * Construct
+     */
+    function __construct(ContainerInterface $container)
+    {
+        $this->container = $container;
+    }
+
+    /**
+     * @param ObjectEvent $event
+     */
+    public function petPreSerialize(ObjectEvent $event)
+    {
+        /* @var $pet Pet */
+        $pet = $event->getObject();
+
+        $this->addMediaData($event, $pet->getProfileImageKey(), array(
+            'profileImage' => 'default',
+            'profileImageThumb' => 'default_thumb'
+        ));
+    }
+
+    /**
+     * @param ObjectEvent $event
+     */
+    public function petImagePreSerialize(ObjectEvent $event)
+    {
+        /* @var $petImage \TodasAsPatas\ApiBundle\Entity\PetImage */
+        $petImage = $event->getObject();
+
+        $this->addMediaData($event, $petImage->getImageKey(), array(
+            'image' => 'default',
+            'imageThumb' => 'default_thumb'
+        ));
+    }
+
+    /**
+     * ShortCut
+     * 
+     * @see ContainerInterface::get($id)
+     */
+    protected function get($serviceId)
+    {
+        return $this->container->get($serviceId);
     }
 
     /**
@@ -54,9 +84,12 @@ class SerializerSubscriber implements EventSubscriberInterface
      */
     protected function addMediaData($event, $path, array $nameFilters)
     {
+        /* @var $cacheManager CacheManager */
+        $cacheManager = $this->container->get('liip_imagine.cache.manager');
+
         if ($path !== null) {
             foreach ($nameFilters as $name => $filter) {
-                $event->getVisitor()->addData($name, $this->cacheManager->getBrowserPath($path, $filter));
+                $event->getVisitor()->addData($name, $cacheManager->getBrowserPath($path, $filter));
             }
         }
     }

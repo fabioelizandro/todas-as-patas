@@ -9,6 +9,11 @@ class UserOrganization extends User
 {
 
     /**
+     * @var Organization
+     */
+    private $organization;
+    
+    /**
      * Get Username
      * 
      * @return string
@@ -29,11 +34,6 @@ class UserOrganization extends User
         $this->setUsername($email);
         return parent::setEmail($email);
     }
-
-    /**
-     * @var Organization
-     */
-    private $organization;
 
     /**
      * Set organization

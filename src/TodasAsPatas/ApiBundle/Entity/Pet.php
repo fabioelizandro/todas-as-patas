@@ -95,11 +95,17 @@ class Pet implements PetFeaturesInterface
     private $adoption;
 
     /**
+     * @var integer
+     */
+    private $amountFavorite;
+
+    /**
      * Construct
      */
     public function __construct()
     {
         $this->displayQuantity = 0;
+        $this->amountFavorite = 0;
         $this->breeds = new ArrayCollection();
         $this->images = new ArrayCollection();
     }
@@ -314,7 +320,7 @@ class Pet implements PetFeaturesInterface
      */
     public function getAge()
     {
-        return $this->setAgeId(PetAgeEnum::getInstance()->getItem($this->getAgeId()));
+        return PetAgeEnum::getInstance()->getItem($this->getAgeId());
     }
 
     /**
@@ -530,6 +536,29 @@ class Pet implements PetFeaturesInterface
     public function isAdopted()
     {
         return $this->getAdoption() !== null;
+    }
+
+    /**
+     * Set amountFavorite
+     *
+     * @param integer $amountFavorite
+     * @return Pet
+     */
+    public function setAmountFavorite($amountFavorite)
+    {
+        $this->amountFavorite = $amountFavorite;
+
+        return $this;
+    }
+
+    /**
+     * Get amountFavorite
+     *
+     * @return integer 
+     */
+    public function getAmountFavorite()
+    {
+        return $this->amountFavorite;
     }
 
     /**

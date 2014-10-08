@@ -1,4 +1,11 @@
 TodasAsPatas\ApiBundle\Entity\City: 
     properties:
+        id: 
+            groups: [details, list]
+        state: 
+            groups: [details, list]
+        name: 
+            groups: [details, list]
         addresses: 
             exclude: true
+            

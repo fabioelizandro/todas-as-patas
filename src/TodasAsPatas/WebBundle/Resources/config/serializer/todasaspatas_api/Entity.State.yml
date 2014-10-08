@@ -2,3 +2,7 @@ TodasAsPatas\ApiBundle\Entity\State:
     properties:
         cities: 
             exclude: true
+        name: 
+            groups: [details, list]
+        acronym: 
+            groups: [details, list]

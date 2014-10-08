@@ -58,6 +58,14 @@ TodasAsPatas\ApiBundle\Entity\Pet:
             nullable: true
         displayQuantity:
             type: integer
+            nullable: true
+            options:
+                default: 0
+        amountFavorite:
+            type: integer
+            nullable: true
+            opiotns: 
+                default: 0
         sizeId:
             type: integer
         ageId:

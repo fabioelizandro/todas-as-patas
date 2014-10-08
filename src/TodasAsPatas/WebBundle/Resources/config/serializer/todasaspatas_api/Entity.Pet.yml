@@ -1,30 +1,45 @@
 TodasAsPatas\ApiBundle\Entity\Pet: 
     virtual_properties:
         getSize:
+            groups: [list, details]
             serialized_name: size
             type: string
         getAge:
+            groups: [list, details]
             serialized_name: age
             type: string
         getGender:
+            groups: [list, details]
             serialized_name: gender
             type: string
     properties:
+        id: 
+            groups: [details, list]
         sizeId: 
             exclude: true
         profileImageKey: 
             exclude: true
         profileImage: 
             exclude: true
+        name: 
+            groups: [details, list]
         images: 
-            exclude: true
+            groups: [details]
         organization: 
-            exclude: true
+            groups: [details, list]
+        amountFavorite: 
+            groups: [details, list]
+        displayQuantity: 
+            groups: [details, list]
+        breeds: 
+            groups: [details, list]
         ageId: 
             exclude: true
         genderId: 
             exclude: true
         createdAt: 
+            groups: [list, details]
             type: "DateTime<'d/m/Y H:i'>"
         updatedAt: 
+            groups: [list, details]
             type: "DateTime<'d/m/Y H:i'>"

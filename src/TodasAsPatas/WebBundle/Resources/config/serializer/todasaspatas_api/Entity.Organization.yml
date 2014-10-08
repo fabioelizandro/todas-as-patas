@@ -1,5 +1,11 @@
 TodasAsPatas\ApiBundle\Entity\Organization: 
     properties:
+        id: 
+            groups: [details, list]
+        name: 
+            groups: [details, list]
+        address: 
+            groups: [details, list]
         users: 
             exclude: true
         createdAt: 
