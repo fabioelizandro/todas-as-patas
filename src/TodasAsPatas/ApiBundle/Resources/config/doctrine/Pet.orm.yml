@@ -43,6 +43,11 @@ TodasAsPatas\ApiBundle\Entity\Pet:
         name:
             type: string
             length: 255
+        nameCanonical:
+            type: string
+            length: 255
+            options: 
+                default: ''
         createdAt:
             type: datetime
             gedmo:

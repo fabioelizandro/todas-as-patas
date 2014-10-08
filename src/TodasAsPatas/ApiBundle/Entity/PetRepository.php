@@ -11,23 +11,25 @@ use Sylius\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
 class PetRepository extends EntityRepository
 {
 
+    use \TodasAsPatas\ApiBundle\Utils\CanonicalizerTrait;
+
     /**
      * Cria paginador com filtros
      * 
      * @param array $criteria
      * @param array $orderBy
-     * @param string $query termo de busca
+     * @param string $queryTerm termo de busca
      * 
      * @return Pagerfanta
      */
-    public function createPaginatorByFilter(array $criteria = null, array $orderBy = null, $query = null)
+    public function createPaginatorByFilter(array $criteria = null, array $orderBy = null, $queryTerm = null)
     {
         $queryBuilder = $this->getCollectionQueryBuilder();
 
-        if ($query) {
+        if ($queryTerm) {
             $queryBuilder
-                    ->where($queryBuilder->expr()->like('pet.name', ':query'))
-                    ->setParameter('query', "%{$query}%");
+                    ->where($queryBuilder->expr()->like('pet.nameCanonical', ':query'))
+                    ->setParameter('query', "%{$this->canonicalize($queryTerm)}%");
         }
 
         $this->applyCriteria($queryBuilder, $criteria);

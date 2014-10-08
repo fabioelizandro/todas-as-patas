@@ -32,6 +32,11 @@ class Pet implements PetFeaturesInterface
     private $name;
 
     /**
+     * @var string
+     */
+    private $nameCanonical;
+
+    /**
      * @var DateTime
      */
     private $createdAt;
@@ -610,6 +615,29 @@ class Pet implements PetFeaturesInterface
     public function getType()
     {
         return PetTypeEnum::getInstance()->getItem($this->getTypeId());
+    }
+
+    /**
+     * Set nameCanonical
+     *
+     * @param string $nameCanonical
+     * @return Pet
+     */
+    public function setNameCanonical($nameCanonical)
+    {
+        $this->nameCanonical = $nameCanonical;
+
+        return $this;
+    }
+
+    /**
+     * Get nameCanonical
+     *
+     * @return string 
+     */
+    public function getNameCanonical()
+    {
+        return $this->nameCanonical;
     }
 
     /**
