@@ -12,6 +12,8 @@ use TodasAsPatas\ApiBundle\Enum\PetGender;
 use TodasAsPatas\ApiBundle\Enum\PetGenderEnum;
 use TodasAsPatas\ApiBundle\Enum\PetSize;
 use TodasAsPatas\ApiBundle\Enum\PetSizeEnum;
+use TodasAsPatas\ApiBundle\Enum\PetType;
+use TodasAsPatas\ApiBundle\Enum\PetTypeEnum;
 
 /**
  * Pet
@@ -98,6 +100,11 @@ class Pet implements PetFeaturesInterface
      * @var integer
      */
     private $amountFavorite;
+
+    /**
+     * @var integer
+     */
+    private $typeId;
 
     /**
      * Construct
@@ -559,6 +566,50 @@ class Pet implements PetFeaturesInterface
     public function getAmountFavorite()
     {
         return $this->amountFavorite;
+    }
+
+    /**
+     * Set typeId
+     *
+     * @param integer $typeId
+     * @return Pet
+     */
+    public function setTypeId($typeId)
+    {
+        $this->typeId = $typeId;
+
+        return $this;
+    }
+
+    /**
+     * Get typeId
+     *
+     * @return integer 
+     */
+    public function getTypeId()
+    {
+        return $this->typeId;
+    }
+
+    /**
+     * Set Type
+     *
+     * @param PetType $type
+     * @return Pet
+     */
+    public function setType(PetType $type)
+    {
+        return $this->setTypeId($type->getId());
+    }
+
+    /**
+     * Get Type
+     *
+     * @return PetType
+     */
+    public function getType()
+    {
+        return PetTypeEnum::getInstance()->getItem($this->getTypeId());
     }
 
     /**

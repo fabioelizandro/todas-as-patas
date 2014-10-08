@@ -70,6 +70,10 @@ TodasAsPatas\ApiBundle\Entity\Pet:
             type: integer
         ageId:
             type: integer
+        typeId:
+            type: integer
+            options: 
+                default: 1
         genderId:
             type: integer
         profileImageKey:

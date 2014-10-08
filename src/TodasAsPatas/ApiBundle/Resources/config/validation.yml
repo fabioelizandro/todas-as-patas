@@ -6,8 +6,10 @@ TodasAsPatas\ApiBundle\Entity\PetAdoption:
 TodasAsPatas\ApiBundle\Entity\PetImage:
     properties:
         image:
-            - FSi\Bundle\DoctrineExtensionsBundle\Validator\Constraints\File:
-                mimeTypes: [image/jpg, image/jpeg, image/png]
+            - FSi\Bundle\DoctrineExtensionsBundle\Validator\Constraints\Image: 
+                maxSize: 4M 
+                minWidth: 100
+                minHeight: 100
                 
 TodasAsPatas\ApiBundle\Entity\Pet:
     properties:
@@ -17,15 +19,17 @@ TodasAsPatas\ApiBundle\Entity\Pet:
             - NotNull: ~
         ageId:
             - NotNull: ~
-        genderId:
+        typeId:
             - NotNull: ~
-        breeds:
+        genderId:
             - NotNull: ~
         organization:
             - NotNull: ~
         profileImage:
-            - FSi\Bundle\DoctrineExtensionsBundle\Validator\Constraints\File:
-                mimeTypes: [image/jpg, image/jpeg, image/png]
+            - FSi\Bundle\DoctrineExtensionsBundle\Validator\Constraints\Image: 
+                maxSize: 4M 
+                minWidth: 100
+                minHeight: 100
         images:
             - Valid: ~
             

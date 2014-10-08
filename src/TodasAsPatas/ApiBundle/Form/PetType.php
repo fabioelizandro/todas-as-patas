@@ -5,10 +5,11 @@ namespace TodasAsPatas\ApiBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\Validator\Constraints;
 use TodasAsPatas\ApiBundle\Enum\PetAgeEnum;
 use TodasAsPatas\ApiBundle\Enum\PetGenderEnum;
 use TodasAsPatas\ApiBundle\Enum\PetSizeEnum;
-use Symfony\Component\Validator\Constraints;
+use TodasAsPatas\ApiBundle\Enum\PetTypeEnum;
 
 class PetType extends AbstractType
 {
@@ -23,6 +24,10 @@ class PetType extends AbstractType
                 ->add('name', null, array(
                     'attr' => array('autofocus' => 'autofocus'),
                     'label' => 'Nome'
+                ))
+                ->add('typeId', 'choice', array(
+                    'label' => 'Tipo do Pet',
+                    'choices' => PetTypeEnum::getInstance()->getList(),
                 ))
                 ->add('sizeId', 'choice', array(
                     'label' => 'Tamanho',
@@ -40,7 +45,8 @@ class PetType extends AbstractType
                     'label' => 'Organização'
                 ))
                 ->add('breeds', null, array(
-                    'label' => 'Raças'
+                    'label' => 'Raças',
+                    'required' => false
                 ))
         ;
 
@@ -88,7 +94,6 @@ class PetType extends AbstractType
                     ))
             ;
         }
-
     }
 
     /**

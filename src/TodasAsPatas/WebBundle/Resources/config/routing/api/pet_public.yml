@@ -6,8 +6,8 @@ api_pet_index:
         _sylius:
             serialization: 
                 groups: [list]
-            sorting:
-                id: desc
+            method: createPaginatorByFilter
+            arguments: [$criteria, $sorting, $query]
 
 api_pet_show:
     pattern:  /{id}/show
