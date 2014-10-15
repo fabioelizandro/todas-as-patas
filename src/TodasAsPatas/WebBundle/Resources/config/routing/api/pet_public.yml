@@ -7,7 +7,7 @@ api_pet_index:
             serialization: 
                 groups: [list]
             method: createPaginatorByFilter
-            arguments: [$criteria, $sorting, $query]
+            arguments: [$criteria, $sorting, $query, $breeds]
 
 api_pet_show:
     pattern:  /{id}/show

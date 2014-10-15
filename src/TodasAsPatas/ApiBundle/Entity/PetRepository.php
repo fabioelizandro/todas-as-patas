@@ -22,7 +22,7 @@ class PetRepository extends EntityRepository
      * 
      * @return Pagerfanta
      */
-    public function createPaginatorByFilter(array $criteria = null, array $orderBy = null, $queryTerm = null)
+    public function createPaginatorByFilter(array $criteria = null, array $orderBy = null, $queryTerm = null, array $breeds = null)
     {
         $queryBuilder = $this->getCollectionQueryBuilder();
 
@@ -30,6 +30,14 @@ class PetRepository extends EntityRepository
             $queryBuilder
                     ->where($queryBuilder->expr()->like('pet.nameCanonical', ':query'))
                     ->setParameter('query', "%{$this->canonicalize($queryTerm)}%");
+        }
+
+        if ($breeds !== null && $breeds) {
+            foreach ($breeds as $index => $breed) {
+                $queryBuilder
+                        ->andWhere(":breed_{$index} MEMBER OF pet.breeds")
+                        ->setParameter(":breed_{$index}", $breed);
+            }
         }
 
         $this->applyCriteria($queryBuilder, $criteria);
