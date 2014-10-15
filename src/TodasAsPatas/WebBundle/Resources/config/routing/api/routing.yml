@@ -1,3 +1,4 @@
-todasaspatas_web_api_pet:
-    resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/pet_public.yml"
-    prefix:   /public/pet
+todasaspatas_web_api_routing_public:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/routing_public.yml"
+    prefix:   /public
+    

@@ -1,0 +1,14 @@
+api_organization_index:
+    pattern:  /
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.organization:indexAction"
+        _sylius:
+            sorting:
+                id: desc
+                
+api_organization_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.organization:showAction"

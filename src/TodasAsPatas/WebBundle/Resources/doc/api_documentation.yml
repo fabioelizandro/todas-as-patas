@@ -4,3 +4,4 @@ doc:
     groups: 
         imports: 
             - {resource: api_documentation_groups/pet_public.yml}
+            - {resource: api_documentation_groups/organization_public.yml}

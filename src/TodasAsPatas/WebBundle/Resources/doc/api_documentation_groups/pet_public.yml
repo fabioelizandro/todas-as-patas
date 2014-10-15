@@ -1,5 +1,5 @@
 pet_public:
-    name: "Pet Pública"
+    name: "Pet (Pública)"
     prefix: /public/pet
     actions:
         index: 
@@ -53,3 +53,19 @@ pet_public:
                     example: 'Julie'
                     dataType: string
                     requirements: []
+                breeds: 
+                    name: breeds[$index]
+                    example: '1'
+                    dataType: array
+                    requirements: [Is Array]
+        show: 
+            name : api_pet_show
+            pattern: /{id}/show
+            description: "Detalhes de um pet"
+            methods: [GET]
+            parameters: 
+                id: 
+                    name: id
+                    example: 1
+                    dataType: integer
+                    requirements: ["Valid ID"]

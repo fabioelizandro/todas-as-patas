@@ -1,0 +1,20 @@
+organization_public:
+    name: "Organizaçoes (Pública)"
+    prefix: /public/organization
+    actions:
+        index: 
+            name : api_organization_index
+            pattern: /
+            description: "Listagem de todos as organizaçẽos com paginação"
+            methods: [GET]
+        show: 
+            name : api_organization_show
+            pattern: /{id}/show
+            description: "Detalhes de uma organização"
+            methods: [GET]
+            parameters: 
+                id: 
+                    name: id
+                    example: 1
+                    dataType: integer
+                    requirements: ["Valid ID"]
