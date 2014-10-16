@@ -38,7 +38,7 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ TodasAsPatasWebBundle, ByteinCoffeeUserBundle, FOSUserBundle]
+    bundles:        [ TodasAsPatasWebBundle, ByteinCoffeeUserBundle, FOSUserBundle, FOSOAuthServerBundle]
     #java: /usr/bin/java
     filters:
         cssrewrite: ~

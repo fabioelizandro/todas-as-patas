@@ -1,0 +1,75 @@
+{% extends "::base.html.twig" %}
+
+{% block title %}Login{% endblock %}
+
+{% block body_attr %}class="login-bg" style="background-image: url({{asset("bundles/todasaspatasweb/backend/img/bgs/back-blue.jpg")}});"{% endblock %}
+
+{% block meta %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets filter='cssrewrite' output='css/compiled/authorize_oauth.css'
+        'bundles/todasaspatasweb/plugins/bootstrap-3.2.0-dist/css/bootstrap.css' 
+        'bundles/todasaspatasweb/backend/css/bootstrap/bootstrap-overrides.css' 
+        'bundles/todasaspatasweb/backend/css/compiled/layout.css' 
+        'bundles/todasaspatasweb/backend/css/compiled/elements.css' 
+        'bundles/todasaspatasweb/backend/css/compiled/icons.css' 
+        'bundles/todasaspatasweb/backend/css/lib/font-awesome.css' 
+        'bundles/todasaspatasweb/backend/css/compiled/signin.css' 
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css' />
+
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+{% endblock %}
+
+{% block body %}
+    {% block messages %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for key, message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message|trans }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endblock %}
+
+    {% block content %}
+        <div class="login-wrapper" style="top: 10px; " >
+            <div class="box">
+                <div class="content-wrap">
+                    <h6>A aplicação "{{ client.name }}" quer acessar sua conta</h6>
+                    <form action="{{ path('fos_oauth_server_authorize') }}" method="POST" class="fos_oauth_server_authorize" {{ form_enctype(form) }}>
+                        <input class="btn" type="submit" name="rejected" value="Rejeitar" />
+                        <input class="btn btn-primary" type="submit" name="accepted" value="Aceitar" />
+
+                        {{ form_row(form.client_id) }}
+                        {{ form_row(form.response_type) }}
+                        {{ form_row(form.redirect_uri) }}
+                        {{ form_row(form.state) }}
+                        {{ form_row(form.scope) }}
+                        {{ form_rest(form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock body %}
+
+{% block javascripts %}
+    {% javascripts output='js/compiled/authorize_oauth.js'
+    '@TodasAsPatasWebBundle/Resources/public/backend/js/jquery-1.10.2.js'
+    '@TodasAsPatasWebBundle/Resources/public/plugins/bootstrap-3.2.0-dist/js/bootstrap.min.js'
+    '@TodasAsPatasWebBundle/Resources/public/backend/js/theme.js'
+    %}
+
+    <script src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+{% endblock %}
