@@ -32,8 +32,7 @@
                 <tbody>
                     {% for entity in clients %}
                         <tr>
-                            <td><a href="{{ path('app_client_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                            <td>{{ entity.name }}</td>
+                            <td>{{ entity.id }}</td>
                             <td>{{ entity.name }}</td>
                             <td>{{ entity.secret }}</td>
                             <td>{{ entity.publicId }}</td>
@@ -47,7 +46,7 @@
                     {% endfor %}
                     {% if clients.count == 0 %}
                         <tr>
-                            <td colspan="9">
+                            <td colspan="5">
                                 Nenhum client cadastrado
                             </td>
                         </tr>

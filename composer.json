@@ -32,7 +32,7 @@
         "byteincoffee/doctrine-extensions-bundle": "1.7.*@dev",
         "doctrine/migrations": "dev-master",
         "doctrine/doctrine-migrations-bundle": "dev-master",
-        "friendsofsymfony/oauth-server-bundle": "@stable",
+        "friendsofsymfony/oauth-server-bundle": "1.4.*@dev",
         "willdurand/rest-extra-bundle": "1.0.1",
         "doctrine/doctrine-fixtures-bundle": "2.2.*",
         "mopa/bootstrap-bundle": "dev-master",
