@@ -1,0 +1,46 @@
+usercommon_public:
+    name: "Usuário (Pública)"
+    prefix: /public/usercommon
+    actions:
+        create: 
+            name : app_user_create
+            pattern: /create
+            description: "Cria um novo usuário"
+            methods: [POST]
+            parameters: 
+                username: 
+                    name: todasaspatas_apibundle_usercommon[username]
+                    example: 'fabioelizandro'
+                    dataType: string
+                    requirements: ["Not Blanck", "Unique"]
+                email: 
+                    name: todasaspatas_apibundle_usercommon[email]
+                    example: 'fabio@elizandro.com.br'
+                    dataType: string
+                    requirements: ["Not Blanck", "Unique", "Email"]
+                firstName: 
+                    name: todasaspatas_apibundle_usercommon[firstName]
+                    example: 'fabio'
+                    dataType: string
+                    requirements: ["Not Blanck"]
+                lastName: 
+                    name: todasaspatas_apibundle_usercommon[lastName]
+                    example: 'Elizandro'
+                    dataType: string
+                    requirements: ["Not Blanck"]
+                phone: 
+                    name: todasaspatas_apibundle_usercommon[phone]
+                    example: '4899363787'
+                    dataType: string
+                    requirements: ["Not Blanck"]
+                plainPassword.first: 
+                    name: todasaspatas_apibundle_usercommon[plainPassword][first]
+                    example: '123'
+                    dataType: string
+                    requirements: ["Not Blanck"]
+                plainPassword.second: 
+                    name: todasaspatas_apibundle_usercommon[plainPassword][second]
+                    example: '123'
+                    dataType: string
+                    requirements: ["Not Blanck", "Equal first"]
+                
