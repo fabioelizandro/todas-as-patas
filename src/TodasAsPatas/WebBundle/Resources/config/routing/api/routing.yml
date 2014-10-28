@@ -1,4 +1,7 @@
 todasaspatas_web_api_routing_public:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/routing_public.yml"
     prefix:   /public
-    
+
+todasaspatas_web_api_user:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/user.yml"
+    prefix:   /user

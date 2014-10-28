@@ -1,0 +1,5 @@
+api_profile_show:
+    pattern:  /profile
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.usercommon:profileAction"
