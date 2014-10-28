@@ -16,8 +16,13 @@ parameters:
     todasaspatas_api.form_type.pet_adoption.class: TodasAsPatas\ApiBundle\Form\PetAdoptionType
     todasaspatas_api.form_type.client.class: TodasAsPatas\ApiBundle\Form\ClientType
     todasaspatas_api.form_type.user_common.class: TodasAsPatas\ApiBundle\Form\UserCommonType
+    todasaspatas_api.form_type.favorite_pet.class: TodasAsPatas\ApiBundle\Form\FavoritePetType
 
 services:
+    todasaspatas_api.form_type.favorite_pet:
+        class: "%todasaspatas_api.form_type.favorite_pet.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_favorite_pet }
     todasaspatas_api.form_type.user_common:
         class: "%todasaspatas_api.form_type.user_common.class%"
         tags:

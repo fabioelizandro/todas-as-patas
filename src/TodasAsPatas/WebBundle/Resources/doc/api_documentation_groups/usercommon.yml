@@ -1,0 +1,22 @@
+usercommon:
+    name: "Usuário"
+    prefix: /usercommon
+    actions:
+        profile: 
+            name : api_profile_show
+            pattern: /profile
+            description: "Visualiza os dados do usuário"
+            methods: [GET]
+        favorite_pet: 
+            name: api_favorite_pet
+            pattern: /favorite-pet
+            description: "Atualiza os pets favoritos do usuário"
+            methods: [POST]
+            parameters: 
+                favoritePets: 
+                    name: todasaspatas_apibundle_favorite_pet[favoritePets][$index]
+                    example: '1'
+                    dataType: ArrayCollection
+                    requirements: ["ArrayCollection"]
+                
+                
