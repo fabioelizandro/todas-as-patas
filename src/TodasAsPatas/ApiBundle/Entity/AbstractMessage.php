@@ -59,7 +59,10 @@ abstract class AbstractMessage implements NotificationPrototypeInterface
      * @var UserCommon
      */
     protected $user;
-
+    
+    /**
+     * Construct
+     */
     public function __construct()
     {
         $this->viewed = false;

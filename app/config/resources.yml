@@ -5,7 +5,7 @@ sylius_resource:
             templates: TodasAsPatasWebBundle:Backend/AdoptionRequestMessage
             classes:
                 model: TodasAsPatas\ApiBundle\Entity\AdoptionRequestMessage
-                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                controller: TodasAsPatas\ApiBundle\Controller\AdoptionRequestMessageController
                 repository: TodasAsPatas\ApiBundle\Entity\AdoptionRequestMessageRepository
         app.questionmessage:
             driver: doctrine/orm

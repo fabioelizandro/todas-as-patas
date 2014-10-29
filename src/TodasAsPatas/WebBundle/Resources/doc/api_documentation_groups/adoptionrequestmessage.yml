@@ -1,0 +1,57 @@
+adoptionrequestmessage:
+    name: "Solicitações de adoção"
+    prefix: /adoptionrequestmessage
+    actions:
+        show: 
+            name: api_adoptionrequestmessage_show
+            pattern: /{id}/show
+            description: "Visualiza em detalhes uma solicitação de adoção"
+            methods: [get]
+            parameters: 
+                id: 
+                    name: id
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Blank", "ObjectId"]
+        create: 
+            name: api_adoptionrequestmessage_create
+            pattern: /create
+            description: "Cria uma nova solicitação de adoção"
+            methods: [POST]
+            parameters: 
+                title: 
+                    name: todasaspatas_apibundle_adoptionrequestmessage[title]
+                    example: 'Quero adotar um cachorro'
+                    dataType: string
+                    requirements: ["Not Blank"]
+                message: 
+                    name: todasaspatas_apibundle_adoptionrequestmessage[message]
+                    example: 'Moro em tijucas em quero saber como faço para adotar um cão'
+                    dataType: string
+                    requirements: ["Not Blank"]
+                pet: 
+                    name: todasaspatas_apibundle_adoptionrequestmessage[pet]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["ObjectId", "Not Blank"]
+        update: 
+            name: api_adoptionrequestmessage_update
+            pattern: /create
+            description: "Atualiza uma solicitação de adoção"
+            methods: [PUT]
+            parameters: 
+                title: 
+                    name: todasaspatas_apibundle_adoptionrequestmessage[title]
+                    example: 'Temperamento'
+                    dataType: string
+                    requirements: ["Not Blank"]
+                message: 
+                    name: todasaspatas_apibundle_adoptionrequestmessage[message]
+                    example: 'Eu mora em um apartamento'
+                    dataType: string
+                    requirements: ["Not Blank"]
+                pet: 
+                    name: todasaspatas_apibundle_adoptionrequestmessage[pet]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["ObjectId", "Not Blank"]

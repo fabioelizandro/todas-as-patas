@@ -3,7 +3,7 @@ TodasAsPatas\ApiBundle\Entity\PetAdoption:
         pet:
             - NotNull: ~
             
-TodasAsPatas\ApiBundle\Entity\QuestionMessage:
+TodasAsPatas\ApiBundle\Entity\AbstractMessage:
     properties:
         user:
             - NotNull: ~

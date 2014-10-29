@@ -7,7 +7,7 @@ use TodasAsPatas\ApiBundle\Controller\AbstractMessageController as BaseControlle
 /**
  * @author Fábio Lemos Elizandro <fabio@elizandro.com.br>
  */
-class QuestionMessageController extends BaseController
+class AdoptionRequestMessageController extends BaseController
 {
     
 }

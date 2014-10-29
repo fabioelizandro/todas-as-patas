@@ -18,8 +18,14 @@ parameters:
     todasaspatas_api.form_type.user_common.class: TodasAsPatas\ApiBundle\Form\UserCommonType
     todasaspatas_api.form_type.favorite_pet.class: TodasAsPatas\ApiBundle\Form\FavoritePetType
     todasaspatas_api.form_type.question_message.class: TodasAsPatas\ApiBundle\Form\QuestionMessageType
+    todasaspatas_api.form_type.adoption_request_message.class: TodasAsPatas\ApiBundle\Form\AdoptionRequestMessageType
 
 services:
+    todasaspatas_api.form_type.adoption_request_message:
+        class: "%todasaspatas_api.form_type.adoption_request_message.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_adoptionrequestmessage }
+            
     todasaspatas_api.form_type.question_message:
         class: "%todasaspatas_api.form_type.question_message.class%"
         tags:

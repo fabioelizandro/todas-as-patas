@@ -12,7 +12,16 @@ class AdoptionRequestMessage extends AbstractMessage
      * @var boolean
      */
     private $aproved;
-
+    
+    /**
+     * Construct
+     */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->aproved = false;
+    }
+    
     /**
      * Set aproved
      *

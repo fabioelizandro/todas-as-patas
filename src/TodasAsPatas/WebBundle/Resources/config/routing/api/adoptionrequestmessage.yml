@@ -1,0 +1,21 @@
+api_adoptionrequestmessage_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.adoptionrequestmessage:createAction"
+        _sylius: 
+            form: todasaspatas_apibundle_adoptionrequestmessage
+            
+api_adoptionrequestmessage_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.adoptionrequestmessage:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_adoptionrequestmessage
+            
+api_adoptionrequestmessage_show:
+    pattern:  /{id}/show
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.adoptionrequestmessage:showAction"

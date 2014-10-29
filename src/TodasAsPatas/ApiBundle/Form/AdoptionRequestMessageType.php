@@ -6,7 +6,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use TodasAsPatas\ApiBundle\Form\AbstractMessageType as BaseType;
 
-class QuestionMessageType extends BaseType
+class AdoptionRequestMessageType extends BaseType
 {
 
     /**
@@ -24,7 +24,7 @@ class QuestionMessageType extends BaseType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'TodasAsPatas\ApiBundle\Entity\QuestionMessage'
+            'data_class' => 'TodasAsPatas\ApiBundle\Entity\AdoptionRequestMessage'
         ));
     }
 
@@ -33,7 +33,7 @@ class QuestionMessageType extends BaseType
      */
     public function getName()
     {
-        return 'todasaspatas_apibundle_questionmessage';
+        return 'todasaspatas_apibundle_adoptionrequestmessage';
     }
 
 }

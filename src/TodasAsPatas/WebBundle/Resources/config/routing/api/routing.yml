@@ -9,3 +9,7 @@ todasaspatas_web_api_user:
 todasaspatas_web_api_questionmessage:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/questionmessage.yml"
     prefix:   /questionmessage
+    
+todasaspatas_web_api_adoptionrequestmessage:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/adoptionrequestmessage.yml"
+    prefix:   /adoptionrequestmessage
