@@ -9,3 +9,4 @@ doc:
             - {resource: api_documentation_groups/usercommon.yml}
             - {resource: api_documentation_groups/questionmessage.yml}
             - {resource: api_documentation_groups/adoptionrequestmessage.yml}
+            - {resource: api_documentation_groups/petlistener.yml}

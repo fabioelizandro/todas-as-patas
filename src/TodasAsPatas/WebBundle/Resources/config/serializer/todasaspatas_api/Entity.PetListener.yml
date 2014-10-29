@@ -1,0 +1,24 @@
+TodasAsPatas\ApiBundle\Entity\PetListener: 
+    virtual_properties:
+        getSize:
+            serialized_name: size
+            type: string
+        getAge:
+            serialized_name: age
+            type: string
+        getGender:
+            serialized_name: gender
+            type: string
+    properties:
+        user: 
+            exclude: true
+        ageId: 
+            exclude: true
+        genderId: 
+            exclude: true
+        sizeId: 
+            exclude: true
+        createdAt: 
+            type: "DateTime<'d/m/Y H:i'>"
+        updatedAt: 
+            type: "DateTime<'d/m/Y H:i'>"

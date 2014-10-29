@@ -1,5 +1,12 @@
 sylius_resource:
     resources:
+        app.petlistener:
+            driver: doctrine/orm
+            templates: TodasAsPatasWebBundle:Backend/PetListener
+            classes:
+                model: TodasAsPatas\ApiBundle\Entity\PetListener
+                controller: TodasAsPatas\ApiBundle\Controller\PetListenerController
+                repository: TodasAsPatas\ApiBundle\Entity\PetListenerRepository
         app.adoptionrequestmessage:
             driver: doctrine/orm
             templates: TodasAsPatasWebBundle:Backend/AdoptionRequestMessage

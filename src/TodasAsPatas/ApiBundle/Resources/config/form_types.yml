@@ -19,8 +19,14 @@ parameters:
     todasaspatas_api.form_type.favorite_pet.class: TodasAsPatas\ApiBundle\Form\FavoritePetType
     todasaspatas_api.form_type.question_message.class: TodasAsPatas\ApiBundle\Form\QuestionMessageType
     todasaspatas_api.form_type.adoption_request_message.class: TodasAsPatas\ApiBundle\Form\AdoptionRequestMessageType
+    todasaspatas_api.form_type.pet_listener.class: TodasAsPatas\ApiBundle\Form\PetListenerType
 
 services:
+    todasaspatas_api.form_type.pet_listener:
+        class: "%todasaspatas_api.form_type.pet_listener.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_petlistener }
+            
     todasaspatas_api.form_type.adoption_request_message:
         class: "%todasaspatas_api.form_type.adoption_request_message.class%"
         tags:

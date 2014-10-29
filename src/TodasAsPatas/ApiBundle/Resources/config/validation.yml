@@ -44,6 +44,17 @@ TodasAsPatas\ApiBundle\Entity\Pet:
         images:
             - Valid: ~
             
+TodasAsPatas\ApiBundle\Entity\PetListener:
+    properties:
+        sizeId:
+            - NotNull: ~
+        ageId:
+            - NotNull: ~
+        genderId:
+            - NotNull: ~
+        user:
+            - NotNull: ~
+            
 TodasAsPatas\ApiBundle\Entity\Breed:
     properties:
         name:

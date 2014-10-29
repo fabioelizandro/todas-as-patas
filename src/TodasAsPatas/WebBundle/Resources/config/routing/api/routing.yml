@@ -13,3 +13,7 @@ todasaspatas_web_api_questionmessage:
 todasaspatas_web_api_adoptionrequestmessage:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/adoptionrequestmessage.yml"
     prefix:   /adoptionrequestmessage
+    
+todasaspatas_web_api_petlistener:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/petlistener.yml"
+    prefix:   /petlistener

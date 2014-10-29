@@ -1,0 +1,73 @@
+petlistener:
+    name: "Ouvintes de novos pets"
+    prefix: /petlistener
+    actions:
+        index: 
+            name : api_petlistener_index
+            pattern: /
+            description: "Visualiza todos os listners cadastrados do usuário"
+            methods: [GET]
+        show: 
+            name : api_petlistener_show
+            pattern: /{id}/show
+            description: "Visualiza em detalhes um ouvinte"
+            methods: [GET]
+        delete: 
+            name : api_petlistener_delete
+            pattern: /{id}/delete
+            description: "Deleta um ouvinte"
+            methods: [DELETE]
+        create: 
+            name: api_petlistener_create
+            pattern: /create
+            description: "Cria um novo ouvinte"
+            methods: [POST]
+            parameters: 
+                sizeId: 
+                    name: todasaspatas_apibundle_petlistener[sizeId]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Null", "Enum"]
+                ageId: 
+                    name: todasaspatas_apibundle_petlistener[ageId]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Null", "Enum"]
+                genderId: 
+                    name: todasaspatas_apibundle_petlistener[genderId]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Null", "Enum"]
+                breeds: 
+                    name: todasaspatas_apibundle_petlistener[breeds][$index]
+                    example: '1'
+                    dataType: ArrayCollection
+                    requirements: ["ArrayCollection"]
+        update: 
+            name: api_petlistener_update
+            pattern: /{id}/udpate
+            description: "Atualizad um novo ouvinte"
+            methods: [PUT]
+            parameters: 
+                sizeId: 
+                    name: todasaspatas_apibundle_petlistener[sizeId]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Null", "Enum"]
+                ageId: 
+                    name: todasaspatas_apibundle_petlistener[ageId]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Null", "Enum"]
+                genderId: 
+                    name: todasaspatas_apibundle_petlistener[genderId]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Null", "Enum"]
+                breeds: 
+                    name: todasaspatas_apibundle_petlistener[breeds][$index]
+                    example: '1'
+                    dataType: ArrayCollection
+                    requirements: ["ArrayCollection"]
+                
+                

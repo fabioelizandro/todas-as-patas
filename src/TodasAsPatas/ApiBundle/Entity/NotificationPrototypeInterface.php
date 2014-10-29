@@ -3,6 +3,8 @@
 namespace TodasAsPatas\ApiBundle\Entity;
 
 /**
+ * Classe será utilizado para criar nofiticações para os usuários
+ * 
  * @author Fábio Lemos Elizandro <fabio@elizandro.com.br>
  */
 interface NotificationPrototypeInterface

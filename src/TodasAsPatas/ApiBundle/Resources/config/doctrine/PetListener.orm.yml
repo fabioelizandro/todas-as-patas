@@ -1,0 +1,46 @@
+TodasAsPatas\ApiBundle\Entity\PetListener:
+    type: entity
+    table: null
+    repositoryClass: TodasAsPatas\ApiBundle\Entity\PetListenerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    manyToOne:
+        user:
+            targetEntity: UserCommon
+            joinColumn:
+                nullable: false
+                name: user_id
+                referencedColumnName: id
+    manyToMany:
+        breeds:
+            targetEntity: Breed
+            joinTable:
+                name: petlisteners_breeds
+                joinColumns:
+                    pet_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    breed_id:
+                        referencedColumnName: id
+    fields:
+        createdAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: create
+        updatedAt:
+            type: datetime
+            gedmo:
+                timestampable:
+                    on: update
+        sizeId:
+            type: integer
+        genderId:
+            type: integer
+        ageId:
+            type: integer
+    lifecycleCallbacks: {  }
