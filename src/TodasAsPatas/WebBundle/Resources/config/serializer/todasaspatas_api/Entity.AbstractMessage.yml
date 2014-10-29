@@ -1,0 +1,8 @@
+TodasAsPatas\ApiBundle\Entity\AbstractMessage: 
+    properties:
+        user: 
+            exclude: true
+        createdAt: 
+            type: "DateTime<'d/m/Y H:i'>"
+        updatedAt: 
+            type: "DateTime<'d/m/Y H:i'>"

@@ -1,0 +1,57 @@
+questionmessage:
+    name: "Perguntas"
+    prefix: /questionmessage
+    actions:
+        show: 
+            name: api_questionmessage_show
+            pattern: /{id}/show
+            description: "Visualiza em detalhes uma questão"
+            methods: [get]
+            parameters: 
+                id: 
+                    name: id
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Blank", "ObjectId"]
+        create: 
+            name: api_questionmessage_create
+            pattern: /create
+            description: "Cria uma nova pergunta"
+            methods: [POST]
+            parameters: 
+                title: 
+                    name: todasaspatas_apibundle_questionmessage[title]
+                    example: 'Temperamento'
+                    dataType: string
+                    requirements: ["Not Blank"]
+                message: 
+                    name: todasaspatas_apibundle_questionmessage[message]
+                    example: 'Eu mora em um apartamento'
+                    dataType: string
+                    requirements: ["Not Blank"]
+                pet: 
+                    name: todasaspatas_apibundle_questionmessage[pet]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["ObjectId", "Not Blank"]
+        update: 
+            name: api_questionmessage_update
+            pattern: /create
+            description: "Atualiza uma pergunta"
+            methods: [PUT]
+            parameters: 
+                title: 
+                    name: todasaspatas_apibundle_questionmessage[title]
+                    example: 'Temperamento'
+                    dataType: string
+                    requirements: ["Not Blank"]
+                message: 
+                    name: todasaspatas_apibundle_questionmessage[message]
+                    example: 'Eu mora em um apartamento'
+                    dataType: string
+                    requirements: ["Not Blank"]
+                pet: 
+                    name: todasaspatas_apibundle_questionmessage[pet]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["ObjectId", "Not Blank"]

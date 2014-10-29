@@ -17,8 +17,14 @@ parameters:
     todasaspatas_api.form_type.client.class: TodasAsPatas\ApiBundle\Form\ClientType
     todasaspatas_api.form_type.user_common.class: TodasAsPatas\ApiBundle\Form\UserCommonType
     todasaspatas_api.form_type.favorite_pet.class: TodasAsPatas\ApiBundle\Form\FavoritePetType
+    todasaspatas_api.form_type.question_message.class: TodasAsPatas\ApiBundle\Form\QuestionMessageType
 
 services:
+    todasaspatas_api.form_type.question_message:
+        class: "%todasaspatas_api.form_type.question_message.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_questionmessage }
+            
     todasaspatas_api.form_type.favorite_pet:
         class: "%todasaspatas_api.form_type.favorite_pet.class%"
         tags:

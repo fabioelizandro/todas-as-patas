@@ -2,6 +2,17 @@ TodasAsPatas\ApiBundle\Entity\PetAdoption:
     properties:
         pet:
             - NotNull: ~
+            
+TodasAsPatas\ApiBundle\Entity\QuestionMessage:
+    properties:
+        user:
+            - NotNull: ~
+        pet:
+            - NotNull: ~
+        title:
+            - NotBlank: ~
+        message:
+            - NotBlank: ~
                 
 TodasAsPatas\ApiBundle\Entity\PetImage:
     properties:

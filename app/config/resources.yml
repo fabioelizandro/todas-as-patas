@@ -12,7 +12,7 @@ sylius_resource:
             templates: TodasAsPatasWebBundle:Backend/QuestionMessage
             classes:
                 model: TodasAsPatas\ApiBundle\Entity\QuestionMessage
-                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                controller: TodasAsPatas\ApiBundle\Controller\QuestionMessageController
                 repository: TodasAsPatas\ApiBundle\Entity\QuestionMessageRepository
         app.petadoption:
             driver: doctrine/orm
