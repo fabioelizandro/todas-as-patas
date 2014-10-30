@@ -64,6 +64,16 @@ abstract class AbstractEnum implements EnumInterface
     }
 
     /**
+     * Retorna a quantidade de itens da enumeração 
+     * 
+     * @return integer 
+     */
+    public function count()
+    {
+        return \count($this->getList());
+    }
+    
+    /**
      * Lista de itens da enumeração sem associação de chaves do array
      * 
      * @return ItemInterface[]
