@@ -26,6 +26,9 @@ class TodasAsPatasApiExtension extends Extension
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
         $loader->load('form_types.yml');
+
+        $petListenerSubscriberDefinition = $container->getDefinition('todasaspatas_api.event_listener.pet_listener_subscriber');
+        $petListenerSubscriberDefinition->replaceArgument(1, $config['pet_listener']);
     }
 
 }

@@ -2,6 +2,7 @@
 
 namespace TodasAsPatas\ApiBundle\DependencyInjection;
 
+use Symfony\Component\Config\Definition\Builder;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
 
@@ -12,18 +13,72 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
+
     /**
      * {@inheritDoc}
      */
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('todasaspatas_api');
+        $rootNode = $treeBuilder->root('todas_as_patas_api');
 
-        // Here you should define the parameters that are allowed to
-        // configure your bundle. See the documentation linked above for
-        // more information on that topic.
+        $rootNode
+                ->children()
+                    ->arrayNode('pet_listener')
+                        ->children()
+                            ->arrayNode('mailer')
+                                ->append($this->subjectDefinition())
+                                ->append($this->templateDefinition())
+                                ->append($this->urlDefinition())
+                                ->append($this->fromDefinition())
+                            ->end()
+                        ->end()
+                    ->end()
+                ->end()
+        ;
 
         return $treeBuilder;
     }
+    
+    
+    private function subjectDefinition()
+    {
+        $node = new Builder\ScalarNodeDefinition('subject');
+        $node->isRequired();
+
+        return $node;
+    }
+
+    private function templateDefinition()
+    {
+        $node = new Builder\ScalarNodeDefinition('template');
+        $node->isRequired();
+
+        return $node;
+    }
+    
+    private function urlDefinition()
+    {
+        $node = new Builder\ScalarNodeDefinition('url');
+        $node->isRequired();
+
+        return $node;
+    }
+    
+    private function fromDefinition()
+    {
+        $nodeEmail = new Builder\ScalarNodeDefinition('email');
+        $nodeEmail->isRequired();
+
+        $nodeName = new Builder\ScalarNodeDefinition('name');
+        $nodeName->isRequired();
+
+        $node = new Builder\ArrayNodeDefinition('from');
+        $node->isRequired();
+        $node->append($nodeEmail);
+        $node->append($nodeName);
+
+        return $node;
+    }
+
 }

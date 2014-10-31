@@ -253,3 +253,13 @@ fos_js_routing:
         smaxage: null   # integer value, e.g. 300
         expires: null   # anything that can be fed to "new \DateTime($expires)", e.g. "5 minutes"
         vary: []        # string or array, e.g. "Cookie" or [ Cookie, Accept ]
+
+todas_as_patas_api: 
+    pet_listener:
+        mailer:
+            subject: Você pode gostar deste Pet!
+            template: TodasAsPatasWebBundle:Email/PetListener:match.html.twig
+            url: "http://www.todasaspatas.com/pet/:id"
+            from:
+                email: fabio@elizandro.com.br
+                name: Todas As Patas

@@ -9,7 +9,7 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 /**
  * @author Fábio Lemos Elizandro <fabio@elizandro.com.br>
  */
-trait UserCatcher
+trait UserCatcherTrait
 {
     
     /**

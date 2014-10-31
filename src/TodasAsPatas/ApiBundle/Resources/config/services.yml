@@ -4,8 +4,15 @@ parameters:
     todasaspatas_api.event_listener.pet_subscriber.class: TodasAsPatas\ApiBundle\EventListener\PetSubscriber
     todasaspatas_api.event_listener.petadoption_subscriber.class: TodasAsPatas\ApiBundle\EventListener\PetAdoptionSubscriber
     todasaspatas_api.event_listener.organization_subscriber.class: TodasAsPatas\ApiBundle\EventListener\OrganizationSubscriber
+    todasaspatas_api.event_listener.pet_listener_subscriber.class: TodasAsPatas\ApiBundle\EventListener\PetListenerSubscriber
 
 services:
+    todasaspatas_api.event_listener.pet_listener_subscriber:
+        class: "%todasaspatas_api.event_listener.pet_listener_subscriber.class%"
+        arguments: [@service_container, '']
+        tags:
+            - { name: kernel.event_subscriber }
+            
     todasaspatas_api.event_listener.petadoption_subscriber:
         class: "%todasaspatas_api.event_listener.petadoption_subscriber.class%"
         tags:
