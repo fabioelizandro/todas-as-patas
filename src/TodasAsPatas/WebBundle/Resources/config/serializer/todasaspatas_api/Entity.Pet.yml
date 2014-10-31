@@ -12,11 +12,17 @@ TodasAsPatas\ApiBundle\Entity\Pet:
             groups: [list, details]
             serialized_name: gender
             type: string
+        getType:
+            groups: [list, details]
+            serialized_name: type
+            type: string
     properties:
         id: 
             groups: [details, list]
         sizeId: 
-            exclude: true
+            groups: [details, list]
+        typeId: 
+            groups: [details, list]
         profileImageKey: 
             exclude: true
         profileImage: 
@@ -34,9 +40,9 @@ TodasAsPatas\ApiBundle\Entity\Pet:
         breeds: 
             groups: [details, list]
         ageId: 
-            exclude: true
+            groups: [details, list]
         genderId: 
-            exclude: true
+            groups: [details, list]
         createdAt: 
             groups: [list, details]
             type: "DateTime<'d/m/Y H:i'>"

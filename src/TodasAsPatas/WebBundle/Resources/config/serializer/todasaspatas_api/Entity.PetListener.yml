@@ -9,14 +9,11 @@ TodasAsPatas\ApiBundle\Entity\PetListener:
         getGender:
             serialized_name: gender
             type: string
+        getType:
+            serialized_name: type
+            type: string
     properties:
         user: 
-            exclude: true
-        ageId: 
-            exclude: true
-        genderId: 
-            exclude: true
-        sizeId: 
             exclude: true
         createdAt: 
             type: "DateTime<'d/m/Y H:i'>"

@@ -43,4 +43,8 @@ TodasAsPatas\ApiBundle\Entity\PetListener:
             type: integer
         ageId:
             type: integer
+        typeId:
+            type: integer
+            options: 
+                default: 1
     lifecycleCallbacks: {  }

@@ -38,6 +38,11 @@ petlistener:
                     example: '1'
                     dataType: integer
                     requirements: ["Not Null", "Enum"]
+                typeId: 
+                    name: todasaspatas_apibundle_petlistener[typeId]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Null", "Enum"]
                 breeds: 
                     name: todasaspatas_apibundle_petlistener[breeds][$index]
                     example: '1'
@@ -61,6 +66,11 @@ petlistener:
                     requirements: ["Not Null", "Enum"]
                 genderId: 
                     name: todasaspatas_apibundle_petlistener[genderId]
+                    example: '1'
+                    dataType: integer
+                    requirements: ["Not Null", "Enum"]
+                typeId: 
+                    name: todasaspatas_apibundle_petlistener[typeId]
                     example: '1'
                     dataType: integer
                     requirements: ["Not Null", "Enum"]

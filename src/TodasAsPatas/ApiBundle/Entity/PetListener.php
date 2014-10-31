@@ -10,6 +10,8 @@ use TodasAsPatas\ApiBundle\Enum\PetGender;
 use TodasAsPatas\ApiBundle\Enum\PetGenderEnum;
 use TodasAsPatas\ApiBundle\Enum\PetSize;
 use TodasAsPatas\ApiBundle\Enum\PetSizeEnum;
+use TodasAsPatas\ApiBundle\Enum\PetType;
+use TodasAsPatas\ApiBundle\Enum\PetTypeEnum;
 
 /**
  * PetListener
@@ -57,6 +59,11 @@ class PetListener implements PetFeaturesInterface
      */
     private $user;
 
+    /**
+     * @var integer
+     */
+    private $typeId;
+    
     /**
      * Construct
      */
@@ -307,6 +314,50 @@ class PetListener implements PetFeaturesInterface
     public function getUser()
     {
         return $this->user;
+    }
+    
+    /**
+     * Set typeId
+     *
+     * @param integer $typeId
+     * @return PetListener
+     */
+    public function setTypeId($typeId)
+    {
+        $this->typeId = $typeId;
+
+        return $this;
+    }
+
+    /**
+     * Get typeId
+     *
+     * @return integer 
+     */
+    public function getTypeId()
+    {
+        return $this->typeId;
+    }
+
+    /**
+     * Set Type
+     *
+     * @param PetType $type
+     * @return PetListener
+     */
+    public function setType(PetType $type)
+    {
+        return $this->setTypeId($type->getId());
+    }
+
+    /**
+     * Get Type
+     *
+     * @return PetType
+     */
+    public function getType()
+    {
+        return PetTypeEnum::getInstance()->getItem($this->getTypeId());
     }
     
     /**

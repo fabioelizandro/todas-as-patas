@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use TodasAsPatas\ApiBundle\Enum\PetAgeEnum;
 use TodasAsPatas\ApiBundle\Enum\PetGenderEnum;
 use TodasAsPatas\ApiBundle\Enum\PetSizeEnum;
+use TodasAsPatas\ApiBundle\Enum\PetTypeEnum;
 
 class PetListenerType extends AbstractType
 {
@@ -26,6 +27,10 @@ class PetListenerType extends AbstractType
                 ->add('ageId', 'choice', array(
                     'label' => 'Idade',
                     'choices' => PetAgeEnum::getInstance()->getList(),
+                ))
+                ->add('typeId', 'choice', array(
+                    'label' => 'Tipo do Pet',
+                    'choices' => PetTypeEnum::getInstance()->getList(),
                 ))
                 ->add('genderId', 'choice', array(
                     'label' => 'Género',

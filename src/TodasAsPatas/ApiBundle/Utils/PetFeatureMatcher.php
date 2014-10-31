@@ -28,6 +28,10 @@ class PetFeatureMatcher
      */
     public function match(PetFeaturesInterface $petFeature1, PetFeaturesInterface $petFeature2)
     {
+        if ($petFeature1->getType() !== $petFeature2->getType()) {
+            return false;
+        }
+        
         $sizeSimilarity = $this->getScaleSimilarity($petFeature1->getSize()->getId(), $petFeature2->getSize()->getId(), PetSizeEnum::getInstance()->count()) * 5;
         $ageSimilarity = $this->getScaleSimilarity($petFeature1->getAge()->getId(), $petFeature2->getAge()->getId(), PetAgeEnum::getInstance()->count()) * 5;
         $genderSimilarity = $this->getBooleanSimilarity($petFeature1->getGender()->getId(), $petFeature2->getGender()->getId()) * 2;

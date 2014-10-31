@@ -52,6 +52,8 @@ TodasAsPatas\ApiBundle\Entity\PetListener:
             - NotNull: ~
         genderId:
             - NotNull: ~
+        typeId:
+            - NotNull: ~
         user:
             - NotNull: ~
             
