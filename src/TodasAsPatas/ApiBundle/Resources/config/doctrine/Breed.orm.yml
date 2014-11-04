@@ -29,4 +29,8 @@ TodasAsPatas\ApiBundle\Entity\Breed:
             gedmo:
                 timestampable:
                     on: update
+        typeId:
+            type: integer
+            options: 
+                default: 1
     lifecycleCallbacks: {  }

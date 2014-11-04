@@ -2,6 +2,10 @@
 
 namespace TodasAsPatas\ApiBundle\Entity;
 
+use DateTime;
+use TodasAsPatas\ApiBundle\Enum\PetType;
+use TodasAsPatas\ApiBundle\Enum\PetTypeEnum;
+
 /**
  * Breed
  */
@@ -19,19 +23,24 @@ class Breed
     private $name;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $deletedAt;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $createdAt;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      */
     private $updatedAt;
+
+    /**
+     * @var integer
+     */
+    private $typeId;
 
     /**
      * Get id
@@ -69,7 +78,7 @@ class Breed
     /**
      * Set deletedAt
      *
-     * @param \DateTime $deletedAt
+     * @param DateTime $deletedAt
      * @return Breed
      */
     public function setDeletedAt($deletedAt)
@@ -82,7 +91,7 @@ class Breed
     /**
      * Get deletedAt
      *
-     * @return \DateTime 
+     * @return DateTime 
      */
     public function getDeletedAt()
     {
@@ -92,7 +101,7 @@ class Breed
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param DateTime $createdAt
      * @return Breed
      */
     public function setCreatedAt($createdAt)
@@ -105,7 +114,7 @@ class Breed
     /**
      * Get createdAt
      *
-     * @return \DateTime 
+     * @return DateTime 
      */
     public function getCreatedAt()
     {
@@ -115,7 +124,7 @@ class Breed
     /**
      * Set updatedAt
      *
-     * @param \DateTime $updatedAt
+     * @param DateTime $updatedAt
      * @return Breed
      */
     public function setUpdatedAt($updatedAt)
@@ -128,11 +137,55 @@ class Breed
     /**
      * Get updatedAt
      *
-     * @return \DateTime 
+     * @return DateTime 
      */
     public function getUpdatedAt()
     {
         return $this->updatedAt;
+    }
+
+    /**
+     * Set typeId
+     *
+     * @param integer $typeId
+     * @return Breed
+     */
+    public function setTypeId($typeId)
+    {
+        $this->typeId = $typeId;
+
+        return $this;
+    }
+
+    /**
+     * Get typeId
+     *
+     * @return integer 
+     */
+    public function getTypeId()
+    {
+        return $this->typeId;
+    }
+
+    /**
+     * Set Type
+     *
+     * @param PetType $type
+     * @return Breed
+     */
+    public function setType(PetType $type)
+    {
+        return $this->setTypeId($type->getId());
+    }
+
+    /**
+     * Get Type
+     *
+     * @return PetType
+     */
+    public function getType()
+    {
+        return PetTypeEnum::getInstance()->getItem($this->getTypeId());
     }
 
     /**
@@ -142,5 +195,5 @@ class Breed
     {
         return $this->getName();
     }
-    
+
 }

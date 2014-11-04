@@ -1,6 +1,10 @@
 todasaspatas_web_api_pet_public:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/pet_public.yml"
     prefix:   /pet
+    
+todasaspatas_web_api_breed_public:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/breed_public.yml"
+    prefix:   /breed
 
 todasaspatas_web_api_organization_public:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/api/organization_public.yml"

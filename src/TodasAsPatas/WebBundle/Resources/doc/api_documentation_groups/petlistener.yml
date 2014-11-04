@@ -4,7 +4,7 @@ petlistener:
     actions:
         index: 
             name : api_petlistener_index
-            pattern: /
+            pattern: /index
             description: "Visualiza todos os listners cadastrados do usuário"
             methods: [GET]
         show: 

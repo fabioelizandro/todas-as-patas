@@ -4,7 +4,7 @@ organization_public:
     actions:
         index: 
             name : api_organization_index
-            pattern: /
+            pattern: /index
             description: "Listagem de todos as organizaçẽos com paginação"
             methods: [GET]
         show: 

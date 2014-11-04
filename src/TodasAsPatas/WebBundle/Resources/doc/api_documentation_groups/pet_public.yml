@@ -4,7 +4,7 @@ pet_public:
     actions:
         index: 
             name : api_pet_index
-            pattern: /
+            pattern: /index
             description: "Lista página e com filtro dos pets"
             methods: [GET]
             query_parameters: 

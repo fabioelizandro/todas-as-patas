@@ -1,0 +1,16 @@
+breed_public:
+    name: "Raça (Pública)"
+    prefix: /public/breed
+    actions:
+        index: 
+            name : api_breed_index
+            pattern: /{typeId}
+            description: "Lista página com filtro de tipo de raça"
+            methods: [GET]
+            parameters: 
+                typeId: 
+                    name: typeId
+                    example: 1
+                    dataType: integer
+                    requirements: ["Enum"]
+            

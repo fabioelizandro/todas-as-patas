@@ -5,6 +5,7 @@ namespace TodasAsPatas\ApiBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use TodasAsPatas\ApiBundle\Enum\PetTypeEnum;
 
 class BreedType extends AbstractType
 {
@@ -17,6 +18,10 @@ class BreedType extends AbstractType
     {
         $builder
                 ->add('name', null, array('attr' => array('autofocus' => 'autofocus')))
+                ->add('typeId', 'choice', array(
+                    'label' => 'Tipo do Pet',
+                    'choices' => PetTypeEnum::getInstance()->getList(),
+                ))
         ;
     }
 

@@ -1,0 +1,10 @@
+api_breed_index:
+    pattern:  /{typeId}
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.breed:indexAction"
+        _sylius: 
+            criteria: 
+                typeId: $typeId
+            limit: false
+            paginate: false

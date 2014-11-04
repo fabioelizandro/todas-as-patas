@@ -1,4 +1,8 @@
 TodasAsPatas\ApiBundle\Entity\Breed: 
+    virtual_properties:
+        getType:
+            serialized_name: type
+            type: string
     properties:
         id: 
             groups: [details, list]

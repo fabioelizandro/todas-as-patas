@@ -10,3 +10,4 @@ doc:
             - {resource: api_documentation_groups/questionmessage.yml}
             - {resource: api_documentation_groups/adoptionrequestmessage.yml}
             - {resource: api_documentation_groups/petlistener.yml}
+            - {resource: api_documentation_groups/breed_public.yml}

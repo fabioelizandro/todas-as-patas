@@ -30,6 +30,7 @@
                     <tr>
                         <th>Id</th>
                         <th>Nome</th>
+                        <th>Tipo</th>
                         <th>Criado em</th>
                         <th>Atualizado em</th>
                         <th>Ações</th>
@@ -40,6 +41,7 @@
                         <tr>
                             <td>{{ entity.id }}</td>
                             <td>{{ entity.name }}</td>
+                            <td>{{ entity.type }}</td>
                             <td>{% if entity.createdAt %}{{ entity.createdAt|date('d/m/Y H:i:s') }}{% endif %}</td>
                             <td>{% if entity.updatedAt %}{{ entity.updatedAt|date('d/m/Y H:i:s') }}{% endif %}</td>
                             <td>

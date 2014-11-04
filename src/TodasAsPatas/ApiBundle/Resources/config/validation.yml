@@ -61,6 +61,8 @@ TodasAsPatas\ApiBundle\Entity\Breed:
     properties:
         name:
             - NotBlank: ~
+        typeId:
+            - NotNull: ~
             
 TodasAsPatas\ApiBundle\Entity\UserOrganization:
     properties:
