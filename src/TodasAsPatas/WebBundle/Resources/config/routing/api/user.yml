@@ -6,8 +6,16 @@ api_profile_show:
         
 api_favorite_pet:
     pattern:  /favorite-pet
-    methods: [GET, POST]
+    methods: [GET, PUT]
     defaults: 
         _controller: "app.controller.usercommon:profileUpdateAction"
         _sylius: 
             form : todasaspatas_apibundle_favorite_pet
+            
+api_profile_update:
+    pattern:  /profile-update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.usercommon:profileUpdateAction"
+        _sylius: 
+            form : todasaspatas_apibundle_usercommon_api
