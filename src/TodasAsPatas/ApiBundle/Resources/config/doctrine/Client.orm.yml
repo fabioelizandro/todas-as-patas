@@ -10,3 +10,7 @@ TodasAsPatas\ApiBundle\Entity\Client:
         name:
             type: string
             length: 255
+        owner:
+            type: boolean
+            options: 
+                default: false

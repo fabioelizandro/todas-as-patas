@@ -1,3 +1,12 @@
+api_questionmessage_index:
+    pattern:  /index
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.questionmessage:indexByUserAction"
+        _sylius: 
+            limit: false
+            paginate: false
+            
 api_questionmessage_create:
     pattern:  /create
     methods: [GET, POST]

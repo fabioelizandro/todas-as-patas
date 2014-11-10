@@ -17,6 +17,9 @@ class ClientType extends AbstractType
     {
         $builder
                 ->add('name')
+                ->add('owner', null, array(
+                    'required' => false
+                ))
                 ->add('allowedGrantTypes', 'collection', array(
                     'type' => 'text',
                     'label' => 'Allowed Grant Types',

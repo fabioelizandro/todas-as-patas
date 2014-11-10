@@ -2,11 +2,16 @@ adoptionrequestmessage:
     name: "Solicitações de adoção"
     prefix: /adoptionrequestmessage
     actions:
+        index: 
+            name : api_adoptionrequestmessage_index
+            pattern: /index
+            description: "Lista todas as requisições de adoção de um usuário"
+            methods: [GET]
         show: 
             name: api_adoptionrequestmessage_show
             pattern: /{id}/show
             description: "Visualiza em detalhes uma solicitação de adoção"
-            methods: [get]
+            methods: [GET]
             parameters: 
                 id: 
                     name: id

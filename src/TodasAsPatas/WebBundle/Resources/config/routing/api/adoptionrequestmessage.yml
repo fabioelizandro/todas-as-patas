@@ -1,3 +1,12 @@
+api_adoptionrequestmessage_index:
+    pattern:  /index
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.adoptionrequestmessage:indexByUserAction"
+        _sylius: 
+            limit: false
+            paginate: false
+
 api_adoptionrequestmessage_create:
     pattern:  /create
     methods: [GET, POST]

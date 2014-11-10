@@ -3,7 +3,7 @@
 namespace TodasAsPatas\ApiBundle\Controller;
 
 use ByteinCoffee\ExtraBundle\Controller\Controller as BaseController;
-use Doctrine\Common\Persistence\ObjectManager;
+use JMS\Serializer\SerializationContext;
 use Symfony\Component\HttpFoundation\Request;
 use TodasAsPatas\ApiBundle\Entity\AbstractMessage;
 use TodasAsPatas\ApiBundle\Entity\UserCommon;
@@ -13,6 +13,46 @@ use TodasAsPatas\ApiBundle\Entity\UserCommon;
  */
 abstract class AbstractMessageController extends BaseController
 {
+
+    public function indexByUserAction(Request $request)
+    {
+        $criteria = $this->config->getCriteria(array(
+            'user' => $this->getUser()
+        ));
+        
+        $sorting = $this->config->getSorting();
+
+        $repository = $this->getRepository();
+
+        if ($this->config->isPaginated()) {
+            $resources = $this->resourceResolver->getResource(
+                    $repository, 'createPaginator', array($criteria, $sorting)
+            );
+            $resources->setCurrentPage($request->get('page', 1), true, true);
+            $resources->setMaxPerPage($this->config->getPaginationMaxPerPage());
+        } else {
+            $resources = $this->resourceResolver->getResource(
+                    $repository, 'findBy', array($criteria, $sorting, $this->config->getLimit())
+            );
+        }
+
+        $view = $this
+                ->view()
+                ->setTemplate($this->config->getTemplate('index.html'))
+                ->setTemplateVar($this->config->getPluralResourceName())
+                ->setData($resources)
+        ;
+
+        if ($request->get('_format')) {
+            $view->setFormat($request->get('_format'));
+        }
+
+        if ($this->getConfiguration()->getSerializationGroups() !== null) {
+            $view->setSerializationContext(SerializationContext::create()->setGroups($this->getConfiguration()->getSerializationGroups()));
+        }
+
+        return $this->handleView($view);
+    }
 
     public function createNew()
     {

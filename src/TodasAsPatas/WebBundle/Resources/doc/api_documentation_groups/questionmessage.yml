@@ -2,11 +2,16 @@ questionmessage:
     name: "Perguntas"
     prefix: /questionmessage
     actions:
+        index: 
+            name : api_questionmessage_index
+            pattern: /index
+            description: "Lista todas as perguntas sobre pets de um usuário"
+            methods: [GET]
         show: 
             name: api_questionmessage_show
             pattern: /{id}/show
             description: "Visualiza em detalhes uma questão"
-            methods: [get]
+            methods: [GET]
             parameters: 
                 id: 
                     name: id

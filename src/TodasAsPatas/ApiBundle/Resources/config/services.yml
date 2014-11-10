@@ -7,6 +7,11 @@ parameters:
     todasaspatas_api.event_listener.pet_listener_subscriber.class: TodasAsPatas\ApiBundle\EventListener\PetListenerSubscriber
 
 services:
+    oauth_event_listener:
+        class:  TodasAsPatas\ApiBundle\EventListener\OAuthEventListener
+        tags:
+            - { name: kernel.event_listener, event: fos_oauth_server.pre_authorization_process, method: onPreAuthorizationProcess }
+            
     todasaspatas_api.event_listener.pet_listener_subscriber:
         class: "%todasaspatas_api.event_listener.pet_listener_subscriber.class%"
         arguments: [@service_container, '']

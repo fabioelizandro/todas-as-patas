@@ -6,6 +6,7 @@ api_pet_index:
         _sylius:
             serialization: 
                 groups: [list]
+            paginate: $limit
             method: createPaginatorByFilter
             arguments: [$criteria, $sorting, $query, $breeds]
 

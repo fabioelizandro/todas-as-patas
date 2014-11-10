@@ -7,6 +7,7 @@ use JMS\Serializer\EventDispatcher\ObjectEvent;
 use Liip\ImagineBundle\Imagine\Cache\CacheManager;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use TodasAsPatas\ApiBundle\Entity\Pet;
+use TodasAsPatas\ApiBundle\Entity\PetImage;
 
 /**
  * @author Fábio Lemos Elizandro <fabio@elizandro.com.br>
@@ -47,8 +48,9 @@ class SerializerSubscriber implements EventSubscriberInterface
         $pet = $event->getObject();
 
         $this->addMediaData($event, $pet->getProfileImageKey(), array(
-            'profileImage' => 'default',
-            'profileImageThumb' => 'default_thumb'
+            'profileImage' => 'pet_profile',
+            'profileImageThumb' => 'default_thumb',
+            'profileOriginalImage' => 'default'
         ));
     }
 
@@ -57,12 +59,13 @@ class SerializerSubscriber implements EventSubscriberInterface
      */
     public function petImagePreSerialize(ObjectEvent $event)
     {
-        /* @var $petImage \TodasAsPatas\ApiBundle\Entity\PetImage */
+        /* @var $petImage PetImage */
         $petImage = $event->getObject();
 
         $this->addMediaData($event, $petImage->getImageKey(), array(
-            'image' => 'default',
-            'imageThumb' => 'default_thumb'
+            'image' => 'pet_album',
+            'imageThumb' => 'default_thumb',
+            'imageOriginal' => 'default'
         ));
     }
 

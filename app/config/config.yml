@@ -182,6 +182,18 @@ liip_imagine:
             quality: 75
             filters:
                 thumbnail: { size: [120, 90], mode: outbound }
+        pet_profile: 
+            data_loader: stream.default
+            quality: 75
+            filters:
+                upscale: { min: [300, 100] }
+                relative_resize: { widen: 300 }
+        pet_album: 
+            data_loader: stream.default
+            quality: 75
+            filters:
+                upscale: { min: [614, 320] }
+                thumbnail: { size: [614, 320], mode: outbound }
             
 knp_gaufrette:
     stream_wrapper: ~
