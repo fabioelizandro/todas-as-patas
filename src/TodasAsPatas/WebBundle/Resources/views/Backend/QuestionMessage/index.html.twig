@@ -31,7 +31,7 @@
                             <td><a href="{{ path('app_pet_show', {'id' : entity.pet.id}) }}">{{ entity.pet.name }}</a></td>
                             <td>
                                 <div class="btn-group btn-group-xs">
-                                    <a class="btn btn-primary" href="{{ path('app_questionmessage_show', { 'id': entity.id }) }}">Visualizar</a>
+                                    <a class="btn {{entity.viewed != false? 'btn-primary' : 'btn-danger'}}" href="{{ path('app_questionmessage_show', { 'id': entity.id }) }}">Visualizar</a>
                                 </div>
                             </td>
                         </tr>

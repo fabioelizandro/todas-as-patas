@@ -4,6 +4,7 @@ api_organization_index:
     defaults: 
         _controller: "app.controller.organization:indexAction"
         _sylius:
+            limit: $limit
             sorting:
                 id: desc
                 

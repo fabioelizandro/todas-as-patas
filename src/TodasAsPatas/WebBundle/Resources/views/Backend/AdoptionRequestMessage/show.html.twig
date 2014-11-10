@@ -1,0 +1,186 @@
+{% extends 'TodasAsPatasWebBundle:Backend:template.html.twig' %}
+
+{% set entity = adoptionrequestmessage %}
+
+{% block page_title %} Requisição de adoção #{{ entity.id }}{% endblock %}
+
+{% block page -%}
+
+    <div class="row">
+        <div class="col-xs-12">
+            <h3>Requisição</h3>
+            <table class="record_properties table table-bordered table-hover table-responsive table-striped">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Título</th>
+                        <td>{{ entity.title }}</td>
+                    </tr>
+                    <tr>
+                        <th>Mensagem</th>
+                        <td>{{ entity.message }}</td>
+                    </tr>
+                    <tr>
+                        <th>Resposta</th>
+                        <td>
+                            {{ entity.response }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Criado em</th>
+                        <td>{{ entity.createdAt|date('d/m/Y H:i:s') }}</td>
+                    </tr>
+                    <tr>
+                        <th>Atualizado em</th>
+                        <td>{{ entity.updatedAt|date('d/m/Y H:i:s') }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3>Usuário</h3>
+            <table class="record_properties table table-bordered table-hover table-responsive table-striped">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ entity.user.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nome e Sobrenome</th>
+                        <td>{{ entity.user.firstName ~' '~entity.user.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <th>E-mail</th>
+                        <td>{{ entity.user.email }}</td>
+                    </tr>
+                    <tr>
+                        <th>Telefone</th>
+                        <td>{{ entity.user.phone}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <a target="_blank" href="{{ path('app_pet_show', {'id' : entity.pet.id}) }}" ><h3>Pet</h3></a>
+            <table class="record_properties table table-bordered table-hover table-responsive table-striped">
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <h4>
+                                Informações sobre o Pet
+                            </h4>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Id</th>
+                        <td>
+                            <a target="_blank" href="{{ path('app_pet_show', {'id' : entity.pet.id}) }}" >{{ entity.pet.id }}</a>
+                            {% if entity.pet.adopted %}
+                                <h4 class="pull-right">
+                                    <span class="badge badge-primary">Adotado</span>
+                                </h4>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <td>{{ entity.pet.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tipo</th>
+                        <td>{{ entity.pet.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Tamanho</th>
+                        <td>{{ entity.pet.size }}</td>
+                    </tr>
+                    <tr>
+                        <th>Idade</th>
+                        <td>{{ entity.pet.age }}</td>
+                    </tr>
+                    <tr>
+                        <th>Gênero</th>
+                        <td>{{ entity.pet.gender }}</td>
+                    </tr>
+                    <tr>
+                        <th>Raça(s)</th>
+                        <td>
+                            {% for breed in entity.pet.breeds %}
+                                <span class="label label-info">{{ breed.name }}</span>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Imagem de perfil</th>
+                        <td>
+                            <img src="{{ entity.pet.profileImageKey | imagine_filter('default_thumb') }}">
+                        </td>
+                    </tr>
+                    {% if entity.pet.adopted %}
+                        <tr>
+                            <td colspan="2">
+                                <h4>
+                                    Informações de adoção
+                                </h4>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Tipo de adoção</th>
+                            <td>{{ entity.pet.adoption.type }}</td>
+                        </tr>
+                        {% if entity.pet.adoption.user %}
+                            <tr>
+                                <th>Usuaŕio que adotou</th>
+                                <td>{{ entity.pet.adoption.user }}</td>
+                            </tr>
+                        {% endif %}
+                    {% endif  %}
+                </tbody>
+            </table>
+            <ul class="record_actions list-inline list-unstyled">
+                <li>
+                    <a class="btn btn-link" href="{{ path('app_adoptionrequestmessage_index') }}">
+                        Voltar para a lista
+                    </a>
+                </li>
+                <li>
+                    <a class="btn btn-primary" href="{{ path('app_adoptionrequestmessage_update', {'id': entity.id}) }}">
+                        Responder
+                    </a>
+                </li>
+                <li>
+                    {% if entity.pet.adoption is null %}
+                        <form id="pet-adoption" method="post" action="{{ path('app_petadoption_create', {'petId': entity.pet.id, 'userId': entity.user.id }) }}">
+                            <input type="hidden" name="todasaspatas_apibundle_petadoption[user]" value="{{ entity.user.id }}" tabindex="-1"/>
+                            <button type="submit" class="btn btn-warning" >
+                                Realizar adoçao
+                            </button>
+                        </form>
+                    {% else %}
+                        <form method="post" action="{{ path('app_petadoption_delete', { 'id': entity.pet.adoption.id, 'petId' : entity.pet.id }) }}">
+                            <input type="submit" class="btn btn-warning" value="Estornar adoção" />
+                            <input type="hidden" name="_method" value="DELETE" />
+                        </form>
+                    {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% if adoptionrequestmessage.viewed == false %}
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $.ajax({
+                    type: "POST",
+                    url: "{{path('app_adoptionrequestmessage_visualized', {'id': adoptionrequestmessage.id })}}",
+                    data: {_method: "PUT"}
+                }).done(function (msg) {
+                    console.log('Marcado como visto!');
+                });
+            });
+        </script>
+    {% endif %}
+{% endblock %}

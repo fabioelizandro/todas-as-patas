@@ -14,4 +14,18 @@ app_adoptionrequestmessage_show:
     methods: [GET]
     defaults: 
         _controller: "app.controller.adoptionrequestmessage:showAction"
+        
+app_adoptionrequestmessage_visualized:
+    pattern:  /{id}/visualized
+    methods: [PUT]
+    defaults: 
+        _format: json
+        _controller: "app.controller.adoptionrequestmessage:visualizedAction"
 
+app_adoptionrequestmessage_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.adoptionrequestmessage:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_adoptionrequestmessage_response

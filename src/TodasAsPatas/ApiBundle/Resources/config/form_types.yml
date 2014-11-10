@@ -20,6 +20,8 @@ parameters:
     todasaspatas_api.form_type.question_message.class: TodasAsPatas\ApiBundle\Form\QuestionMessageType
     todasaspatas_api.form_type.adoption_request_message.class: TodasAsPatas\ApiBundle\Form\AdoptionRequestMessageType
     todasaspatas_api.form_type.pet_listener.class: TodasAsPatas\ApiBundle\Form\PetListenerType
+    todasaspatas_api.form_type.question_message_response.class: TodasAsPatas\ApiBundle\Form\QuestionMessageResponseType
+    todasaspatas_api.form_type.adoption_request_message_response.class: TodasAsPatas\ApiBundle\Form\AdoptionRequestMessageResponseType
 
 services:
     todasaspatas_api.form_type.pet_listener:
@@ -36,6 +38,16 @@ services:
         class: "%todasaspatas_api.form_type.question_message.class%"
         tags:
             - { name: form.type, alias: todasaspatas_apibundle_questionmessage }
+            
+    todasaspatas_api.form_type.adoption_request_message_response:
+        class: "%todasaspatas_api.form_type.adoption_request_message_response.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_adoptionrequestmessage_response }
+            
+    todasaspatas_api.form_type.question_message_response:
+        class: "%todasaspatas_api.form_type.question_message_response.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_questionmessage_response }
             
     todasaspatas_api.form_type.favorite_pet:
         class: "%todasaspatas_api.form_type.favorite_pet.class%"

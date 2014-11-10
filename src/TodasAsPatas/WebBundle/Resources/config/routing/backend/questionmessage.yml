@@ -15,3 +15,17 @@ app_questionmessage_show:
     defaults: 
         _controller: "app.controller.questionmessage:showAction"
 
+app_questionmessage_visualized:
+    pattern:  /{id}/visualized
+    methods: [PUT]
+    defaults: 
+        _format: json
+        _controller: "app.controller.questionmessage:visualizedAction"
+
+app_questionmessage_update:
+    pattern:  /{id}/update
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.questionmessage:updateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_questionmessage_response
