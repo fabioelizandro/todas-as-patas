@@ -54,7 +54,9 @@ security:
     access_control:
         - { path: ^/image/media/cache/, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/usercommon/create, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api/v\d*/public, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/api, roles: [ IS_AUTHENTICATED_FULLY ] }
         - { path: ^/oauth/v2/auth, role: ROLE_USER }
+        - { path: ^/usercommon, role: ROLE_USER }
         - { path: ^/, role: ROLE_ADMIN }

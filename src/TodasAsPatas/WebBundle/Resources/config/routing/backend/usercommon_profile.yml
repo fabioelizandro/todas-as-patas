@@ -1,0 +1,23 @@
+app_usercommon_profile_change_password:
+    pattern:  /change-password
+    methods: [GET, PUT]
+    defaults: 
+        _controller: "app.controller.usercommon:secureProfileUpdateAction"
+        _sylius: 
+            form: todasaspatas_apibundle_usercommon_change_password
+            template: TodasAsPatasWebBundle:Frontend/UserCommon:changePassword.html.twig
+            redirect:
+                route: app_usercommon_profile_change_password
+                parameters: []
+                
+app_usercommon_profile_create:
+    pattern:  /create
+    methods: [GET, POST]
+    defaults: 
+        _controller: "app.controller.usercommon:createAction"
+        _sylius: 
+            form: todasaspatas_apibundle_usercommon
+            template: TodasAsPatasWebBundle:Frontend/UserCommon:create.html.twig
+            redirect:
+                route: fos_user_security_login
+                parameters: []

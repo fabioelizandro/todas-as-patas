@@ -23,8 +23,14 @@ parameters:
     todasaspatas_api.form_type.question_message_response.class: TodasAsPatas\ApiBundle\Form\QuestionMessageResponseType
     todasaspatas_api.form_type.adoption_request_message_response.class: TodasAsPatas\ApiBundle\Form\AdoptionRequestMessageResponseType
     todasaspatas_api.form_type.user_common_api.class: TodasAsPatas\ApiBundle\Form\UserCommonApiType
+    todasaspatas_api.form_type.user_common_change_password.class: TodasAsPatas\ApiBundle\Form\UserCommonChangePasswordType
 
 services:
+    todasaspatas_api.form_type.user_common_change_password:
+        class: "%todasaspatas_api.form_type.user_common_change_password.class%"
+        tags:
+            - { name: form.type, alias: todasaspatas_apibundle_usercommon_change_password }
+            
     todasaspatas_api.form_type.pet_listener:
         class: "%todasaspatas_api.form_type.pet_listener.class%"
         tags:

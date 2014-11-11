@@ -1,0 +1,78 @@
+{% extends "TodasAsPatasWebBundle:Frontend:templateProfile.html.twig" %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        label{
+            margin: 0px !important;
+            padding: 0px !important;
+            width: 100% !important;
+            text-align: left !important;
+        }
+    </style>
+{% endblock %}
+    
+    
+{% block content %}
+
+
+    <div class="login-wrapper" style="top: 10px; " >
+        <div class="box">
+            <div class="content-wrap">
+                <h6>Cadastrar</h6>
+                {% if error|default(false) %}
+                    <div>{{ error|trans }}</div>
+                {% endif %}
+                {% block messages %}
+                    {% include 'TodasAsPatasWebBundle:Frontend:flashes.html.twig' %}
+                {% endblock %}
+                {{ form_start(form) }}
+                
+                {{ form_label(form.username, 'Usuário') }}<br>
+                {{ form_widget(form.username) }}
+                {{ form_errors(form.username) }}
+                
+                {{ form_label(form.email, 'E-mail') }}
+                {{ form_widget(form.email) }}
+                {{ form_errors(form.email) }}
+                
+                {{ form_label(form.firstName, 'Nome') }}
+                {{ form_widget(form.firstName) }}
+                {{ form_errors(form.firstName) }}
+                
+                {{ form_label(form.lastName, 'Sobrenome') }}
+                {{ form_widget(form.lastName) }}
+                {{ form_errors(form.lastName) }}
+                
+                {{ form_label(form.phone, 'Telefone') }}
+                {{ form_widget(form.phone) }}
+                {{ form_errors(form.phone) }}
+                
+                {{ form_label(form.plainPassword.first, 'Nova Senha') }}
+                {{ form_widget(form.plainPassword.first) }}
+                {{ form_errors(form.plainPassword.first) }}
+                
+                {{ form_label(form.plainPassword.second, 'Confirmar Senha') }}
+                {{ form_widget(form.plainPassword.second) }}
+                {{ form_errors(form.plainPassword.second) }}
+                
+                <div class="form-group">
+                    <div class="col-sm-9 col-sm-offset-3">
+                        <ul class="record_actions list-inline list-unstyled">
+                            <li>
+                                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                            </li>
+                            <li>
+                                <a class="btn btn-link" href="javascript: window.history.back();">
+                                    Voltar
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

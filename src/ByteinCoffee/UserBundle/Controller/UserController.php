@@ -120,6 +120,10 @@ class UserController extends BaseController
                 return $this->handleView($this->view($user));
             }
 
+            if ($request->get('redirect')) {
+                return new RedirectResponse($request->get('redirect'));
+            }
+
             return $this->redirectHandler->redirectTo($user);
         }
 

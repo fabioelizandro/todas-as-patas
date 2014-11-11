@@ -33,6 +33,10 @@ todasaspatas_web_backend_useradmin_profile:
 todasaspatas_web_backend_useradmin:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/useradmin.yml"
     prefix:   /useradmin
+    
+todasaspatas_web_backend_usercommon:
+    resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/usercommon_profile.yml"
+    prefix:   /usercommon
 
 todasaspatas_web_backend_group:
     resource: "@TodasAsPatasWebBundle/Resources/config/routing/backend/group.yml"
