@@ -112,6 +112,11 @@ class Pet implements PetFeaturesInterface
     private $typeId;
 
     /**
+     * @var string
+     */
+    private $history;
+
+    /**
      * Construct
      */
     public function __construct()
@@ -638,6 +643,29 @@ class Pet implements PetFeaturesInterface
     public function getNameCanonical()
     {
         return $this->nameCanonical;
+    }
+
+    /**
+     * Set history
+     *
+     * @param string $history
+     * @return Pet
+     */
+    public function setHistory($history)
+    {
+        $this->history = $history;
+
+        return $this;
+    }
+
+    /**
+     * Get history
+     *
+     * @return string
+     */
+    public function getHistory()
+    {
+        return $this->history;
     }
 
     /**

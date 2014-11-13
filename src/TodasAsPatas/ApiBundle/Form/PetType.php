@@ -48,6 +48,10 @@ class PetType extends AbstractType
                     'label' => 'Raças',
                     'required' => false
                 ))
+                ->add('history', null, array(
+                    'label' => 'História',
+                    'required' => false
+                ))
         ;
 
         if ($builder->getData() !== null && $builder->getData()->getId()) {

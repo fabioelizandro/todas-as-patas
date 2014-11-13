@@ -81,6 +81,9 @@ TodasAsPatas\ApiBundle\Entity\Pet:
                 default: 1
         genderId:
             type: integer
+        history:
+            type: text
+            nullable: true
         profileImageKey:
             type: string
             length: 255

@@ -46,10 +46,12 @@
     {{ parent() }}
     <script src="{{asset("bundles/todasaspatasweb/backend/js/jquery.uniform.min.js")}}"></script>
     <script src="{{asset("bundles/mopabootstrap/js/mopabootstrap-collection.js")}}"></script>
+    <script src="{{asset("bundles/todasaspatasweb/plugins/ckeditor/ckeditor.js")}}"></script>
 
     <script type="text/javascript">
         $(function () {
             $("input:checkbox, input:radio").uniform();
+            CKEDITOR.replace('todasaspatas_apibundle_pet_history');
         });
     </script>
 {% endblock %}

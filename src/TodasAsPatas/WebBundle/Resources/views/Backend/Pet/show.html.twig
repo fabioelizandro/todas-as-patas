@@ -60,6 +60,10 @@
                         <td>{{ pet.gender }}</td>
                     </tr>
                     <tr>
+                        <th>História</th>
+                        <td>{{ pet.history|raw }}</td>
+                    </tr>
+                    <tr>
                         <th>Raça(s)</th>
                         <td>
                             {% for breed in pet.breeds %}

@@ -29,6 +29,8 @@ TodasAsPatas\ApiBundle\Entity\Pet:
             exclude: true
         name: 
             groups: [details, list]
+        history: 
+            groups: [details]
         images: 
             groups: [details]
         organization: 
