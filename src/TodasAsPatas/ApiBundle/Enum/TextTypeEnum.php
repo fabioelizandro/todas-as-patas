@@ -32,10 +32,10 @@ class TextTypeEnum extends AbstractEnum
 
     public function __construct()
     {
-        $this->PRIVACY_POLICY = new TextType(1, 'Política de privacidade');
-        $this->TERMS_OF_SERVICE = new TextType(2, 'Termos de uso do serviço');
-        $this->HELP = new TextType(3, 'Ajuda');
-        $this->ABOUT_US = new TextType(4, 'Sobre');
+        $this->PRIVACY_POLICY = new TextType(1, 'Política de privacidade', 'privacyPolicy');
+        $this->TERMS_OF_SERVICE = new TextType(2, 'Termos de uso do serviço', 'termsOfService');
+        $this->HELP = new TextType(3, 'Ajuda', 'help');
+        $this->ABOUT_US = new TextType(4, 'Sobre', 'aboutUs');
     }
 
 }

@@ -1,0 +1,5 @@
+api_text_index:
+    pattern:  /enum
+    methods: [GET]
+    defaults: 
+        _controller: "app.controller.text:enumAction"

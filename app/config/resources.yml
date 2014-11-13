@@ -89,7 +89,7 @@ sylius_resource:
             templates: TodasAsPatasWebBundle:Backend/Text
             classes:
                 model: TodasAsPatas\ApiBundle\Entity\Text
-                controller: ByteinCoffee\ExtraBundle\Controller\Controller
+                controller: TodasAsPatas\ApiBundle\Controller\TextController
                 repository: TodasAsPatas\ApiBundle\Entity\TextRepository
         app.country:
             driver: doctrine/orm

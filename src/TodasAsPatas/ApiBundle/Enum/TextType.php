@@ -9,5 +9,25 @@ use ByteinCoffee\ExtraBundle\Enum\AbstractItem;
  */
 class TextType extends AbstractItem
 {
-    
+
+    private $reference;
+
+    public function __construct($id, $decription, $reference)
+    {
+        parent::__construct($id, $decription);
+        $this->reference = $reference;
+    }
+
+    function getReference()
+    {
+        return $this->reference;
+    }
+
+    function setReference($reference)
+    {
+        $this->reference = $reference;
+        
+        return $this;
+    }
+
 }
