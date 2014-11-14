@@ -2,7 +2,7 @@
 
 {% block title %}Perfil{% endblock %}
 
-{% block body_attr %}class="login-bg" style="background-image: url({{asset("bundles/todasaspatasweb/backend/img/bgs/back-blue.jpg")}});"{% endblock %}
+{% block body_attr %}class="login-bg" style="background-image: none; background-color: #F0EFEB !important;"{% endblock %}
 
 {% block meta %}
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,6 +17,7 @@
         'bundles/todasaspatasweb/backend/css/compiled/icons.css' 
         'bundles/todasaspatasweb/backend/css/lib/font-awesome.css' 
         'bundles/todasaspatasweb/backend/css/compiled/signin.css' 
+        'bundles/todasaspatasweb/plugins/font-awesome-4.2.0/css/font-awesome.min.css'
     %}
     <link rel="stylesheet" href="{{ asset_url }}" />
     {% endstylesheets %}

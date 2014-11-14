@@ -9,15 +9,23 @@
             width: 100% !important;
             text-align: left !important;
         }
+        
+        .input-group{
+            margin-bottom: 18px !important;
+        }
     </style>
 {% endblock %}
-    
-    
+
+
 {% block content %}
 
 
-    <div class="login-wrapper" style="top: 10px; " >
-        <div class="box">
+    <div class="login-wrapper" style="top: 30px; color: #000;" >
+        <div class="logo" >
+            <span class="fa fa-paw fa-4x"></span>
+            <span class="fa-4x" style='font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;'> Todas as Patas</span>
+        </div>
+        <div class="box" style="background-color: #fff;">
             <div class="content-wrap">
                 <h6>Cadastrar</h6>
                 {% if error|default(false) %}
@@ -27,35 +35,35 @@
                     {% include 'TodasAsPatasWebBundle:Frontend:flashes.html.twig' %}
                 {% endblock %}
                 {{ form_start(form) }}
-                
+
                 {{ form_label(form.username, 'Usuário') }}<br>
                 {{ form_widget(form.username) }}
                 {{ form_errors(form.username) }}
-                
+
                 {{ form_label(form.email, 'E-mail') }}
                 {{ form_widget(form.email) }}
                 {{ form_errors(form.email) }}
-                
+
                 {{ form_label(form.firstName, 'Nome') }}
                 {{ form_widget(form.firstName) }}
                 {{ form_errors(form.firstName) }}
-                
+
                 {{ form_label(form.lastName, 'Sobrenome') }}
                 {{ form_widget(form.lastName) }}
                 {{ form_errors(form.lastName) }}
-                
+
                 {{ form_label(form.phone, 'Telefone') }}
                 {{ form_widget(form.phone) }}
                 {{ form_errors(form.phone) }}
-                
+
                 {{ form_label(form.plainPassword.first, 'Nova Senha') }}
                 {{ form_widget(form.plainPassword.first) }}
                 {{ form_errors(form.plainPassword.first) }}
-                
+
                 {{ form_label(form.plainPassword.second, 'Confirmar Senha') }}
                 {{ form_widget(form.plainPassword.second) }}
                 {{ form_errors(form.plainPassword.second) }}
-                
+
                 <div class="form-group">
                     <div class="col-sm-9 col-sm-offset-3">
                         <ul class="record_actions list-inline list-unstyled">

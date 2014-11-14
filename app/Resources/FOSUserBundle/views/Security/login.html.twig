@@ -4,12 +4,17 @@
 
     {% trans_default_domain 'FOSUserBundle' %}
 
-    <div class="login-wrapper" style="top: 10px; " >
-        <div class="box">
+
+    <div class="login-wrapper" style="top: 30px; color: #000;" >
+        <div class="logo" >
+            <span class="fa fa-paw fa-4x"></span>
+            <span class="fa-4x" style='font-family: "Helvetica Neue",Helvetica,Arial,sans-serif !important;'> Todas as Patas</span>
+        </div>
+        <div class="box"  style="background-color: #fff;">
             <div class="content-wrap">
-                <h6>TAP Login</h6>
+                <h6>Login</h6>
                 {% if error %}
-                    <div>{{ error|trans }}</div>
+                    <div>O usuário ou a senha inseridos estão incorretos. </div>
                 {% endif %}
                 {% block messages %}
                     {% for type, messages in app.session.flashbag.all() %}
@@ -24,13 +29,15 @@
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
                     <input autofocus="on" autocomplete="off" type="text" class="form-control" id="username" name="_username" value="{{ last_username }}" required="required" placeholder="{{ 'security.login.username'|trans }}" />
                     <input class="form-control" placeholder="{{ 'security.login.password'|trans }}" type="password" id="password" name="_password" required="required" />
-                    <a href="#app_useradmin_resetting_request" class="forgot">Esqueceu a senha?</a>
+{#                    <a href="#app_useradmin_resetting_request" class="forgot">Esqueceu a senha?</a>#}
                     <div class="remember">
                         <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
                         <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
                     </div>
-                        <input class="btn-glow primary login" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" /><br>
+                    <div class="text-left">
+                        <input class="btn btn-info login" type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
                     <a href="{{ path('app_usercommon_profile_create') }}" type="button" class="btn btn-link">Cadastrar</a>
+                    </div>
                 </form>
             </div>
         </div>
